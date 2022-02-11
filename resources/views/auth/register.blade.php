@@ -86,7 +86,6 @@
                                     @enderror
                                 </div>
                             </div>
-                            {{-- dssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss --}}
                             <div class="form-group row">
                                 <label for="date_of_birth"
                                     class="col-md-4 col-form-label text-md-right">{{ __('Date of birth') }}</label>
