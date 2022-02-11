@@ -1,4 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+    <div class="col-md-3 col-lg-2"></div>
     <div class="container">
         <a href="{{ url('/') }}">
             <img height="60" src="{{ asset('img/logo_beta.png') }}" alt="Logo">
@@ -35,8 +36,9 @@
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ route('registered.dashboard') }}">Dashboard</a>
-                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                         document.getElementById('logout-form').submit();">
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                                                             document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
 
