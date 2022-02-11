@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-    <div class="container">
+<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm px-5">
+    <div class="container navbar">
         <a href="{{ url('/') }}">
             <img height="60" src="{{ asset('img/logo_beta.png') }}" alt="Logo">
         </a>
