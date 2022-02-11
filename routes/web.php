@@ -23,5 +23,5 @@ Auth::routes();
 
 Route::middleware('auth')->prefix('registered')->namespace('Registered')->name('registered.')->group(function () {
 
-    Route::get('/', 'HomeController@index')->name('home');
+    Route::get('/', 'HomeController@index')->name('dashboard');
 });
