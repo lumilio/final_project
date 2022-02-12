@@ -27,6 +27,7 @@ class ApartmentSeeder extends Seeder
                 true,
                 $apart->title
             );
+
             $apart->n_rooms = $faker->numberBetween(1, 10);
             $apart->n_bathroom = $faker->numberBetween(1, 5);
             $apart->n_bed = $faker->numberBetween(1, 15);
