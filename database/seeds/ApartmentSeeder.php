@@ -20,14 +20,8 @@ class ApartmentSeeder extends Seeder
             $apart->address = $faker->address();
             $apart->description = $faker->realText($maxNbChars = 800, $indexSize = 2);
             $apart->title = $faker->realTextBetween($minNbChars = 100, $maxNbChars = 250, $indexSize = 2);
-            $apart->slug = Str::slug($apart->title);
-            $apart->image = $faker->imageUrl(
-                1200,
-                480,
-                true,
-                $apart->title
-            );
-
+            $apart->slug = Str::slug($apart->address);
+            $apart->image = 'faker/' . $faker->image('storage/app/public/faker', 600, 400, 'Apartments', false, true, $apart->name);
             $apart->n_rooms = $faker->numberBetween(1, 10);
             $apart->n_bathroom = $faker->numberBetween(1, 5);
             $apart->n_bed = $faker->numberBetween(1, 15);

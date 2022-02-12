@@ -2968,7 +2968,8 @@ textarea.form-control-lg {
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
-  .btn {
+  .form-range::-moz-range-thumb {
+    -moz-transition: none;
     transition: none;
   }
 }
@@ -3224,9 +3225,12 @@ textarea.form-control-lg {
   border-color: #212529;
 }
 
-.btn-outline-primary {
-  color: #3490dc;
-  border-color: #3490dc;
+.invalid-feedback {
+  display: none;
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 0.875em;
+  color: #e3342f;
 }
 .btn-outline-primary:hover {
   color: black;
@@ -3248,10 +3252,11 @@ textarea.form-control-lg {
   color: #3490dc;
   background-color: transparent;
 }
-
-.btn-outline-secondary {
-  color: #6c757d;
-  border-color: #6c757d;
+.btn-check:focus + .btn-primary, .btn-primary:focus {
+  color: #000;
+  background-color: #52a1e1;
+  border-color: #489be0;
+  box-shadow: 0 0 0 0.25rem rgba(44, 122, 187, 0.5);
 }
 .btn-outline-secondary:hover {
   color: white;
@@ -3424,8 +3429,7 @@ textarea.form-control-lg {
   background-color: transparent;
 }
 
-.btn-link {
-  font-weight: 400;
+.btn-outline-primary {
   color: #3490dc;
   text-decoration: underline;
 }
@@ -6574,8 +6578,6 @@ textarea.form-control-lg {
 .stretched-link::after {
   position: absolute;
   top: 0;
-  right: 0;
-  bottom: 0;
   left: 0;
   z-index: 1;
   content: "";
@@ -6606,6 +6608,12 @@ textarea.form-control-lg {
 
 .align-middle {
   vertical-align: middle !important;
+}
+.hstack {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-self: stretch;
 }
 
 .align-bottom {
