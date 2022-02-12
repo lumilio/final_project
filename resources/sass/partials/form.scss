@@ -1,12 +1,59 @@
-.container {
-    max-width: 1540px;
-}
-
 .background_form {
     height: 645px;
     padding-top: 50px;
     background-image: url(../img/background_image.jpg);
     background-position: center;
+    .card_title {
+        background-color: $transparent;
+    }
+
+    .card_head {
+        color: $black;
+        border-bottom: none;
+        text-align: center;
+        font-size: 26px;
+        font-family: "Inter", sans-serif;
+        font-weight: 700;
+    }
+    .form_log {
+        font-family: "Inter", sans-serif;
+        font-weight: 400;
+    }
+    .title_input {
+        width: 70%;
+        margin: auto;
+    }
+    .input_value {
+        width: 70%;
+        margin: auto;
+    }
+    .button_log {
+        border-radius: 50px;
+        border: none;
+        width: 80px;
+        height: 40px;
+        background-color: $button;
+        color: $white;
+        &:hover {
+            background-color: $buttonhover;
+        }
+    }
+    .button_link {
+        border-radius: 50px;
+        margin-top: 20px;
+        border: none;
+        width: 250px;
+        height: 40px;
+        background-color: $button;
+        color: $white;
+        &:hover {
+            background-color: $buttonhover;
+        }
+    }
+
+    .link {
+        color: $darkorange;
+    }
 }
 
 .background_form_reg {
@@ -14,75 +61,40 @@
     padding-top: 50px;
     background-image: url(../img/background_image.jpg);
     background-position: center;
-}
-
-.form_log {
-    font-family: "Inter", sans-serif;
-    font-weight: 400;
-}
-
-.card_title {
-    background-color: rgb(241 241 241 / 88%);
-}
-
-.card_head {
-    color: rgb(0, 0, 0);
-    border-bottom: none;
-    text-align: center;
-    font-size: 26px;
-    font-family: "Inter", sans-serif;
-    font-weight: 700;
-}
-
-.title_input {
-    width: 70%;
-    margin: auto;
-}
-
-.input_value {
-    width: 70%;
-    margin: auto;
-}
-
-.button_log {
-    border-radius: 50px;
-    border: none;
-    width: 80px;
-    height: 40px;
-    background-color: rgb(206 92 11);
-    color: rgb(255 255 255);
-    &:hover {
-        background-color: rgb(234 103 10);
+    .card_title {
+        background-color: $transparent;
     }
-}
-
-.button_reg {
-    border-radius: 50px;
-    border: none;
-    width: 100px;
-    height: 40px;
-    background-color: rgb(206 92 11);
-    color: rgb(255 255 255);
-    &:hover {
-        background-color: rgb(234 103 10);
+    .card_head {
+        color: $black;
+        border-bottom: none;
+        text-align: center;
+        font-size: 26px;
+        font-family: "Inter", sans-serif;
+        font-weight: 700;
     }
-}
-
-.button_link {
-    border-radius: 50px;
-    margin-top: 20px;
-    border: none;
-    width: 250px;
-    height: 40px;
-    background-color: rgb(206 92 11);
-    color: rgb(255 255 255);
-    &:hover {
-        background-color: rgb(234 103 10);
+    .form_log {
+        font-family: "Inter", sans-serif;
+        font-weight: 400;
     }
-}
-
-.link {
-    color: rgb(160 89 17);
+    .title_input {
+        width: 70%;
+        margin: auto;
+    }
+    .input_value {
+        width: 70%;
+        margin: auto;
+    }
+    .button_reg {
+        border-radius: 50px;
+        border: none;
+        width: 100px;
+        height: 40px;
+        background-color: $button;
+        color: $white;
+        &:hover {
+            background-color: $buttonhover;
+        }
+    }
 }
 
 /* Responsive */
