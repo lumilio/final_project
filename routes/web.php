@@ -14,15 +14,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('guest.welcome');
-});
+
+
+Route::get('/', 'Guest\ApartmentController@index')->name('hompepageGuest');
 
 Auth::routes();
 
+Route::namespace('Guest')->prefix('guest')->name('guest.')->group(function(){
+    Route::get('apartments/{apartment:slug}', 'ApartmentController@show')->name('apartments.show');
+});
 
 Route::middleware('auth')->prefix('registered')->namespace('Registered')->name('registered.')->group(function () {
-
     Route::get('/', 'HomeController@index')->name('dashboard');
     Route::resource('apartments', 'ApartmentController');
 });
