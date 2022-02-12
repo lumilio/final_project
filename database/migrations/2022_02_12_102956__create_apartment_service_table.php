@@ -30,6 +30,6 @@ class CreateApartmentServiceTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('apartment_service');
     }
 }
