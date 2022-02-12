@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container background_form_reg">
+    <div class="container-fluid background_form_reg">
         <div class="row justify-content-center">
             <div class="col-md-4">
                 <div class="card card_title">
