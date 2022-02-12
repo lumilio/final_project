@@ -24,4 +24,5 @@ Auth::routes();
 Route::middleware('auth')->prefix('registered')->namespace('Registered')->name('registered.')->group(function () {
 
     Route::get('/', 'HomeController@index')->name('dashboard');
+    Route::resource('apartments', 'ApartmentController');
 });
