@@ -1,5 +1,5 @@
 @extends('layouts.registered')
 
 @section('content')
-    Tutti Gli appartamenti
+    <h1>Tutti Gli appartamenti</h1>
 @endsection
