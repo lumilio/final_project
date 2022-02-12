@@ -3,6 +3,7 @@
 use App\Models\Apartment;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
+use Illuminate\Support\Str;
 
 class ApartmentSeeder extends Seeder
 {
@@ -18,11 +19,11 @@ class ApartmentSeeder extends Seeder
             $apart = new Apartment();
             $apart->address = $faker->address();
             $apart->description = $faker->realText($maxNbChars = 800, $indexSize = 2);
-            $apart->title = $faker->realTextBetween($minNbChars = 100, $maxNbChars = 500, $indexSize = 2);
+            $apart->title = $faker->realTextBetween($minNbChars = 100, $maxNbChars = 250, $indexSize = 2);
+            $apart->slug = Str::slug($apart->title);
             $apart->image = $faker->imageUrl(
                 1200,
                 480,
-                'Apartament',
                 true,
                 $apart->title
             );
