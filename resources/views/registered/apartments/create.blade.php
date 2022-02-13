@@ -64,9 +64,10 @@
                     <div class="form-check py-2">
                         <p>Seleziona un servizio aggiuntivo:</p>
                         @foreach ($services as $service)
-                            <label class="form-check-label d-flex " for="services">
-                                <input type="checkbox" class="form-check-input mx-2" name="services[]" id="services"
-                                    value="{{ $service->id }}">
+                            <input type="checkbox" class="form-check-input mx-2" name="services[]" id="services"
+                                value="{{ $service->id }}">
+                            <label class="form-check-label d-block " for="services">
+
                                 {{ $service->name }}
                             </label>
                         @endforeach

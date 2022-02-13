@@ -27,7 +27,7 @@
                     @enderror
                 </div>
 
-                <div class="mb-3">
+                {{-- <div class="mb-3">
                     <label for="address" class="form-label">Indirizzo</label>
                     <input type="text" class="form-control" name="address" id="address"
                         class="form-control @error('address') is-invalid @enderror" aria-describedby="addressHelper"
@@ -37,7 +37,11 @@
                     @error('address')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
-                </div>
+                </div> --}}
+                <input-address-create></input-address-create>
+                @error('address')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
 
                 <div class="mb-3">
                     <label for="image" class="form-label">Immagine</label>
