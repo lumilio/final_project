@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Registered;
 
 use App\Http\Controllers\Controller;
 use App\Models\Apartment;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -31,7 +32,9 @@ class ApartmentController extends Controller
      */
     public function create()
     {
-        return view('registered.apartments.create');
+        $services = Service::all();
+        // ddd($services);
+        return view('registered.apartments.create', compact('services'));
     }
 
     /**
@@ -64,8 +67,15 @@ class ApartmentController extends Controller
 
         $validate['user_id'] = Auth::id();
 
-        Apartment::create($validate);
+        $apartment = Apartment::create($validate);
 
+        if ($request->has('services')) {
+            $request->validate([
+                'services' => 'nullable|exists:services,id'
+            ]);
+            $apartment->services()->attach($request->services);
+            //ddd($request->services);
+        };
         return redirect()->route('registered.apartments.index')->with('message', "Hai inserito un nouvo appartamento con successo.");
     }
 
@@ -88,8 +98,9 @@ class ApartmentController extends Controller
      */
     public function edit(Apartment $apartment)
     {
+        $services = Service::all();
         if (Auth::id() === $apartment->user_id) {
-            return view('registered.apartments.edit', compact('apartment'));
+            return view('registered.apartments.edit', compact('apartment', 'services'));
         } else {
             abort(403);
         }
@@ -130,6 +141,7 @@ class ApartmentController extends Controller
             $validate['slug'] = Str::slug($validate['address']);
 
             $apartment->update($validate);
+            $apartment->services()->sync($request->services);
 
             return redirect()->route('registered.apartments.index')->with('message', "Hai modificato l'appartamento $apartment->address con successo.");
         } else {
