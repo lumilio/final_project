@@ -37,6 +37,15 @@
                     @enderror
                 </div>
 
+
+
+                <div class="mb-3">
+                    <label for="latitude" class="form-label">Latitudine</label>
+                    <input id="latitude" type="text" name="latitude" id="latitude" class="form-control" placeholder=""
+                        aria-describedby="latitudeId">
+                    <small id="latitudeId" class="text-muted">latitudine</small>
+                </div>
+
                 <div class="mb-3">
                     <label for="image" class="form-label">Immagine</label>
                     <input type="file" class="form-control" name="image" id="image"
