@@ -54,7 +54,10 @@ class ApartmentController extends Controller
             'n_bathroom' => 'nullable|numeric',
             'n_bed' => 'nullable|numeric',
             'square_meters' => 'nullable|numeric',
-            'visibility' => 'boolean'
+            'visibility' => 'boolean',
+            'latitude' => 'required',
+            'longitude' => 'required',
+
         ]);
 
         if ($request->file('image')) {

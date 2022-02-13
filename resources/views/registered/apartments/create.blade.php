@@ -25,26 +25,19 @@
                     @enderror
                 </div>
 
-                <div class="mb-3">
-                    <label for="address" class="form-label">Indirizzo</label>
-                    <input type="text" class="form-control" name="address" id="address"
-                        class="form-control @error('address') is-invalid @enderror" aria-describedby="addressHelper"
-                        placeholder="Inserisci l'indirizzo" value="{{ old('address') }}">
-                    <small id="addressHelper" class="form-text text-muted">Scrivi l'indirizzo dell'appartamento, max 255
-                        caratteri</small>
-                    @error('address')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
-                </div>
+                <input-address-create></input-address-create>
+                @error('address')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
 
 
 
-                <div class="mb-3">
+                {{-- <div class="mb-3">
                     <label for="latitude" class="form-label">Latitudine</label>
                     <input id="latitude" type="text" name="latitude" id="latitude" class="form-control" placeholder=""
-                        aria-describedby="latitudeId">
-                    <small id="latitudeId" class="text-muted">latitudine</small>
-                </div>
+                        aria-describedby="latitudeId" value="">
+                    <small id="latitudeId" class="text-muted">@{{ latitude }}</small>
+                </div> --}}
 
                 <div class="mb-3">
                     <label for="image" class="form-label">Immagine</label>
