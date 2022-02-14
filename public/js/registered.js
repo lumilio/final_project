@@ -5122,6 +5122,127 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/InputAddressCreate.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/InputAddressCreate.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      results: [],
+      adressSelection: false,
+      inputAddress: null,
+      inputLat: null,
+      inputLon: null
+    };
+  },
+  methods: {
+    getLatitudeLongitude: function getLatitudeLongitude(address) {
+      var _this = this;
+
+      axios.get("https://api.tomtom.com/search/2/geocode/".concat(address, ".json?key=Oe8qW7UX2GW9LFGSM2ePZNH5D3IpOBqK&limit=5&countrySet=IT&radius={2000}")).then(function (response) {
+        _this.adressSelection = false;
+        _this.inputLat = response.data.results[0].position.lat;
+        _this.inputLon = response.data.results[0].position.lon;
+        _this.results = response.data.results;
+      });
+    },
+    selectAdress: function selectAdress(index) {
+      this.results = [];
+      this.adressSelection = true;
+      this.inputAddress = index.address.freeformAddress;
+      this.inputLat = index.position.lat;
+      this.inputLon = index.position.lon;
+    }
+  },
+  mounted: function mounted() {}
+});
+
+/***/ }),
+
 /***/ "./node_modules/bootstrap/dist/js/bootstrap.esm.js":
 /*!*********************************************************!*\
   !*** ./node_modules/bootstrap/dist/js/bootstrap.esm.js ***!
@@ -41398,6 +41519,152 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/InputAddressCreate.vue?vue&type=template&id=0db4f911&":
+/*!*********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/InputAddressCreate.vue?vue&type=template&id=0db4f911& ***!
+  \*********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "mb-3" }, [
+      _c("div", { staticClass: "d-flex" }, [
+        _c("label", { staticClass: "form-label", attrs: { for: "address" } }, [
+          _vm._v("Indirizzo"),
+        ]),
+        _vm._v(" "),
+        _c("i", {
+          staticClass: "d-flex align-items-center mb-2",
+          class:
+            _vm.adressSelection == false
+              ? "d-none"
+              : "fa-solid fa-circle-check ms-2 text-success",
+        }),
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.inputAddress,
+            expression: "inputAddress",
+          },
+        ],
+        staticClass: "form-control",
+        attrs: {
+          type: "text",
+          name: "address",
+          id: "address",
+          "aria-describedby": "addressHelper",
+          placeholder: "Inserisci l'indirizzo",
+        },
+        domProps: { value: _vm.inputAddress },
+        on: {
+          keyup: function ($event) {
+            return _vm.getLatitudeLongitude(_vm.inputAddress)
+          },
+          input: function ($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.inputAddress = $event.target.value
+          },
+        },
+      }),
+      _vm._v(" "),
+      _c(
+        "small",
+        { staticClass: "form-text text-muted", attrs: { id: "addressHelper" } },
+        [
+          _vm._v(
+            "\n      Scrivi l'indirizzo dell'appartamento, max 255 caratteri\n    "
+          ),
+        ]
+      ),
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { class: _vm.results.length >= 1 ? "border" : "" },
+      _vm._l(_vm.results, function (result) {
+        return _c("div", { key: result.id, staticClass: "hover_blue" }, [
+          _c(
+            "span",
+            {
+              on: {
+                click: function ($event) {
+                  return _vm.selectAdress(result)
+                },
+              },
+            },
+            [_vm._v(_vm._s(result.address.freeformAddress))]
+          ),
+        ])
+      }),
+      0
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "d-none mb-3" }, [
+      _c("label", { staticClass: "form-label", attrs: { for: "latitude" } }, [
+        _vm._v("Latitudine"),
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "form-control",
+        attrs: {
+          id: "latitude",
+          type: "text",
+          name: "latitude",
+          placeholder: "",
+          "aria-describedby": "latitudeId",
+        },
+        domProps: { value: _vm.inputLat },
+      }),
+      _vm._v(" "),
+      _c("small", { staticClass: "text-muted", attrs: { id: "latitudeId" } }, [
+        _vm._v("latitude"),
+      ]),
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "d-none mb-3" }, [
+      _c("label", { staticClass: "form-label", attrs: { for: "longitude" } }, [
+        _vm._v("Longitudine"),
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "form-control",
+        attrs: {
+          id: "longitude",
+          type: "text",
+          name: "longitude",
+          placeholder: "",
+          "aria-describedby": "longitudeId",
+        },
+        domProps: { value: _vm.inputLon },
+      }),
+      _vm._v(" "),
+      _c("small", { staticClass: "text-muted", attrs: { id: "longitudeId" } }, [
+        _vm._v("longitudine"),
+      ]),
+    ]),
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js":
 /*!********************************************************************!*\
   !*** ./node_modules/vue-loader/lib/runtime/componentNormalizer.js ***!
@@ -53636,8 +53903,8 @@ try {
  */
 
 
-window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js"); //window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
@@ -53723,6 +53990,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/InputAddressCreate.vue":
+/*!********************************************************!*\
+  !*** ./resources/js/components/InputAddressCreate.vue ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _InputAddressCreate_vue_vue_type_template_id_0db4f911___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./InputAddressCreate.vue?vue&type=template&id=0db4f911& */ "./resources/js/components/InputAddressCreate.vue?vue&type=template&id=0db4f911&");
+/* harmony import */ var _InputAddressCreate_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./InputAddressCreate.vue?vue&type=script&lang=js& */ "./resources/js/components/InputAddressCreate.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _InputAddressCreate_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _InputAddressCreate_vue_vue_type_template_id_0db4f911___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _InputAddressCreate_vue_vue_type_template_id_0db4f911___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/InputAddressCreate.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/InputAddressCreate.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/components/InputAddressCreate.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_InputAddressCreate_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./InputAddressCreate.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/InputAddressCreate.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_InputAddressCreate_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/InputAddressCreate.vue?vue&type=template&id=0db4f911&":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/components/InputAddressCreate.vue?vue&type=template&id=0db4f911& ***!
+  \***************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_InputAddressCreate_vue_vue_type_template_id_0db4f911___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./InputAddressCreate.vue?vue&type=template&id=0db4f911& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/InputAddressCreate.vue?vue&type=template&id=0db4f911&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_InputAddressCreate_vue_vue_type_template_id_0db4f911___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_InputAddressCreate_vue_vue_type_template_id_0db4f911___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/registered.js":
 /*!************************************!*\
   !*** ./resources/js/registered.js ***!
@@ -53735,6 +54071,9 @@ __webpack_require__.r(__webpack_exports__);
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+var _require = __webpack_require__(/*! axios */ "./node_modules/axios/index.js"),
+    Axios = _require["default"];
+
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
@@ -53749,6 +54088,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
+Vue.component('input-address-create', __webpack_require__(/*! ./components/InputAddressCreate.vue */ "./resources/js/components/InputAddressCreate.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -53756,7 +54096,35 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
  */
 
 var app = new Vue({
-  el: '#app'
+  el: '#app',
+  data: {// latitude: null,
+    // longitude: null,
+  },
+  methods: {
+    /* getLatitudeLongitude(address) {
+        axios
+            .get(
+                `https://api.tomtom.com/search/2/geocode/${address}.json?key=Oe8qW7UX2GW9LFGSM2ePZNH5D3IpOBqK&limit=5&countrySet=IT&radius={2000}`
+            )
+            .then((response) => {
+                console.log(response);
+                console.log(response.data.results[0].position);
+                this.latitude = response.data.results[0].position.lat;
+                this.longitude = response.data.results[0].position.lon;
+            });
+    }, */
+
+    /* insertLatitude() {
+        const latitudeInput = document.getElementById('latitude')
+        latitudeInput.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                  latitudeInput.value = this.latitude;
+            }
+            })
+    } */
+  },
+  mounted: function mounted() {// this.getLatitudeLongitude('Via Piave 25 Palermo')
+  }
 });
 
 /***/ }),
@@ -53768,7 +54136,7 @@ var app = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\samud\Desktop\Esercizi\boolbnb\resources\js\registered.js */"./resources/js/registered.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\laravel\progetto-finale\boolbnb\resources\js\registered.js */"./resources/js/registered.js");
 
 
 /***/ })
