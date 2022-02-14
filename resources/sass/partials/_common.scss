@@ -1,0 +1,6 @@
+.hover_blue {
+    &:hover {
+        background-color: $cyan;
+        cursor: pointer;
+    }
+}
