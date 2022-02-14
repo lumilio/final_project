@@ -5,8 +5,8 @@
         <label for="address" class="form-label">Indirizzo</label>
         <i
           v-bind:class="
-            adressSelection == false
-              ? 'd-none'
+            adressSelection == false || inputAddress.length == 0
+              ? 'fa-solid fa-circle-xmark ms-2 text-danger'
               : 'fa-solid fa-circle-check ms-2 text-success'
           "
           class="d-flex align-items-center mb-2"
@@ -39,7 +39,7 @@
     <!------------------------------------------------------------------------------------->
 
     <!--------------------------- form autocompletato d-none coordinate-------------------------->
-    <div class="d-none mb-3">
+    <div class="mb-3 d-none">
       <label for="latitude" class="form-label">Latitudine</label>
       <input
         id="latitude"
@@ -53,7 +53,7 @@
       <small id="latitudeId" class="text-muted">latitude</small>
     </div>
 
-    <div class="d-none mb-3">
+    <div class="mb-3 d-none">
       <label for="longitude" class="form-label">Longitudine</label>
       <input
         id="longitude"
@@ -95,8 +95,8 @@ export default {
         )
         .then((response) => {
           this.adressSelection = false;
-          this.inputLat = response.data.results[0].position.lat;
-          this.inputLon = response.data.results[0].position.lon;
+          this.inputLat = null;
+          this.inputLon = null;
           this.results = response.data.results;
         });
     },
