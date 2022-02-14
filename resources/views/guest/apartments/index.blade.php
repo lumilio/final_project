@@ -1,8 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container d-flex justify-content-center">
-        <h1>Da qui inizia il nostro progetto!</h1>
+    <div class="container-fluid d-flex justify-content-center hero_image">
     </div>
 
 
@@ -17,7 +16,7 @@
                     </a>
                 @empty
                     <p>no data</p>
-                @endforelse 
+                @endforelse
         </div>
     </div>
     <div class="container-fluid d-flex justify-content-center">

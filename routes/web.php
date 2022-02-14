@@ -18,6 +18,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'Guest\ApartmentController@index')->name('hompepageGuest');
 
+//Search guest
+
+
 Auth::routes();
 
 Route::namespace('Guest')->prefix('guest')->name('guest.')->group(function(){

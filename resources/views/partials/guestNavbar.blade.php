@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm px-5">
+<nav class="home navbar-expand-md navbar-light px-5">
     <div class="container navbar">
         <a href="{{ url('/') }}">
             <img height="50" src="{{ asset('img/logo.svg') }}" alt="Logo">
@@ -13,23 +13,23 @@
             <!-- Left Side Of Navbar -->
             <form class="d-flex m-auto align-items-center">
                 <div class="search_bar d-flex m-auto align-items-center">
-                    <input class="form-control me-2 search" type="search" placeholder="Search" aria-label="Search">
-                <i class="fa-solid fa-magnifying-glass fa-lg search_icon"></i>
+                   <input class="form-control me-2 search" type="search" placeholder="Search an apartment" aria-label="Search">
+                   <i class="fa-solid fa-magnifying-glass fa-lg search_icon"></i>
                 </div>
 
 
             </form>
 
             <!-- Right Side Of Navbar -->
-            <ul class="navbar-nav justify-content-end">
+            <ul class="navbar-nav justify-content-end align-items-center">
                 <!-- Authentication Links -->
                 @guest
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        <a class="login" href="{{ route('login') }}">{{ __('Login') }}</a>
                     </li>
                     @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <a class="register" href="{{ route('register') }}">{{ __('Register') }}</a>
                         </li>
                     @endif
                 @else
