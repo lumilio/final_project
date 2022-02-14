@@ -16,8 +16,10 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-        //
-        return Apartment::with(['services'])->paginate(5);
+        // return Apartment::with(['services'])->paginate(5);
+
+        /* per personalizzarci la risposta */
+        return ApartmentResource::collection(Apartment::with(['services'])->paginate(5));
     }
 
     /**
