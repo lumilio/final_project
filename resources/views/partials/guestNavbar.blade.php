@@ -3,7 +3,7 @@
         <a href="{{ url('/') }}">
             <img height="50" src="{{ asset('img/logo.svg') }}" alt="Logo">
         </a>
-        <a href="#" class="link_adv">Advanced search</a>
+        <a href="{{route('advanced.search')}}" class="link_adv">Advanced search</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>

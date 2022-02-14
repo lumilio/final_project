@@ -48,7 +48,8 @@ class ApartmentController extends Controller
      */
     public function show(Apartment $apartment)
     {
-        return view('guest.apartments.show', compact('apartment'));
+        $choose_services_array = $apartment->services;
+        return view('guest.apartments.show', compact('apartment','choose_services_array'));
     }
 
     /**

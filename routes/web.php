@@ -18,7 +18,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'Guest\ApartmentController@index')->name('hompepageGuest');
 
-//Search guest
+Route::get('research', function () { return view('guest.advancedSearch.index');})->name('advanced.search');
+
+
 
 
 Auth::routes();
