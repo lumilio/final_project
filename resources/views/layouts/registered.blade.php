@@ -28,7 +28,7 @@
 
 <body>
     <div id="app">
-        <div class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap px-4 shadow">
+        <div class="navbar navbar-dark sticky-top bg-azure flex-md-nowrap px-4 shadow">
             <a href="{{ url('/') }}">
                 <img height="50" src="{{ asset('img/logo_white.svg') }}" alt="Logo">
             </a>

@@ -1,10 +1,11 @@
 .background_form {
-    height: 645px;
+    min-height: calc(100vh - 66px);
+    overflow: hidden;
     padding-top: 50px;
     background-image: url(../img/background_image.jpg);
     background-position: center;
     .card_title {
-        background-color: $transparent;
+        background-color: $white;
     }
     .card_head {
         color: $black;
@@ -17,6 +18,13 @@
     .form_log {
         font-family: "Inter", sans-serif;
         font-weight: 400;
+    }
+    input:focus {
+        box-shadow: none;
+        border: 1px solid $border;
+    }
+    input {
+        border-radius: 50px;
     }
     .title_input {
         width: 70%;
@@ -43,7 +51,7 @@
         border: none;
         width: 250px;
         height: 40px;
-        background-color: $button;
+        background-color: $lightorange;
         color: $white;
         &:hover {
             background-color: $buttonhover;
@@ -51,17 +59,25 @@
     }
 
     .link {
-        color: $darkorange;
+        color: $darkazure;
     }
 }
 
 .background_form_reg {
+    min-height: calc(100vh - 66px);
+    overflow: hidden;
     padding-bottom: 50px;
     padding-top: 50px;
     background-image: url(../img/background_image.jpg);
     background-position: center;
+    .rule {
+        color: $red;
+    }
+    .symbol {
+        color: red;
+    }
     .card_title {
-        background-color: $transparent;
+        background-color: $white;
     }
     .card_head {
         color: $black;
@@ -74,6 +90,13 @@
     .form_log {
         font-family: "Inter", sans-serif;
         font-weight: 400;
+    }
+    input:focus {
+        box-shadow: none;
+        border: 1px solid $border;
+    }
+    input {
+        border-radius: 50px;
     }
     .title_input {
         width: 70%;
