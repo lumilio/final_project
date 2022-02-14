@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ApartmentResource;
 use App\Models\Apartment;
 use Illuminate\Http\Request;
 
@@ -46,9 +47,10 @@ class ApartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Apartment $apartment)
     {
         //
+        return new ApartmentResource($apartment);
     }
 
     /**
