@@ -13,6 +13,7 @@
                 enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
+
                 <div class="mb-3">
                     <label for="title" class="form-label">Titolo</label>
                     <input type="text" class="form-control" name="title" id="title"
@@ -25,7 +26,8 @@
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
-                <div class="mb-3">
+
+                {{-- <div class="mb-3">
                     <label for="address" class="form-label">Indirizzo</label>
                     <input type="text" class="form-control" name="address" id="address"
                         class="form-control @error('address') is-invalid @enderror" aria-describedby="addressHelper"
@@ -35,7 +37,12 @@
                     @error('address')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
-                </div>
+                </div> --}}
+                <input-address-create></input-address-create>
+                @error('address')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+
                 <div class="mb-3">
                     <label for="image" class="form-label">Immagine</label>
                     <input type="file" class="form-control" name="image" id="image"
@@ -46,6 +53,7 @@
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
+
                 <div class="mb-3">
                     <label for="description" class="form-label">Descrizione</label>
                     <textarea placeholder="Inserisci la descrizione"
@@ -55,10 +63,32 @@
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
+
+                <div class="mb-3">
+                    <div class="form-check py-2">
+                        <p>Seleziona un servizio aggiuntivo:</p>
+                        @foreach ($services as $service)
+                            <label class="form-check-label d-flex " for="services">
+                                <input type="checkbox" class="form-check-input mx-2" name="services[]" id="services"
+                                    value="{{ $service->id }}"
+                                    {{ $apartment->services->contains($service->id) ? 'checked' : '' }}>
+                                {{ $service->name }}
+                            </label>
+                        @endforeach
+                    </div>
+                    @error('services')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+
                 <div class="text-center pb-5">
                     <button type="submit" class="btn btn-success w-25">Salva</button>
                 </div>
+
             </form>
+            {{-- /form --}}
         </div>
+        {{-- /apartments --}}
     </div>
+    {{-- /container-fluid --}}
 @endsection

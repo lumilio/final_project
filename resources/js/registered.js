@@ -4,6 +4,8 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+const { default: Axios } = require('axios');
+
 require('./bootstrap');
 
 window.Vue = require('vue');
@@ -20,6 +22,8 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('input-address-create', require('./components/InputAddressCreate.vue').default);
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -29,4 +33,42 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const app = new Vue({
     el: '#app',
+    data: {
+        // latitude: null,
+        // longitude: null,
+    },
+
+    methods: {
+        /* getLatitudeLongitude(address) {
+            axios
+                .get(
+                    `https://api.tomtom.com/search/2/geocode/${address}.json?key=Oe8qW7UX2GW9LFGSM2ePZNH5D3IpOBqK&limit=5&countrySet=IT&radius={2000}`
+                )
+                .then((response) => {
+                    console.log(response);
+                    console.log(response.data.results[0].position);
+                    this.latitude = response.data.results[0].position.lat;
+                    this.longitude = response.data.results[0].position.lon;
+                });
+        }, */
+
+
+        /* insertLatitude() {
+            const latitudeInput = document.getElementById('latitude')
+            latitudeInput.addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') {
+
+                    latitudeInput.value = this.latitude;
+                }
+
+
+            })
+        } */
+
+    },
+
+    mounted() {
+        // this.getLatitudeLongitude('Via Piave 25 Palermo')
+    }
+
 });

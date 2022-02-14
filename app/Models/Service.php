@@ -11,6 +11,6 @@ class Service extends Model
 
     public function apartments(): BelongsToMany
     {
-        return $this->belongsToMany(Models\Apartment::class);
+        return $this->belongsToMany(Apartment::class);
     }
 }
