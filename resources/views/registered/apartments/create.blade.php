@@ -8,7 +8,7 @@
 
         <h2>Inserisci un nuovo appartamento</h2>
         <div class="apartments">
-            @include('partials.error')
+            {{-- @include('partials.error') --}}
             <form action="{{ route('registered.apartments.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
 
@@ -29,6 +29,10 @@
                 @error('address')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
+                @error('latitude')
+                    <div class="alert alert-danger"> Indirizzo non valido </div>
+                @enderror
+
 
 
 
