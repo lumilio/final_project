@@ -15,8 +15,8 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-        $apartment_array  = Apartment::orderByDesc('id')->paginate(12);
-        return view('guest.apartments.index',compact('apartment_array'));
+        $apartments  = Apartment::orderByDesc('id')->paginate(12);
+        return view('guest.apartments.index', compact('apartments'));
     }
 
     /**
