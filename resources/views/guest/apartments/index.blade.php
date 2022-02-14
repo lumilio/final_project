@@ -3,8 +3,6 @@
 @section('content')
     <div class="container-fluid d-flex justify-content-center hero_image">
     </div>
-
-
     <div class="container-fluid d-flex justify-content-center">
         <div class="container d-flex justify-content-center flex-wrap">
 

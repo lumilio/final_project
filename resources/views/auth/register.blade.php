@@ -15,7 +15,10 @@
 
                             <div class="form-group row pb-2">
                                 <label for="email"
-                                    class="col-md-6 col-form-label text-md-right title_input">{{ __('E-Mail Address') }}</label>
+                                    class="col-md-6 col-form-label text-md-right title_input">
+                                    <p class="rule">I campi con l'asterisco sono obbligatori.</p>
+                                    <span class="symbol">*</span>
+                                    {{ __('E-Mail Address') }}</label>
 
                                 <div class="col-md-6 input_value">
                                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
@@ -31,7 +34,9 @@
 
                             <div class="form-group row pb-2">
                                 <label for="password"
-                                    class="col-md-6 col-form-label text-md-right title_input">{{ __('Password') }}</label>
+                                    class="col-md-6 col-form-label text-md-right title_input">
+                                    <span class="symbol">*</span>
+                                    {{ __('Password') }}</label>
 
                                 <div class="col-md-6 input_value">
                                     <input id="password" type="password"
@@ -48,7 +53,9 @@
 
                             <div class="form-group row pb-2">
                                 <label for="password-confirm"
-                                    class="col-md-6 col-form-label text-md-right title_input">{{ __('Confirm Password') }}</label>
+                                    class="col-md-6 col-form-label text-md-right title_input">
+                                    <span class="symbol">*</span>
+                                    {{ __('Confirm Password') }}</label>
 
                                 <div class="col-md-6 input_value">
                                     <input id="password-confirm" type="password" class="form-control"
