@@ -6,6 +6,14 @@
 
         <div style='max-width:500px' class="container d-flex flex-column">
             <h3 class=" mb-4">{{ $apartment->title }}</h3>
+            <!--------- bagni, camere, mq, letti --------->
+            <div class='d-flex mb-3'>
+                <span class="me-3"><i class="fa-solid fa-person-booth"></i> {{ $apartment->n_rooms }}</span>
+                <span class="me-3"><i class="fa-solid fa-bed"></i> {{ $apartment->n_bed }}</span>
+                <span class="me-3"><i class="fa-solid fa-expand"></i> {{ $apartment->square_meters }} mq</span>
+                <span class="me-3"><i class="fa-solid fa-toilet"></i> {{ $apartment->n_bathroom }}</span>
+            </div>
+            <!--------------------------->
             <!--------- servizi --------->
             <p> servizi :
             @forelse ($choose_services_array as $service)
@@ -14,10 +22,27 @@
                 nessun servizio assegnato
             @endforelse 
             <!--------------------------->
-            <p class="mt-4">{{ $apartment->description }}</p>
+            <p class="mt-1">{{ $apartment->description }}</p>
 
-            <div style='max-width:100%;height:450px' class='mt-3 container bg-dark'></div>
+
+
+
+
+
+
+
+
+
+            <!-------------  MAppa    ----------->
+            <div style='max-width:100%;height:450px' class='mt-3 container bg-dark'></div> 
+            <!--------------------------->   
         </div>
+
+
+
+
+
+
 
 
 
@@ -63,10 +88,5 @@
             </div>
             <!-------------------------------------------------------------------------------------------->
         </div>
-
-
-
-
-        
     </div>
 @endsection

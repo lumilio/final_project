@@ -27,18 +27,6 @@
                     @enderror
                 </div>
 
-                {{-- <div class="mb-3">
-                    <label for="address" class="form-label">Indirizzo</label>
-                    <input type="text" class="form-control" name="address" id="address"
-                        class="form-control @error('address') is-invalid @enderror" aria-describedby="addressHelper"
-                        placeholder="Inserisci l'indirizzo" value="{{ $apartment->address }}">
-                    <small id="addressHelper" class="form-text text-muted">Modifica l'indirizzo dell'appartamento, max 255
-                        caratteri</small>
-                    @error('address')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
-                </div> --}}
-
                 <input-address-create :oldaddress='{{ json_encode($apartment->address) }}'
                     :oldlatitude='{{ json_encode($apartment->latitude) }}'
                     :oldlongitude='{{ json_encode($apartment->longitude) }}'></input-address-create>
@@ -56,6 +44,42 @@
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
+
+
+
+
+<!-- --------------------   n.bagni   ok , n.camere  ok , n.letti ,  n.metri   -------------------------- -->
+                <div class='d-flex flex-wrap'>
+                    <div style='max-width:70px' class="mx-2 mb-3">
+                        <label for="n_rooms" class="form-label"> Bagni</label>
+                        <input type="number" class="form-control" name="n_rooms" id="n_rooms"
+                            class="form-control @error('n_rooms') is-invalid @enderror" aria-describedby="n_roomsHelper"
+                            placeholder="0" value="{{ $apartment->n_rooms }}">
+                    </div>
+                    <div style='max-width:70px' class="mx-2 mb-3">
+                        <label for="n_bathroom" class="form-label"> Camere</label>
+                        <input type="number" class="form-control" name="n_bathroom" id="n_bathroom"
+                            class="form-control @error('n_bathroom') is-invalid @enderror" aria-describedby="n_bathroomHelper"
+                            placeholder="0" value="{{ $apartment->n_bathroom  }}">
+                    </div>
+                    <div style='max-width:70px' class="mx-2 mb-3">
+                        <label for="n_bed" class="form-label">mq</label>
+                        <input type="number" class="form-control" name="n_bed" id="n_bed"
+                        class="form-control @error('n_bed') is-invalid @enderror" aria-describedby="n_bedHelper"
+                        placeholder="0" value="{{ $apartment->n_bed }}">
+                    </div>
+                    <div style='max-width:70px' class="mx-2 mb-3">
+                        <label for="square_meters" class="form-label"> Letti</label>
+                        <input type="number" class="form-control" name="square_meters" id="square_meters"
+                            class="form-control @error('square_meters') is-invalid @enderror" aria-describedby="square_metersHelper"
+                            placeholder="0" value="{{ $apartment->square_meters }}">
+                    </div>
+                </div>
+<!-- ----------------------------------------------- -->
+
+
+
+
 
                 <div class="mb-3">
                     <label for="description" class="form-label">Descrizione</label>
