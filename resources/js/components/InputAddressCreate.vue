@@ -5,7 +5,8 @@
         <label for="address" class="form-label">Indirizzo</label>
         <i
           v-bind:class="
-            adressSelection == false || inputAddress.length == 0
+            (adressSelection == false && oldAddress === null) ||
+            inputAddress.length == 0
               ? 'fa-solid fa-circle-xmark ms-2 text-danger'
               : 'fa-solid fa-circle-check ms-2 text-success'
           "
@@ -39,7 +40,7 @@
     <!------------------------------------------------------------------------------------->
 
     <!--------------------------- form autocompletato d-none coordinate-------------------------->
-    <div class="mb-3 d-none">
+    <div class="mb-3">
       <label for="latitude" class="form-label">Latitudine</label>
       <input
         id="latitude"
@@ -53,7 +54,7 @@
       <small id="latitudeId" class="text-muted">latitude</small>
     </div>
 
-    <div class="mb-3 d-none">
+    <div class="mb-3">
       <label for="longitude" class="form-label">Longitudine</label>
       <input
         id="longitude"
@@ -82,11 +83,13 @@ export default {
     return {
       results: [],
       adressSelection: false,
-      inputAddress: null,
-      inputLat: null,
-      inputLon: null,
+      inputAddress: this.oldaddress,
+      oldAddress: this.oldaddress,
+      inputLat: this.oldlatitude,
+      inputLon: this.oldlongitude,
     };
   },
+  props: ["oldaddress", "oldlatitude", "oldlongitude"],
   methods: {
     getLatitudeLongitude(address) {
       axios
@@ -95,6 +98,7 @@ export default {
         )
         .then((response) => {
           this.adressSelection = false;
+          this.oldAddress = null;
           this.inputLat = null;
           this.inputLon = null;
           this.results = response.data.results;
@@ -107,7 +111,14 @@ export default {
       this.inputLat = index.position.lat;
       this.inputLon = index.position.lon;
     },
+    checkAddress() {
+      if (this.oldaddress === undefined) {
+        this.inputAddress = "";
+      }
+    },
   },
-  mounted() {},
+  mounted() {
+    this.checkAddress();
+  },
 };
 </script>

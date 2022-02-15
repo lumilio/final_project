@@ -52,7 +52,7 @@ class ApartmentController extends Controller
     public function show(Apartment $apartment)
     {
         //
-        return new ApartmentResource($apartment);
+        return new ApartmentResource(Apartment::find($apartment->id));
     }
 
     /**

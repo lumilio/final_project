@@ -38,7 +38,10 @@
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div> --}}
-                <input-address-create></input-address-create>
+
+                <input-address-create :oldaddress='{{ json_encode($apartment->address) }}'
+                    :oldlatitude='{{ json_encode($apartment->latitude) }}'
+                    :oldlongitude='{{ json_encode($apartment->longitude) }}'></input-address-create>
                 @error('address')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
