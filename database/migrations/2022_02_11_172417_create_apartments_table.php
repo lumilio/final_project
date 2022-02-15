@@ -17,7 +17,7 @@ class CreateApartmentsTable extends Migration
             $table->id();
             $table->string('address')->unique();
             $table->text('description')->nullable();
-            $table->string('title')->nullable();
+            $table->string('title');
             $table->string('slug')->unique();
             $table->string('image')->nullable();
             $table->integer('n_rooms')->nullable();

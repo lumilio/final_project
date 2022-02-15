@@ -46,14 +46,14 @@ class ApartmentController extends Controller
     public function store(Request $request)
     {
         $validate = $request->validate([
-            'address' => 'required|unique:apartments',
-            'title' => 'required',
+            'address' => 'required|unique:apartments|max:255',
+            'title' => 'required|max:255',
             'image' => 'nullable|image|max:500',
-            'description' => 'nullable',
-            'n_rooms' => 'nullable|numeric',
-            'n_bathroom' => 'nullable|numeric',
-            'n_bed' => 'nullable|numeric',
-            'square_meters' => 'nullable|numeric',
+            'description' => 'nullable|max:65535',
+            'n_rooms' => 'nullable|numeric|min:0|max:200',
+            'n_bathroom' => 'nullable|numeric|min:0|max:200',
+            'n_bed' => 'nullable|numeric|min:0|max:200',
+            'square_meters' => 'nullable|numeric|min:0|max:5000',
             'visibility' => 'boolean',
             'latitude' => 'required',
             'longitude' => 'required',
@@ -91,7 +91,7 @@ class ApartmentController extends Controller
     public function show(Apartment $apartment)
     {
         $choose_services_array = $apartment->services;
-        return view('guest.apartments.show', compact('apartment','choose_services_array'));
+        return view('guest.apartments.show', compact('apartment', 'choose_services_array'));
     }
 
     /**
@@ -123,15 +123,16 @@ class ApartmentController extends Controller
             $validate = $request->validate([
                 'address' => [
                     'required',
-                    Rule::unique('apartments')->ignore($apartment->id)
+                    Rule::unique('apartments')->ignore($apartment->id),
+                    'max:255'
                 ],
-                'title' => 'required',
+                'title' => 'required|max:255',
                 'image' => 'nullable|image|max:500',
-                'description' => 'nullable',
-                'n_rooms' => 'nullable|numeric',
-                'n_bathroom' => 'nullable|numeric',
-                'n_bed' => 'nullable|numeric',
-                'square_meters' => 'nullable|numeric',
+                'description' => 'nullable|max:65535',
+                'n_rooms' => 'nullable|numeric|min:0|max:200',
+                'n_bathroom' => 'nullable|numeric|min:0|max:200',
+                'n_bed' => 'nullable|numeric|min:0|max:200',
+                'square_meters' => 'nullable|numeric|min:0|max:5000',
                 'visibility' => 'boolean'
             ]);
 
@@ -147,7 +148,7 @@ class ApartmentController extends Controller
             $apartment->update($validate);
             $apartment->services()->sync($request->services);
 
-            return redirect()->route('registered.apartments.index')->with('message', "Hai modificato l'appartamento $apartment->address con successo.");
+            return redirect()->route('registered.apartments.index')->with('message', "Hai modificato l'appartamento in $apartment->address con successo.");
         } else {
             abort(403);
         }
@@ -165,7 +166,7 @@ class ApartmentController extends Controller
             Storage::delete($apartment->image);
             $apartment->delete();
 
-            return redirect()->route('registered.apartments.index')->with('message', "Hai eliminato l'appartamento $apartment->address con successo.");
+            return redirect()->route('registered.apartments.index')->with('message', "Hai eliminato l'appartamento in $apartment->address con successo.");
         } else {
             abort(403);
         }
