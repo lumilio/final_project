@@ -4,7 +4,7 @@
         <div class="toggle-wrapper">
             <div class="toggle checkcross">
                 <label class="toggle-item" for="checkcross">
-                    <input id="checkcross" type="checkbox" name="visibility" :value='visible' :checked="is_visible ? '' : 'checked'   " @change='onChange'/>  
+                    <input id="checkcross" type="checkbox" name="visibility" :value='visible' :checked="is_visible ? '' : 'checked'" @change='onChange'/>  
                     <div class="check"></div>
                 </label>
             </div>
@@ -20,7 +20,6 @@
         data() {
             return {
             visible: this.is_visible,
-            xcheck: null,
             };
         },
         props: ["is_visible"],
