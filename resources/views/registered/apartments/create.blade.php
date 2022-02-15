@@ -108,6 +108,22 @@
                 </div>
 
 
+
+
+
+
+                <p>Privato</p>
+                <div class="toggle-wrapper">
+                    <div class="toggle checkcross">
+                        <label class="toggle-item" for="checkcross">
+                            <div class="check"></div>
+                            <input id="checkcross" type="checkbox" value="0" name="visibility" />
+                        </label>
+                    </div>
+                </div>
+
+
+
                 <div class="text-center pb-5">
                     <button type="submit" class="btn btn-success w-25">Salva</button>
                 </div>
