@@ -38,7 +38,7 @@
                     <input type="file" class="form-control" name="image" id="image"
                         class="form-control @error('image') is-invalid @enderror" aria-describedby="imageHelper"
                         accept=".jpg, .png, .jpeg, .svg">
-                    <small id="imageHelper" class="form-text text-muted">Scegli un immagine di max 500 MB</small>
+                    <small id="imageHelper" class="form-text text-muted">Scegli un immagine di max 500 KB</small>
                     @error('image')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
