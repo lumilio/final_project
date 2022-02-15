@@ -112,10 +112,10 @@
 
 
 
-                <p>Privato</p>
                 <div class="toggle-wrapper">
                     <div class="toggle checkcross">
-                        <label class="toggle-item" for="checkcross">
+                        <label class="toggle-item d-flex align-items-center" for="checkcross">
+                            <p class='m-0 pe-2'>Privato si/no</p>
                             <div class="check"></div>
                             <input id="checkcross" type="checkbox" value="0" name="visibility" />
                         </label>

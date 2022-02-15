@@ -1,9 +1,9 @@
 <template>
     <div>
-        <p>Privato</p>
         <div class="toggle-wrapper">
             <div class="toggle checkcross">
-                <label class="toggle-item" for="checkcross">
+                <label class="toggle-item d-flex align-items-center" for="checkcross">
+                    <p class='m-0 pe-2'>Privato si/no</p>       
                     <input id="checkcross" type="checkbox" name="visibility" :value='visible' :checked="is_visible ? '' : 'checked'" @change='onChange'/>  
                     <div class="check"></div>
                 </label>
