@@ -53,7 +53,7 @@
                             <td>{{ $apartment->created_at }}</td>
                             <td>{{ $apartment->updated_at }}</td>
                             <td>
-                                <a href="{{ route('registered.apartments.show', $apartment->id) }}"
+                                <a href="{{ route('guest.apartments.show', $apartment->slug) }}"
                                     class="btn btn-primary"><i class="fas fa-eye text-white"></i></a>
                                 <a href="{{ route('registered.apartments.edit', $apartment->id) }}"
                                     class="btn btn-secondary"><i class="fas fa-pencil-alt"></i></a>

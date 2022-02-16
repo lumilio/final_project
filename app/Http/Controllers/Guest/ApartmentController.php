@@ -15,7 +15,7 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-        $apartments  = Apartment::orderByDesc('id')->paginate(12);
+        $apartments  = Apartment::where('visibility', true)->orderByDesc('id')->paginate(12);
         return view('guest.apartments.index', compact('apartments'));
     }
 
@@ -27,7 +27,10 @@ class ApartmentController extends Controller
      */
     public function show(Apartment $apartment)
     {
-        $choose_services_array = $apartment->services;
-        return view('guest.apartments.show', compact('apartment', 'choose_services_array'));
+        if ($apartment->visibility) {
+            return view('guest.apartments.show', compact('apartment'));
+        } else {
+            abort(403);
+        }
     }
 }
