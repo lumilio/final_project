@@ -3,7 +3,6 @@
         <a href="{{ url('/') }}">
             <img height="50" src="{{ asset('img/logo.svg') }}" alt="Logo">
         </a>
-        <a href="{{route('advanced.search')}}" class="link_adv">Advanced search</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
@@ -13,8 +12,9 @@
             <!-- Left Side Of Navbar -->
             <form class="d-flex m-auto align-items-center">
                 <div class="search_bar d-flex m-auto align-items-center">
-                   <input class="form-control me-2 search" type="search" placeholder="Search an apartment" aria-label="Search">
-                   <i class="fa-solid fa-magnifying-glass fa-lg search_icon"></i>
+                    <input class="form-control me-2 search" type="search" placeholder="Search an apartment"
+                        aria-label="Search">
+                    <i class="fa-solid fa-magnifying-glass fa-lg search_icon"></i>
                 </div>
 
 
@@ -44,7 +44,7 @@
                             <a class="dropdown-item" href="{{ route('registered.dashboard') }}">Dashboard</a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
-                                                                                 document.getElementById('logout-form').submit();">
+                                                                                         document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
 
