@@ -46,7 +46,7 @@ class ApartmentController extends Controller
     public function store(Request $request)
     {
         $validate = $request->validate([
-            'address' => 'required|unique:apartments|max:255',
+            'address' => 'required|max:255',
             'title' => 'required|max:255',
             'image' => 'nullable|image|max:500',
             'description' => 'nullable|max:65535',
@@ -57,6 +57,7 @@ class ApartmentController extends Controller
             'visibility' => 'boolean',
             'latitude' => 'required',
             'longitude' => 'required',
+            'services' => 'required',
 
         ]);
 
@@ -66,10 +67,8 @@ class ApartmentController extends Controller
             $validate['image'] = $image;
         }
 
-        $validate['slug'] = Str::slug($validate['address']);
-
+        $validate['slug'] = Str::slug($validate['title'].'-'.$request->id, '-');
         $validate['user_id'] = Auth::id();
-
         $apartment = Apartment::create($validate);
 
         if ($request->has('services')) {
@@ -121,11 +120,7 @@ class ApartmentController extends Controller
     {
         if (Auth::id() === $apartment->user_id) {
             $validate = $request->validate([
-                'address' => [
-                    'required',
-                    Rule::unique('apartments')->ignore($apartment->id),
-                    'max:255'
-                ],
+                'address' => 'required|max:255',
                 'title' => 'required|max:255',
                 'image' => 'nullable|image|max:500',
                 'description' => 'nullable|max:65535',
@@ -133,18 +128,15 @@ class ApartmentController extends Controller
                 'n_bathroom' => 'nullable|numeric|min:0|max:200',
                 'n_bed' => 'nullable|numeric|min:0|max:200',
                 'square_meters' => 'nullable|numeric|min:0|max:5000',
-                'visibility' => 'boolean'
+                'visibility' => 'boolean',
+                'services' => 'required',
             ]);
-
             if ($request->file('image')) {
                 Storage::delete($apartment->image);
                 $image = Storage::put('apartments_images', $request->file('image'));
-
                 $validate['image'] = $image;
             }
-
-            $validate['slug'] = Str::slug($validate['address']);
-
+            $validate['slug'] = Str::slug($validate['title'].'-'.$apartment->id, '-');
             $apartment->update($validate);
             $apartment->services()->sync($request->services);
 
