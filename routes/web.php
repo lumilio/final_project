@@ -14,14 +14,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('guest.welcome');
-});
+
+
+Route::get('/', 'Guest\ApartmentController@index')->name('hompepageGuest');
+
+Route::get('research', function () { return view('guest.advancedSearch.index');})->name('advanced.search');
+
+
+
 
 Auth::routes();
 
+Route::namespace('Guest')->prefix('guest')->name('guest.')->group(function(){
+    Route::get('apartments/{apartment:slug}', 'ApartmentController@show')->name('apartments.show');
+});
 
 Route::middleware('auth')->prefix('registered')->namespace('Registered')->name('registered.')->group(function () {
-
-    Route::get('/', 'HomeController@index')->name('home');
+    Route::get('/', 'HomeController@index')->name('dashboard');
+    Route::resource('apartments', 'ApartmentController');
 });

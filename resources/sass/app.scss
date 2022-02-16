@@ -1,8 +1,25 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url("https://fonts.googleapis.com/css?family=Nunito");
 
 // Variables
-@import 'variables';
+@import "partials/variables";
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
+
+//Form
+@import "partials/form";
+
+//Navbar
+@import "partials/navbarguest";
+
+//Home Guest
+@import "partials/homepage";
+
+@import "partials/common";
+
+//Cards Homepage
+@import "partials/cards";
+
+//Site Footer
+@import "partials/footer";
