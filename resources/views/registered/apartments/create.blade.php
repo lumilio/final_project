@@ -109,6 +109,16 @@
                     @enderror
                 </div>
 
+                <div class="toggle-wrapper">
+                    <div class="toggle checkcross">
+                        <label class="toggle-item d-flex align-items-center" for="checkcross">
+                            <p class='m-0 pe-2'>Privato si/no</p>
+                            <div class="check"></div>
+                            <input id="checkcross" type="checkbox" value="0" name="visibility" />
+                        </label>
+                    </div>
+                </div>
+
                 <div class="text-center pb-5">
                     <button type="submit" class="btn btn-success w-25">Salva</button>
                 </div>

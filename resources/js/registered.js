@@ -23,6 +23,7 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('input-address-create', require('./components/InputAddressCreate.vue').default);
+Vue.component('edit-visibility-checkbox', require('./components/editVisibilityComoponent.vue').default);
 
 
 /**
