@@ -16,7 +16,7 @@
             <!--------------------------->
             <!--------- servizi --------->
             <p> servizi :
-            @forelse ($choose_services_array as $service)
+            @forelse ($apartment->services as $service)     <!-- ****** -->
             <span class="badge text-black bg-warning">{{$service->name}}</span>
             @empty
                 nessun servizio assegnato
