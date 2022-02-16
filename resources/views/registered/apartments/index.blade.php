@@ -13,7 +13,8 @@
             </div>
         @endif
         <div class="text-end mb-3">
-            <a class="btn btn-primary text-white" href="{{ route('registered.apartments.create') }}" role="button">Inserisci un
+            <a class="btn btn-primary text-white" href="{{ route('registered.apartments.create') }}"
+                role="button">Inserisci un
                 Appartemento</a>
         </div>
         <div class="table-responsive">
@@ -23,6 +24,7 @@
                         <th scope="col">Id</th>
                         <th scope="col">Indirizzo</th>
                         <th scope="col">Immagine</th>
+                        <th scope="col">Visibilità</th>
                         <th scope="col">Creato il</th>
                         <th scope="col">Aggiornato il</th>
                         <th scope="col">Azioni</th>
@@ -36,6 +38,17 @@
                             <td>
                                 <img height="50" src="{{ asset('storage/' . $apartment->image) }}"
                                     alt="{{ $apartment->title }}">
+                            </td>
+                            <td>
+                                @if ($apartment->visibility === 1)
+                                    <div class="visibility ">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </div>
+                                @else
+                                    <div class="novisibility ">
+                                        <i class="fa-solid fa-eye-slash"></i>
+                                    </div>
+                                @endif
                             </td>
                             <td>{{ $apartment->created_at }}</td>
                             <td>{{ $apartment->updated_at }}</td>

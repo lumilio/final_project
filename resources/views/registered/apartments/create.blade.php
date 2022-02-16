@@ -109,15 +109,20 @@
                     @enderror
                 </div>
 
-                <div class="toggle-wrapper">
+                <div class="toggle-wrapper mt-5">
                     <div class="toggle checkcross">
+                        <p class="me-3">Pubblico</p>
+                        <input id="checkcross" class="@error('visibility') is-invalid @enderror" type="checkbox" value="0"
+                            name="visibility" />
                         <label class="toggle-item d-flex align-items-center" for="checkcross">
-                            <p class='m-0 pe-2'>Privato si/no</p>
                             <div class="check"></div>
-                            <input id="checkcross" type="checkbox" value="0" name="visibility" />
                         </label>
+                        <p class="ms-3">Privato</p>
                     </div>
                 </div>
+                @error('visibility')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
 
                 <div class="text-center pb-5">
                     <button type="submit" class="btn btn-success w-25">Salva</button>

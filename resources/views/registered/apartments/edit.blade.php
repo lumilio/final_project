@@ -113,18 +113,8 @@
                     @enderror
                 </div>
 
-
-
-
-
                 <edit-visibility-checkbox :is_visible='{{ json_encode($apartment->visibility) }}'>
                 </edit-visibility-checkbox>
-
-
-
-
-
-
 
                 <div class="text-center pb-5">
                     <button type="submit" class="btn btn-success w-25">Salva</button>
