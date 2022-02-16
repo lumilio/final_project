@@ -67,7 +67,7 @@ class ApartmentController extends Controller
             $validate['image'] = $image;
         }
 
-        $validate['slug'] = Str::slug($validate['title'].'-'.$request->id, '-');
+        $validate['slug'] = Str::slug($validate['title'] . '-' . $request->id, '-');
         $validate['user_id'] = Auth::id();
         $apartment = Apartment::create($validate);
 
@@ -89,8 +89,7 @@ class ApartmentController extends Controller
      */
     public function show(Apartment $apartment)
     {
-        $choose_services_array = $apartment->services;
-        return view('guest.apartments.show', compact('apartment', 'choose_services_array'));
+        // return view('guest.apartments.show', compact('apartment'));
     }
 
     /**
@@ -136,7 +135,7 @@ class ApartmentController extends Controller
                 $image = Storage::put('apartments_images', $request->file('image'));
                 $validate['image'] = $image;
             }
-            $validate['slug'] = Str::slug($validate['title'].'-'.$apartment->id, '-');
+            $validate['slug'] = Str::slug($validate['title'] . '-' . $apartment->id, '-');
             $apartment->update($validate);
             $apartment->services()->sync($request->services);
 
