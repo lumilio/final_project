@@ -29,12 +29,17 @@
 <body>
     <div id="app">
 
-        {{-- @include('partials.commonNavbar') --}}
-        @include('partials.guestNavbar')
+        <nav>
+             @include('partials.guestNavbar')
+        </nav>
 
-        <main class="">
+        <main>
             @yield('content')
         </main>
+
+        <footer>
+            @include('partials.siteFooter')
+        </footer>
     </div>
 </body>
 
