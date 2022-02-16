@@ -62,6 +62,7 @@ class ServiceSeeder extends Seeder
         foreach ($services_arrey as $i){
             $_item = new Service();
             $_item->name = $i['name'];
+            $_item->icon = $i['icon'];
             $_item-> save();
         }
     }

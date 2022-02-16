@@ -13,14 +13,14 @@
                     <p class="card-text m-3 card_title">{{ $apartment->title }}</h2>
                     <p class="card-text m-3">{{ $apartment->description }}</p>
                     <h6 class="mx-3 service">Services</h6>
-                    <div class="services mx-3 d-flex">
+                    <div class="services mx-3 d-flex flex-wrap">
 
 
                     <!-- -------------------------- -->
                     @foreach ($apartment->services as $service) <!-- ****** -->
                         <div class="serve">
-                            <div class="label_card align-items-center d-flex mb-2">
-                                <img class="mx-2" height="20" src="img/{{$service->icon}}.svg" alt="wifi-icon">
+                            <div class="label_card p-1 me-1 align-items-center d-flex mb-2">
+                                <img class="mx-2" height="20" src="../img/service_logo/{{$service->icon}}.svg" alt="{{$service->name}}">
                                 <span class="mx-2 icon_name">{{$service->name}}</span>
                             </div>
                         </div>
