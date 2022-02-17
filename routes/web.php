@@ -27,9 +27,11 @@ Auth::routes();
 
 Route::namespace('Guest')->prefix('guest')->name('guest.')->group(function(){
     Route::get('apartments/{apartment:slug}', 'ApartmentController@show')->name('apartments.show');
+    Route::resource('contacts', 'ContactController');
 });
 
 Route::middleware('auth')->prefix('registered')->namespace('Registered')->name('registered.')->group(function () {
     Route::get('/', 'HomeController@index')->name('dashboard');
     Route::resource('apartments', 'ApartmentController');
+    Route::resource('contacts', 'ContactController');
 });
