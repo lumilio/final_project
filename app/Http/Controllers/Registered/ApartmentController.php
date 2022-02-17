@@ -48,12 +48,12 @@ class ApartmentController extends Controller
         $validate = $request->validate([
             'address' => 'required|max:255',
             'title' => 'required|max:255',
-            'image' => 'nullable|image|max:500',
+            'image' => 'required|image|max:500',
             'description' => 'nullable|max:65535',
-            'n_rooms' => 'nullable|numeric|min:0|max:200',
-            'n_bathroom' => 'nullable|numeric|min:0|max:200',
-            'n_bed' => 'nullable|numeric|min:0|max:200',
-            'square_meters' => 'nullable|numeric|min:0|max:5000',
+            'n_rooms' => 'required|numeric|min:0|max:200',
+            'n_bathroom' => 'required|numeric|min:0|max:200',
+            'n_bed' => 'required|numeric|min:0|max:200',
+            'square_meters' => 'required|numeric|min:0|max:5000',
             'visibility' => 'boolean',
             'latitude' => 'required',
             'longitude' => 'required',
@@ -63,12 +63,12 @@ class ApartmentController extends Controller
 
         if ($request->file('image')) {
             $image = Storage::put('apartments_images', $request->file('image'));
-
             $validate['image'] = $image;
         }
 
-        $validate['slug'] = Str::slug($validate['title'] . '-' . $request->id, '-');
+        // ddd($request->id);
         $validate['user_id'] = Auth::id();
+        $validate['slug'] = Str::slug($validate['title']);
         $apartment = Apartment::create($validate);
 
         if ($request->has('services')) {
@@ -121,13 +121,15 @@ class ApartmentController extends Controller
             $validate = $request->validate([
                 'address' => 'required|max:255',
                 'title' => 'required|max:255',
-                'image' => 'nullable|image|max:500',
+                'image' => 'image|max:500',
                 'description' => 'nullable|max:65535',
-                'n_rooms' => 'nullable|numeric|min:0|max:200',
-                'n_bathroom' => 'nullable|numeric|min:0|max:200',
-                'n_bed' => 'nullable|numeric|min:0|max:200',
-                'square_meters' => 'nullable|numeric|min:0|max:5000',
+                'n_rooms' => 'required|numeric|min:0|max:200',
+                'n_bathroom' => 'required|numeric|min:0|max:200',
+                'n_bed' => 'required|numeric|min:0|max:200',
+                'square_meters' => 'required|numeric|min:0|max:5000',
                 'visibility' => 'boolean',
+                'latitude' => 'required',
+                'longitude' => 'required',
                 'services' => 'required',
             ]);
             if ($request->file('image')) {
