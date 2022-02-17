@@ -4,7 +4,12 @@ namespace App\Http\Controllers\Registered;
 
 use App\Http\Controllers\Controller;
 use App\Models\Contact;
+use App\Models\Apartment;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+
 
 class ContactController extends Controller
 {
@@ -15,7 +20,22 @@ class ContactController extends Controller
      */
     public function index()
     {
-        // SI
+        $user_id = Auth::user()->id;
+        $apartments_array = Apartment::all();
+        $contacts_array = Contact::all();
+        $display = [];
+
+        foreach($apartments_array as $apartment){
+            if($apartment->user_id == $user_id){
+                foreach($contacts_array as $contact){
+                    if($contact->apartment_id == $apartment->id){
+                        array_push($display, $contact);
+                    }
+                }
+            }
+        }
+        
+        return view('registered.contacts.index',compact('display'));
     }
 
     

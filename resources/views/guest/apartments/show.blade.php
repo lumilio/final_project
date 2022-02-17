@@ -2,8 +2,6 @@
 
 @section('content')
     <div class="mt-5 container d-flex justuify-content-center flex-wrap">
-
-
         <div style='max-width:500px' class="container d-flex flex-column">
             <h3 class=" mb-4">{{ $apartment->title }}</h3>
             <!--------- bagni, camere, mq, letti --------->
@@ -49,9 +47,9 @@
                                     required minleght='4' maxlenght='50' aria-describedby="nameHelper"
                                     value="{{ old('name') }}">
                                 <small id="helpId" class="text-white">Inserisci il tuo nome</small>
-                            <!--@error('e-mail')
+                                @error('name')
                                     <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror -->
+                                @enderror 
                             </div>
                             <div style='max-width:250px'>
                                 <label for="email" class="form-label"></label>
@@ -59,9 +57,9 @@
                                     placeholder="mario.bross@gmail.com" required aria-describedby="emailHelper"
                                     value="{{ old('email') }}">
                                 <small id="helpId" class="text-white">inserici la tua mail migliore</small>
-                            <!--@error('e-mail')
+                                @error('email')
                                     <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror -->
+                                @enderror 
                             </div>
                             <div class='d-none'>
                                 <label for="apartment_id" class="form-label"></label>
@@ -80,9 +78,9 @@
                                     rows="3">{{ old('message') }}</textarea>
                                 <small id="message" class="text-white">Scrivi il tuo messaggio al venditore
                                     dell'appartamento</small>
-                            <!--@error('e-mail')
+                                @error('message')
                                     <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror -->
+                                @enderror 
                             </div>
                         </div>
                     </div>
