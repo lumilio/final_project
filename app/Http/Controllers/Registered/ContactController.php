@@ -47,7 +47,26 @@ class ContactController extends Controller
      */
     public function show(Contact $contact)
     {
-        return view('registered.contacts.show', compact('contact'));
+
+        $apartments_array = Apartment::all();
+        $contacts_array = Contact::all();
+        $contact_id_array = [];
+        
+        foreach($apartments_array as $apartment){
+            if($apartment->user_id == Auth::id()){
+                foreach($contacts_array as $index){
+                    if($index->apartment_id == $apartment->id){
+                        array_push($contact_id_array, $index->id);
+                    }
+                }
+            }
+        }
+        //ddd($contact_id_array);
+        if(in_array($contact->id, $contact_id_array)){
+            return view('registered.contacts.show', compact('contact'));
+        } else{
+            abort(403);
+        }
     }
     
     
