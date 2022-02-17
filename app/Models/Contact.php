@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Contact extends Model
 {
     protected $table = 'contacts';
-    protected $fillable = ['apartment_id', 'email', 'message', 'name'];
+    protected $fillable = ['apartment_id','oggetto_mail', 'email', 'message', 'name'];
 
     public function apartment(): BelongsTo
     {

@@ -22,6 +22,7 @@ class ContactController extends Controller
             'email' => 'required|email',
             'message' => 'required|min:5|max:1500',
             'apartment_id' => 'required',
+            'oggetto_mail' => 'required',
             'slug' => 'required',
         ]);
         Contact::create($validated);

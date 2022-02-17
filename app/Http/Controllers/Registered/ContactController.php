@@ -34,7 +34,7 @@ class ContactController extends Controller
                 }
             }
         }
-        
+        //ddd($display);
         return view('registered.contacts.index',compact('display'));
     }
 
@@ -47,7 +47,7 @@ class ContactController extends Controller
      */
     public function show(Contact $contact)
     {
-        // SI
+        return view('registered.contacts.show', compact('contact'));
     }
     
     
@@ -59,6 +59,7 @@ class ContactController extends Controller
      */
     public function destroy(Contact $contact)
     {
-        // SI
+        $contact->delete();
+        return redirect()->route('registered.contacts.index')->with('message', "hai eliminato un messaggio ricevuto da n.{$contact->email} è stata eliminato");
     }
 }

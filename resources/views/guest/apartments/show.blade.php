@@ -53,9 +53,15 @@
                             </div>
                             <div style='max-width:250px'>
                                 <label for="email" class="form-label"></label>
+                                @auth
+                                <input type="email" name="email" id="email" class="form-control"
+                                    placeholder="mario.bross@gmail.com" required aria-describedby="emailHelper"
+                                    value="{{ Auth::user()->email}}">
+                                @else
                                 <input type="email" name="email" id="email" class="form-control"
                                     placeholder="mario.bross@gmail.com" required aria-describedby="emailHelper"
                                     value="{{ old('email') }}">
+                                @endauth
                                 <small id="helpId" class="text-white">inserici la tua mail migliore</small>
                                 @error('email')
                                     <div class="alert alert-danger">{{ $message }}</div>
@@ -63,13 +69,15 @@
                             </div>
                             <div class='d-none'>
                                 <label for="apartment_id" class="form-label"></label>
-                                <input type="apartment_id" name="apartment_id" id="apartment_id" class="form-control" value="{{ $apartment->id }}">
-                                <small id="helpId" class="text-white">inserici la tua mail migliore</small>
+                                <input type="apartment_id" name="apartment_id" id="apartment_id" class="form-control" value="{{$apartment->id}}">
                             </div>
                             <div class='d-none'>
                                 <label for="slug" class="form-label"></label>
-                                <input type="slug" name="slug" id="slug" class="form-control" value="{{ $apartment->slug }}">
-                                <small id="helpId" class="text-white">inserici la tua mail migliore</small>
+                                <input type="text" name="slug" id="slug" class="form-control" value="{{$apartment->slug}}">
+                            </div>
+                            <div class='d-none'>
+                                <label for="oggetto_mail" class="form-label"></label>
+                                <input type="text" name="oggetto_mail" id="oggetto_mail" class="form-control" value="{{$apartment->title}}">
                             </div>
                         </div>
                         <div class="row">
