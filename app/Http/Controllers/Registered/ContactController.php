@@ -79,6 +79,6 @@ class ContactController extends Controller
     public function destroy(Contact $contact)
     {
         $contact->delete();
-        return redirect()->route('registered.contacts.index')->with('message', "hai eliminato un messaggio ricevuto da n.{$contact->email} è stata eliminato");
+        return redirect()->route('registered.contacts.index')->with('message', "hai eliminato un messaggio ricevuto da {$contact->email}");
     }
 }
