@@ -8,6 +8,9 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+Vue.component('searchbox-component', require('./components/SearchBoxComponent.vue').default);
+
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -25,25 +28,42 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+// import tt from '@tomtom-international/web-sdk-maps';
+// import { services } from '@tomtom-international/web-sdk-services';
+// import SearchBox from '@tomtom-international/web-sdk-plugin-searchbox';
+
 const app = new Vue({
     el: '#app',
     data: {
 
     },
 
-    mounted() {
-        var password = document.getElementById("password")
-            , confirm_password = document.getElementById("password-confirm");
+    methods: {
 
-        function validatePassword() {
-            if (password.value != confirm_password.value) {
-                confirm_password.setCustomValidity("La password non corrisponde");
-            } else {
-                confirm_password.setCustomValidity('');
+
+        verifyPassword() {
+            var password = document.getElementById("password")
+                , confirm_password = document.getElementById("password-confirm");
+
+            function validatePassword() {
+                if (password.value != confirm_password.value) {
+                    confirm_password.setCustomValidity("La password non corrisponde");
+                } else {
+                    confirm_password.setCustomValidity('');
+                }
             }
-        }
 
-        password.onchange = validatePassword;
-        confirm_password.onkeyup = validatePassword;
+            password.onchange = validatePassword;
+            confirm_password.onkeyup = validatePassword;
+
+        }
+    },
+
+    mounted() {
+        console.log('ao');
+        // this.createMap();
+        //this.verifyPassword();
+
+
     }
 });

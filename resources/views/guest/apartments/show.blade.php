@@ -25,7 +25,7 @@
             <p class="mt-1">{{ $apartment->description }}</p>
 
             <!-------------  MAppa    ----------->
-            <div style='max-width:100%;height:450px' class='mt-3 container bg-dark'></div>
+            <div id="" style='max-width:100%;height:450px' class='mt-3 container bg-dark'></div>
             <!--------------------------->
         </div>
 
