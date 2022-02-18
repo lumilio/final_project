@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class View extends Model
 {
     protected $table = 'views';
+    protected $fillable = ['apartment_id','view_token_ip'];
 
     public function apartment(): BelongsTo
     {

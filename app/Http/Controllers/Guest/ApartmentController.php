@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Guest;
 
 use App\Http\Controllers\Controller;
 use App\Models\Apartment;
+use App\Models\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,6 +17,7 @@ class ApartmentController extends Controller
      */
     public function index()
     {
+
         $apartments  = Apartment::where('visibility', true)->orderByDesc('id')->paginate(12);
         return view('guest.apartments.index', compact('apartments'));
     }
@@ -29,6 +31,12 @@ class ApartmentController extends Controller
     public function show(Apartment $apartment)
     {
         if ($apartment->visibility || Auth::id() === $apartment->user_id) {
+            $clientIP = request()->ip();
+            $validate = [
+                'view_token_ip' => $clientIP,
+                'apartment_id' => $apartment->id,
+            ];
+            View::create($validate); 
             return view('guest.apartments.show', compact('apartment'));
         } else {
             abort(403);
