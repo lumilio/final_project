@@ -68,7 +68,9 @@ class ApartmentController extends Controller
 
         // ddd($request->id);
         $validate['user_id'] = Auth::id();
-        $validate['slug'] = Str::slug($validate['title']);
+        //ddd(Apartment::latest()->first()->id);
+        $apartment_id = Apartment::latest()->first()->id + 1;
+        $validate['slug'] = Str::slug($validate['title'] . '-' . $apartment_id);
         $apartment = Apartment::create($validate);
 
         if ($request->has('services')) {
