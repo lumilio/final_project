@@ -19,17 +19,17 @@ class ApartmentController extends Controller
         $requestQuery = $request->query();
         $reqServices = explode(',', $request->services);
         // ddd($requestQuery['address']);
+        // ddd($reqServices);
+
 
         $aparts = Apartment::where('address', 'like', '%' . $requestQuery['address'] . '%')
             ->where('n_rooms', '>=', $requestQuery['n_rooms'] ?? 0)
             ->where('n_bathroom', '>=', $requestQuery['n_bathroom'] ?? 0)
             ->get();
 
-        if ($request->services) {
-            $aparts = Apartment::whereHas('services', function ($param) use ($reqServices) {
-                $param->whereIn('service_id', $reqServices);
-            })->get();
-        }
+
+
+
 
         return ApartmentResource::collection($aparts);
 
