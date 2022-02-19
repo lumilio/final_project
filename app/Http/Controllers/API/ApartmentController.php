@@ -22,12 +22,15 @@ class ApartmentController extends Controller
         // ddd($reqServices);
 
 
-        $aparts = Apartment::where('address', 'like', '%' . $requestQuery['address'] . '%')
-            ->where('n_rooms', '>=', $requestQuery['n_rooms'] ?? 0)
-            ->where('n_bathroom', '>=', $requestQuery['n_bathroom'] ?? 0)
+        $aparts = Apartment::where('n_bathroom', '>=', $requestQuery['n_bathroom'])
+            ->where('n_rooms', '>=', $requestQuery['n_rooms'])
             ->get();
 
-
+        if ($request->services) {
+            $aparts = Apartment::whereHas('services', function ($param) use ($reqServices) {
+                $param->whereIn('service_id', $reqServices);
+            })->get();
+        }
 
 
 

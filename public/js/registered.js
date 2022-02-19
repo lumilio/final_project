@@ -5176,7 +5176,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -41533,7 +41532,7 @@ var render = function () {
     _c("div", { staticClass: "mb-3" }, [
       _c("div", { staticClass: "d-flex" }, [
         _c("label", { staticClass: "form-label", attrs: { for: "address" } }, [
-          _vm._v("Indirizzo"),
+          _vm._v("Indirizzo*"),
         ]),
         _vm._v(" "),
         _c("i", {
@@ -41584,32 +41583,45 @@ var render = function () {
         { staticClass: "form-text text-muted", attrs: { id: "addressHelper" } },
         [
           _vm._v(
-            "\n            Scrivi l'indirizzo dell'appartamento, max 255 caratteri\n        "
+            "\n      Scrivi l'indirizzo dell'appartamento, max 255 caratteri\n    "
           ),
         ]
       ),
     ]),
     _vm._v(" "),
-    _c(
-      "div",
-      { class: _vm.results.length >= 1 ? "border" : "" },
-      _vm._l(_vm.results, function (result) {
-        return _c("div", { key: result.id, staticClass: "hover_blue" }, [
-          _c(
-            "span",
-            {
-              on: {
-                click: function ($event) {
-                  return _vm.selectAdress(result)
-                },
+    _vm.results.length >= 1
+      ? _c(
+          "div",
+          { staticClass: "border px-2" },
+          [
+            _c(
+              "small",
+              {
+                staticClass: "form-text text-muted",
+                attrs: { id: "resultHelper" },
               },
-            },
-            [_vm._v(_vm._s(result.address.freeformAddress))]
-          ),
-        ])
-      }),
-      0
-    ),
+              [_vm._v("\n      Seleziona l'indirizzo dell'appartamento\n    ")]
+            ),
+            _vm._v(" "),
+            _vm._l(_vm.results, function (result) {
+              return _c("div", { key: result.id, staticClass: "hover_blue" }, [
+                _c(
+                  "span",
+                  {
+                    on: {
+                      click: function ($event) {
+                        return _vm.selectAdress(result)
+                      },
+                    },
+                  },
+                  [_vm._v(_vm._s(result.address.freeformAddress))]
+                ),
+              ])
+            }),
+          ],
+          2
+        )
+      : _vm._e(),
     _vm._v(" "),
     _c("div", { staticClass: "mb-3 d-none" }, [
       _c("label", { staticClass: "form-label", attrs: { for: "latitude" } }, [
@@ -54206,7 +54218,7 @@ var app = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\samud\Desktop\Esercizi\boolbnb\resources\js\registered.js */"./resources/js/registered.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\laravel\boolbnb\resources\js\registered.js */"./resources/js/registered.js");
 
 
 /***/ })
