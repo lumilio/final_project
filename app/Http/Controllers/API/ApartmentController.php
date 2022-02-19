@@ -26,13 +26,11 @@ class ApartmentController extends Controller
             ->where('n_rooms', '>=', $requestQuery['n_rooms'])
             ->get();
 
-        if ($request->services) {
+        if (!empty($request->services)) {
             $aparts = Apartment::whereHas('services', function ($param) use ($reqServices) {
                 $param->whereIn('service_id', $reqServices);
             })->get();
         }
-
-
 
         return ApartmentResource::collection($aparts);
 
