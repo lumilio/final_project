@@ -14,34 +14,30 @@ class ApartmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        // return Apartment::with(['services'])->paginate(5);
+        $requestQuery = $request->query();
+        $reqServices = explode(',', $request->services);
+        // ddd($requestQuery['address']);
 
-        /* per personalizzarci la risposta */
-        return ApartmentResource::collection(Apartment::with(['services'])->paginate(5));
+        $aparts = Apartment::where('address', 'like', '%' . $requestQuery['address'] . '%')
+            ->where('n_rooms', '>=', $requestQuery['n_rooms'] ?? 0)
+            ->where('n_bathroom', '>=', $requestQuery['n_bathroom'] ?? 0)
+            ->get();
+
+        if ($request->services) {
+            $aparts = Apartment::whereHas('services', function ($param) use ($reqServices) {
+                $param->whereIn('service_id', $reqServices);
+            })->get();
+        }
+
+        return ApartmentResource::collection($aparts);
+
+        //return ApartmentResource::collection(Apartment::with(['services'])->paginate(20));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+
 
     /**
      * Display the specified resource.
@@ -53,39 +49,5 @@ class ApartmentController extends Controller
     {
         //
         return new ApartmentResource(Apartment::find($apartment->id));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }
