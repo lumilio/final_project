@@ -16,13 +16,13 @@
         <div style="max-width: 70px" class="mx-2 mb-3">
           <label for="n_rooms" class="form-label"> n Camere min</label>
           <input type="number" min="0" max="200" class="form-control" id="n_rooms" aria-describedby="n_roomsHelper"
-            placeholder="0" v-model="n_rooms" />
+            placeholder="0" v-model="n_rooms" required />
         </div>
 
         <div style="max-width: 70px" class="mx-2 mb-3">
           <label for="square_meters" class="form-label">n Bagni min</label>
           <input type="number" min="0" max="200" class="form-control" id="n_bathroom"
-            aria-describedby="n_bathroomHelper" placeholder="0" v-model="n_bathroom" />
+            aria-describedby="n_bathroomHelper" placeholder="0" v-model="n_bathroom" required />
         </div>
 
         <div class="mb-3">
@@ -46,8 +46,17 @@
           <p class="card-text m-3">{{ apartment.description }}</p>
         </div>
 
-        <div
-          class="button_details p-2 w-50 justify-content-center align-items-center text-center text-white m-auto mt-4 mb-4">
+        <div class="
+            button_details
+            p-2
+            w-50
+            justify-content-center
+            align-items-center
+            text-center text-white
+            m-auto
+            mt-4
+            mb-4
+          ">
           <span>View details</span>
         </div>
       </a>
@@ -85,9 +94,9 @@
     },
   };
 /*appunti prima di iniziare
-                                                                                      
-            Per soddisfare il fatto che non si deve avere un refresh della pagina della ricerca bisogna fare chiamate delle ajax.
-            Il metodo più utilizzato in questi casi è fare in modo che ogni cambiamento di input vada a modificare i campi utili alla ricerca nell’url es (/ricerca?tipologia=cinese).
-            Dopo ogni cambiamento viene fatta una chiamata ajax con i parametri presenti nella URL.
-              */
+                                                                                          
+                Per soddisfare il fatto che non si deve avere un refresh della pagina della ricerca bisogna fare chiamate delle ajax.
+                Il metodo più utilizzato in questi casi è fare in modo che ogni cambiamento di input vada a modificare i campi utili alla ricerca nell’url es (/ricerca?tipologia=cinese).
+                Dopo ogni cambiamento viene fatta una chiamata ajax con i parametri presenti nella URL.
+                  */
 </script>

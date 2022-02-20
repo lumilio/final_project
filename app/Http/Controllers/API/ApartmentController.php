@@ -21,9 +21,17 @@ class ApartmentController extends Controller
         // ddd($requestQuery['address']);
         // ddd($reqServices);
 
+        function calcDist($lat1, $lon1, $lat2, $lon2)
+        {
+            $distance = (3958 * 3.1415926 * sqrt(($lat2 - $lat1) * ($lat2 - $lat1) + cos($lat2 / 57.29578) * cos($lat1 / 57.29578) * ($lon2 - $lon1) * ($lon2 - $lon1)) / 180);
+            return $distance * 1.852; //Converto miglia in chilometri
+        };
 
-        $aparts = Apartment::where('n_bathroom', '>=', $requestQuery['n_bathroom'])
-            ->where('n_rooms', '>=', $requestQuery['n_rooms'])
+        // $testDistance = calcDist(45.06837000, 7.68307000, 45.46362000, 9.18812000);
+        // ddd($testDistance);
+
+        $aparts = Apartment::where('n_bathroom', '>', $requestQuery['n_bathroom'])
+            ->where('n_rooms', '>', $requestQuery['n_rooms'])
             ->get();
 
         if (!empty($request->services)) {
