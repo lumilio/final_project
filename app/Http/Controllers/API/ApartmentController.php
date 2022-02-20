@@ -40,7 +40,28 @@ class ApartmentController extends Controller
             })->get();
         }
 
-        return ApartmentResource::collection($aparts);
+        // ddd($request->latitude);
+        // ddd($request->longitude);
+
+        $latitude = $request->latitude;
+        $longitude = $request->longitude;
+
+        // ddd($requestQuery['latitude']);
+
+
+
+        if ($request->latitude != null && $request->longitude != null) {
+            $filterByDistance = [];
+            foreach ($aparts as $apartment) {
+                $distanceApartment = calcDist($latitude, $longitude, $apartment->latitude, $apartment->longitude);
+
+                if ($distanceApartment < 20 || ($latitude === null && $longitude === null)) {
+                    $filterByDistance[] = $apartment;
+                }
+            }
+        }
+
+        return ApartmentResource::collection($filterByDistance);
 
         //return ApartmentResource::collection(Apartment::with(['services'])->paginate(20));
     }

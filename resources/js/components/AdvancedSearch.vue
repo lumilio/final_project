@@ -4,12 +4,7 @@
       <div class="col-md-8">
         <div class="">
           <h1 class="my-2">TESTIAMO IL COMPONENTE</h1>
-          <input
-            class="form-control mr-sm-2"
-            type="text"
-            placeholder="fai una ricerca"
-            v-model="userInput"
-          />
+          <searchbar-component @saveCoordinates="save"></searchbar-component>
 
           <button
             class="btn btn-primary w-100 my-4"
@@ -123,6 +118,10 @@ export default {
       n_bathroom: "",
       n_rooms: "",
       selected_services: [],
+      coordinates: {
+        lat: "",
+        lon: "",
+      },
     };
   },
   props: { services: Array },
@@ -131,7 +130,7 @@ export default {
       console.log(this.userInput);
       axios
         .get(
-          `/api/apartments?address=${this.userInput}&n_rooms=${this.n_rooms}&n_bathroom=${this.n_bathroom}&services=${this.selected_services}`
+          `/api/apartments?address=${this.userInput}&n_rooms=${this.n_rooms}&n_bathroom=${this.n_bathroom}&services=${this.selected_services}&latitude=${this.coordinates.lat}&longitude=${this.coordinates.lon}`
         )
         .then((response) => {
           this.results = response.data.data;
@@ -140,6 +139,10 @@ export default {
         .catch((error) => {
           console.log(error, "Nessun risultato");
         });
+    },
+
+    save(coordinates) {
+      this.coordinates = coordinates;
     },
   },
 };

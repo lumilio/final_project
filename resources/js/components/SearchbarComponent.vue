@@ -36,6 +36,7 @@ export default {
         console.log(data.data.result.position);
         this.$set(this.coordinates, "lat", data.data.result.position.lat);
         this.$set(this.coordinates, "lon", data.data.result.position.lng);
+        this.$emit("saveCoordinates", this.coordinates);
         console.log(this.coordinates);
       });
     },

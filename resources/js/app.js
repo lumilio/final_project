@@ -20,6 +20,8 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('advanced-search', require('./components/AdvancedSearch.vue').default);
+Vue.component('searchbar-component', require('./components/SearchbarComponent.vue').default);
+
 
 
 /**
@@ -31,7 +33,19 @@ Vue.component('advanced-search', require('./components/AdvancedSearch.vue').defa
 const app = new Vue({
     el: '#app',
     data: {
+        // coordinates: {
+        //     lat: null,
+        //     lon: null,
 
+        // }
+
+
+    },
+
+    methods: {
+        // save(coordinates) {
+        //     this.coordinates = coordinates;
+        // }
     },
 
     mounted() {
