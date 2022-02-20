@@ -4,9 +4,18 @@
       <div class="col-md-8">
         <div class="">
           <h1 class="my-2">TESTIAMO IL COMPONENTE</h1>
-          <input class="form-control mr-sm-2" type="text" placeholder="fai una ricerca" v-model="userInput" />
+          <input
+            class="form-control mr-sm-2"
+            type="text"
+            placeholder="fai una ricerca"
+            v-model="userInput"
+          />
 
-          <button class="btn btn-primary w-100 my-4" type="button" @click="searchFunction()">
+          <button
+            class="btn btn-primary w-100 my-4"
+            type="button"
+            @click="searchFunction()"
+          >
             Search
           </button>
         </div>
@@ -15,38 +24,78 @@
       <div class="col-md-4">
         <div style="max-width: 70px" class="mx-2 mb-3">
           <label for="n_rooms" class="form-label"> n Camere min</label>
-          <input type="number" min="0" max="200" class="form-control" id="n_rooms" aria-describedby="n_roomsHelper"
-            placeholder="0" v-model="n_rooms" required />
+          <input
+            type="number"
+            min="0"
+            max="200"
+            class="form-control"
+            id="n_rooms"
+            aria-describedby="n_roomsHelper"
+            placeholder="0"
+            v-model="n_rooms"
+            required
+          />
         </div>
 
         <div style="max-width: 70px" class="mx-2 mb-3">
           <label for="square_meters" class="form-label">n Bagni min</label>
-          <input type="number" min="0" max="200" class="form-control" id="n_bathroom"
-            aria-describedby="n_bathroomHelper" placeholder="0" v-model="n_bathroom" required />
+          <input
+            type="number"
+            min="0"
+            max="200"
+            class="form-control"
+            id="n_bathroom"
+            aria-describedby="n_bathroomHelper"
+            placeholder="0"
+            v-model="n_bathroom"
+            required
+          />
         </div>
 
         <div class="mb-3">
           <label for="services" class="form-label">Servizi*</label>
-          <select class="form-control" id="services" v-model="selected_services" multiple required>
-            <option v-for="service in services" :key="service.id" :value="service.id">
+          <select
+            class="form-control"
+            id="services"
+            v-model="selected_services"
+            multiple
+            required
+          >
+            <option
+              v-for="service in services"
+              :key="service.id"
+              :value="service.id"
+            >
               {{ service.name }}
             </option>
           </select>
-          <small id="serviceHelper" class="form-text text-muted">Seleziona uno o più servizi aggiuntivi</small>
+          <small id="serviceHelper" class="form-text text-muted"
+            >Seleziona uno o più servizi aggiuntivi</small
+          >
         </div>
       </div>
     </div>
 
     <div class="row">
-      <a href="#" class="card justify-content-between card_promo m-3" v-for="apartment in results" :key="apartment.id">
-        <img class="card-img-top thumb" :src="'storage/' + apartment.image" alt="Card image cap" />
+      <a
+        href="#"
+        class="card justify-content-between card_promo m-3"
+        v-for="apartment in results"
+        :key="apartment.id"
+      >
+        <img
+          class="card-img-top thumb"
+          :src="'storage/' + apartment.image"
+          alt="Card image cap"
+        />
         <p class="promo">Promotion</p>
         <h2 class="card-text m-3 card_title">{{ apartment.title }}</h2>
         <div class="box">
           <p class="card-text m-3">{{ apartment.description }}</p>
         </div>
 
-        <div class="
+        <div
+          class="
             button_details
             p-2
             w-50
@@ -56,7 +105,8 @@
             m-auto
             mt-4
             mb-4
-          ">
+          "
+        >
           <span>View details</span>
         </div>
       </a>
@@ -65,34 +115,34 @@
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-        results: [],
-        userInput: "",
-        n_bathroom: "",
-        n_rooms: "",
-        selected_services: [],
-      };
+export default {
+  data() {
+    return {
+      results: [],
+      userInput: "",
+      n_bathroom: "",
+      n_rooms: "",
+      selected_services: [],
+    };
+  },
+  props: { services: Array },
+  methods: {
+    searchFunction() {
+      console.log(this.userInput);
+      axios
+        .get(
+          `/api/apartments?address=${this.userInput}&n_rooms=${this.n_rooms}&n_bathroom=${this.n_bathroom}&services=${this.selected_services}`
+        )
+        .then((response) => {
+          this.results = response.data.data;
+          console.log(this.results);
+        })
+        .catch((error) => {
+          console.log(error, "Nessun risultato");
+        });
     },
-    props: { services: Array },
-    methods: {
-      searchFunction() {
-        console.log(this.userInput);
-        axios
-          .get(
-            `/api/apartments?address=${this.userInput}&n_rooms=${this.n_rooms}&n_bathroom=${this.n_bathroom}&services=${this.selected_services}`
-          )
-          .then((response) => {
-            this.results = response.data.data;
-            console.log(this.results);
-          })
-          .catch((error) => {
-            console.log(error, "Nessun risultato");
-          });
-      },
-    },
-  };
+  },
+};
 /*appunti prima di iniziare
                                                                                           
                 Per soddisfare il fatto che non si deve avere un refresh della pagina della ricerca bisogna fare chiamate delle ajax.
