@@ -23,7 +23,9 @@
             <p class="mt-1">{{ $apartment->description }}</p>
 
             <!-------------  MAppa    ----------->
-            <div style='max-width:100%;height:450px' class='mt-3 container bg-dark'></div>
+            <map-component :apartment='{{ json_encode($apartment) }}'></map-component>
+            {{-- <searchbox-component></searchbox-component> --}}
+
             <!--------------------------->
         </div>
 
