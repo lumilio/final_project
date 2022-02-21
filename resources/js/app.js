@@ -9,7 +9,6 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 
-Vue.component('searchbox-component', require('./components/SearchBoxComponent.vue').default);
 Vue.component('map-component', require('./components/MapComponent.vue').default);
 
 
@@ -64,6 +63,6 @@ const app = new Vue({
 
     mounted() {
         //this.createMap();
-        //this.verifyPassword();
+        this.verifyPassword();
     }
 });
