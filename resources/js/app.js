@@ -3,6 +3,7 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+import Vue from 'vue';
 
 require('./bootstrap');
 
@@ -24,6 +25,11 @@ window.Vue = require('vue');
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+Vue.component('advanced-search', require('./components/AdvancedSearch.vue').default);
+Vue.component('searchbarComponent', require('./components/SearchbarComponent.vue').default);
+
+
+export const Bus = new Vue();
 
 const app = new Vue({
     el: '#app',
