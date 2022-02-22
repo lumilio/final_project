@@ -6,8 +6,6 @@
 
 @section('content')
     <div class="mt-5 container d-flex justuify-content-center flex-wrap">
-
-
         <div style='max-width:500px' class="container d-flex flex-column">
             <h3 class=" mb-4">{{ $apartment->title }}</h3>
             <!--------- bagni, camere, mq, letti --------->
@@ -29,7 +27,9 @@
             <p class="mt-1">{{ $apartment->description }}</p>
 
             <!-------------  MAppa    ----------->
-            <div style='max-width:100%;height:450px' class='mt-3 container bg-dark'></div>
+            <map-component :apartment='{{ json_encode($apartment) }}'></map-component>
+            {{-- <searchbox-component></searchbox-component> --}}
+
             <!--------------------------->
         </div>
 
@@ -38,9 +38,14 @@
                 alt="Card image cap">
             <!-------------- form per contattare il proprietario dell'annuncio --------------------------->
             <div class='bg-secondary mt-3 p-3'>
-                <form action="" method='post'>
+                <form action="{{route('guest.contacts.store')}}" method='post'>   
                     @csrf
                     <div class="mb-3">
+                    @if (session('message'))
+                        <div class="alert alert-success">
+                            {{ session('message') }}
+                        </div>
+                    @endif
                         <div class="row mb-2 d-flex flex-wrap">
                             <div style='max-width:250px'>
                                 <label for="name" class="form-label"></label>
@@ -48,30 +53,48 @@
                                     required minleght='4' maxlenght='50' aria-describedby="nameHelper"
                                     value="{{ old('name') }}">
                                 <small id="helpId" class="text-white">Inserisci il tuo nome</small>
-                                <!-- @error('e-mail')
-        <div class="alert alert-danger">{{ $message }}</div>
-    @enderror -->
+                                @error('name')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror 
                             </div>
                             <div style='max-width:250px'>
-                                <label for="e-mail" class="form-label"></label>
-                                <input type="email" name="e-mail" id="e-mail" class="form-control"
-                                    placeholder="mario.bross@gmail.com" required aria-describedby="e-mailHelper"
-                                    value="{{ old('e-mail') }}">
+                                <label for="email" class="form-label"></label>
+                                @auth
+                                <input type="email" name="email" id="email" class="form-control"
+                                    placeholder="mario.bross@gmail.com" required aria-describedby="emailHelper"
+                                    value="{{ Auth::user()->email}}">
+                                @else
+                                <input type="email" name="email" id="email" class="form-control"
+                                    placeholder="mario.bross@gmail.com" required aria-describedby="emailHelper"
+                                    value="{{ old('email') }}">
+                                @endauth
                                 <small id="helpId" class="text-white">inserici la tua mail migliore</small>
-                                <!-- @error('e-mail')
-        <div class="alert alert-danger">{{ $message }}</div>
-    @enderror -->
+                                @error('email')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror 
+                            </div>
+                            <div class='d-none'>
+                                <label for="apartment_id" class="form-label"></label>
+                                <input type="apartment_id" name="apartment_id" id="apartment_id" class="form-control" value="{{$apartment->id}}">
+                            </div>
+                            <div class='d-none'>
+                                <label for="slug" class="form-label"></label>
+                                <input type="text" name="slug" id="slug" class="form-control" value="{{$apartment->slug}}">
+                            </div>
+                            <div class='d-none'>
+                                <label for="oggetto_mail" class="form-label"></label>
+                                <input type="text" name="oggetto_mail" id="oggetto_mail" class="form-control" value="{{$apartment->title}}">
                             </div>
                         </div>
                         <div class="row">
                             <div class="">
-                                <textarea class="form-control" name="content" required id="content"
-                                    rows="3">{{ old('content') }}</textarea>
-                                <small id="content" class="text-white">Scrivi il tuo messaggio al venditore
+                                <textarea class="form-control" name="message" required id="message"
+                                    rows="3">{{ old('message') }}</textarea>
+                                <small id="message" class="text-white">Scrivi il tuo messaggio al venditore
                                     dell'appartamento</small>
-                                <!-- @error('content')
-        <div class="alert alert-danger">{{ $message }}</div>
-    @enderror -->
+                                @error('message')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror 
                             </div>
                         </div>
                     </div>
