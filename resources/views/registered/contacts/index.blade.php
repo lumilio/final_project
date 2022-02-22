@@ -29,18 +29,47 @@
                         <td>{{$contact->oggetto_mail}}</td>
                         <td class='d-flex'>
                             <a href="{{route('registered.contacts.show',$contact->id)}}"><i class="fa-solid me-3 fa-glasses"></i></a>
-                            <form class="me-3" method='post' action="{{route('registered.contacts.destroy', $contact->id )}}">
-                            @csrf 
-                            @method('DELETE')
-                                <button style='background: none;
+
+
+                            <!---------------- Delete button ---------------->
+                            <button style='background: none;
                                     color: inherit;
                                     border: none;
                                     padding: 0;
                                     font: inherit;
                                     cursor: pointer;
                                     outline: inherit;' 
-                                    type="submit" style='border-box:none;'class="bg-none"><i class="text-danger ms-3 fa-solid fa-trash"></i></button>
-                            </form> 
+                                    type="button" style='border-box:none;'class="bg-none"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#delete{{ $contact->id }}">
+                                    <i class="text-danger ms-3 fa-solid fa-trash"></i>
+                            </button>
+                                
+                            <!-- Modal -->
+                            <div class="modal fade" id="delete{{ $contact->id }}" tabindex="-1" role="dialog" aria-labelledby="modal_{{ $contact->id }}" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Eliminare definitivamente il messaggio numero
+                                                <strong>{{ $contact->id }}</strong>?
+                                            </h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Stai per eliminare definitivamente il messaggio! Sei sicuro di voler continuare?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Annulla</button>
+                                        <form action="{{route('registered.contacts.destroy', $contact->id )}}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">Elimina</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-------------------------------------->
                         </td>
                     </tr>
                     @endforeach
