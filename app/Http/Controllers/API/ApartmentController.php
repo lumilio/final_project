@@ -40,12 +40,6 @@ class ApartmentController extends Controller
 
 
         /* funzione per calcolare la distanza */
-        function calcDist($lat1, $lon1, $lat2, $lon2)
-        {
-            $distance = (3958 * 3.1415926 * sqrt(($lat2 - $lat1) * ($lat2 - $lat1) + cos($lat2 / 57.29578) * cos($lat1 / 57.29578) * ($lon2 - $lon1) * ($lon2 - $lon1)) / 180);
-            return $distance * 1.852; //Converto miglia in chilometri
-
-        };
 
 
 
@@ -62,6 +56,14 @@ class ApartmentController extends Controller
                     $param->WhereIn('service_id', $reqServices);
                 })->get();
         }
+
+
+        function calcDist($lat1, $lon1, $lat2, $lon2)
+        {
+            $distance = (3958 * 3.1415926 * sqrt(($lat2 - $lat1) * ($lat2 - $lat1) + cos($lat2 / 57.29578) * cos($lat1 / 57.29578) * ($lon2 - $lon1) * ($lon2 - $lon1)) / 180);
+            return $distance * 1.852; //Converto miglia in chilometri
+
+        };
         /* condizione by pizzi per la distanza */
         if ($request->latitude != null && $request->longitude != null) {
             $filterByDistance = [];
