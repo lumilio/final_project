@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('navbar')
+@include('partials.adv')
+@endsection
+
 @section('content')
     <div class="container-fluid background_form_reg">
         <div class="row justify-content-center">
@@ -112,7 +116,7 @@
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 title_input">
-                                    <button type="submit" class="btn button_reg">
+                                    <button id="register_button" type="submit" class="btn button_reg">
                                         {{ __('Register') }}
                                     </button>
                                 </div>

@@ -94,7 +94,10 @@
                                         </div>
                                     </div>
                                 </div>
-
+                                <a href="{{ route('registered.sponsors.index', $apartment->id) }}"
+                                    class="btn btn-warning">
+                                    Sponsorizza
+                                </a>
                             </td>
                         </tr>
                     @endforeach

@@ -1,0 +1,22 @@
+.tt-search-box {
+    width: 600px;
+}
+
+//Responsive
+@media (max-width: 991px) {
+    .tt-search-box {
+        width: 500px;
+    }
+}
+
+@media (max-width: 576px) {
+    .tt-search-box {
+        width: 400px;
+    }
+}
+
+@media (max-width: 320px) {
+    .tt-search-box {
+        width: 200px;
+    }
+}

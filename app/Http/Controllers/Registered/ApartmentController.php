@@ -58,19 +58,55 @@ class ApartmentController extends Controller
             'latitude' => 'required',
             'longitude' => 'required',
             'services' => 'required',
-
         ]);
 
         if ($request->file('image')) {
             $image = Storage::put('apartments_images', $request->file('image'));
             $validate['image'] = $image;
         }
-
-        // ddd($request->id);
         $validate['user_id'] = Auth::id();
-        //ddd(Apartment::latest()->first()->id);
-        $apartment_id = Apartment::latest()->first()->id + 1;
-        $validate['slug'] = Str::slug($validate['title'] . '-' . $apartment_id);
+
+        
+
+
+
+        /* --------slug ------- */
+        $apartments_array = Apartment::all();
+        $array_same_title = array();
+        
+        if($apartments_array->count() > 0){
+            foreach($apartments_array as $index){
+                if($index->title == $request->title){
+                    array_push($array_same_title, $index);
+                }
+            }
+        }
+        foreach ($array_same_title as $i){
+            if ($i->slug == Str::slug($validate['title'])){
+                $validate['slug'] = Str::slug($validate['title'] . '-' . count($array_same_title));
+            }
+            else if ( $i->slug == Str::slug($validate['title'] . '-' . (count($array_same_title)))) {
+                $validate['slug'] = Str::slug($validate['title'] . '-' . (count($array_same_title)+1));
+            }
+        }
+        if($array_same_title == []){
+            $validate['slug'] = Str::slug($validate['title']);
+        }
+
+        //ddd($apartments_array);
+        //ddd(last($array_same_title)->slug);
+        //ddd($array_same_title);
+        //ddd(Str::slug($validate['title']));
+        //ddd(Str::slug($validate['title'] . '-' . count($array_same_title)));
+        //ddd(Str::slug($validate['title'] . '-' . (count($array_same_title)+1)));
+        
+        /* -------------------- */
+        
+        
+        
+
+
+
         $apartment = Apartment::create($validate);
 
         if ($request->has('services')) {
@@ -139,7 +175,36 @@ class ApartmentController extends Controller
                 $image = Storage::put('apartments_images', $request->file('image'));
                 $validate['image'] = $image;
             }
-            $validate['slug'] = Str::slug($validate['title'] . '-' . $apartment->id, '-');
+
+
+
+            /* --------slug ------- */
+            $apartments_array = Apartment::all();
+            $array_same_title = array();
+            
+            if($apartments_array->count() > 0){
+                foreach($apartments_array as $index){
+                    if($index->title == $request->title){
+                        array_push($array_same_title, $index);
+                    }
+                }
+            }
+            foreach ($array_same_title as $i){
+                if ($i->slug == Str::slug($validate['title'])){
+                    $validate['slug'] = Str::slug($validate['title'] . '-' . count($array_same_title));
+                }
+                else if ( $i->slug == Str::slug($validate['title'] . '-' . (count($array_same_title)))) {
+                    $validate['slug'] = Str::slug($validate['title'] . '-' . (count($array_same_title)+1));
+                }
+            }
+            if($array_same_title == []){
+                $validate['slug'] = Str::slug($validate['title']);
+            }
+            /* -------------------- */
+
+
+
+
             $apartment->update($validate);
             $apartment->services()->sync($request->services);
 

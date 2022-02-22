@@ -1,17 +1,21 @@
 <template>
     <div class="container">
         <div class="row justify-content-center">
+
             <div class="col-md-8">
                 <div class="card">
                     <h1>TESTIAMO IL COMPONENTE</h1>
+
                     <button
                         class="btn btn-primary my-2 my-sm-0"
                         @click="searchFunction()"
                     >
                         Search
                     </button>
+
                     <div class="d-flex flex-wrap">
                         <div style="max-width: 70px" class="mx-2 mb-3">
+
                             <label for="n_rooms" class="form-label">
                                 n Camere min</label
                             >
@@ -27,7 +31,7 @@
                                 v-model="n_rooms"
                             />
                         </div>
-                        <div style="max-width: 70px" class="mx-2 mb-3">
+                        <div class="mx-2 mb-3">
                             <label for="n_bed" class="form-label"
                                 >n letti min</label
                             >
@@ -43,7 +47,7 @@
                                 v-model="n_bed"
                             />
                         </div>
-                        <div style="max-width: 70px" class="mx-2 mb-3">
+                        <div class="mx-2 mb-3">
                             <label for="distance" class="form-label"
                                 >raggio distanza in km</label
                             >
@@ -59,25 +63,25 @@
                                 v-model="distance"
                             />
                         </div>
-                        <div>
-                            <div
-                                class="mb-3"
-                                v-for="service in services"
-                                v-bind:key="service.id"
-                            >
-                                <div class="form-check">
-                                    <input
-                                        type="checkbox"
-                                        class="form-check-input"
-                                        :name="service.name"
-                                        :id="service.id"
-                                        :value="service.id"
-                                        v-model="v_services"
-                                    />
-                                    <label class="form-check-label" for="">
-                                        {{ service.name }}
-                                    </label>
-                                </div>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <div
+                            class=""
+                            v-for="service in services"
+                            v-bind:key="service.id"
+                        >
+                            <div class="form-check mx-2">
+                                <input
+                                    type="checkbox"
+                                    class="form-check-input"
+                                    :name="service.name"
+                                    :id="service.id"
+                                    :value="service.id"
+                                    v-model="v_services"
+                                />
+                                <label class="form-check-label" for="">
+                                    {{ service.name }}
+                                </label>
                             </div>
                         </div>
                     </div>
