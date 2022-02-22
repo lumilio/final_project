@@ -69,6 +69,8 @@ const app = new Vue({
 
     mounted() {
         const registerButton = document.getElementById('register_button');
-        registerButton.addEventListener('click', this.verifyPassword());
+        if (registerButton) {
+            registerButton.addEventListener('click', this.verifyPassword());
+        }
     }
 });

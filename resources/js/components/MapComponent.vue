@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div id="map" ref="mapRef"></div>
+    <div id="map" ref="mapRef" class="col col-4-md"></div>
   </div>
 </template>
 
@@ -42,7 +42,13 @@ export default {
 
       var marker = new tt.Marker().setLngLat(location).addTo(map);
       var popup = new tt.Popup({ offset: popupOffset }).setHTML(
-        "Your address!"
+        `<img class="w-25 mb-2" src="/storage/${this.apartment.image}" alt="Immagine appartamento">` +
+          "<p>" +
+          this.apartment.title +
+          "</p>" +
+          "<p>" +
+          this.apartment.address +
+          "</p>"
       );
       marker.setPopup(popup).togglePopup();
     },
@@ -61,6 +67,6 @@ export default {
 <style>
 #map {
   height: 500px;
-  width: 500px;
+  width: 100%;
 }
 </style>
