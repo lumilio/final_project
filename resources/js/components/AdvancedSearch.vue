@@ -1,14 +1,11 @@
 <template>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-12">
-                <div class="">
-                    <input
-                        class="form-control mr-sm-2"
-                        type="text"
-                        placeholder="fai una ricerca"
-                        v-model="userInput"
-                    />
+
+            <div class="col-md-8">
+                <div class="card">
+                    <h1>TESTIAMO IL COMPONENTE</h1>
+
                     <button
                         class="btn btn-primary my-2 my-sm-0"
                         @click="searchFunction()"
@@ -16,12 +13,9 @@
                         Search
                     </button>
 
-                    <!-- <button class="" @click="serviceFunction()">
-                        click di prova
-                    </button> -->
+                    <div class="d-flex flex-wrap">
+                        <div style="max-width: 70px" class="mx-2 mb-3">
 
-                    <div class="d-flex">
-                        <div class="mx-2 mb-3">
                             <label for="n_rooms" class="form-label">
                                 n Camere min</label
                             >
@@ -96,7 +90,7 @@
         </div>
         <div class="row">
             <a
-                href="#"
+                :href="'/guest/apartments/' + apartment.slug"
                 class="card justify-content-between card_promo m-3"
                 v-for="apartment in apartments"
                 :key="apartment.id"
@@ -136,14 +130,16 @@ export default {
             distance: null,
         };
     },
-    props: { services: Array },
-
+    props: {
+        services: Array,
+        show_route: String,
+    },
     methods: {
         searchFunction() {
             console.log(this.userInput);
             axios
                 .get(
-                    `/api/apartments?address=${this.userInput}&n_rooms=${this.n_rooms}&n_bed=${this.n_bed}&services=${this.v_services}&latitude=${this.coordinates.lat}&longitude=${this.coordinates.lon}&distance=${this.distance}`
+                    `/api/apartments?n_rooms=${this.n_rooms}&n_bed=${this.n_bed}&services=${this.v_services}&latitude=${this.coordinates.lat}&longitude=${this.coordinates.lon}&distance=${this.distance}`
                 )
                 .then((response) => {
                     this.apartments = response.data.data;
