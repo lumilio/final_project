@@ -58,8 +58,6 @@ class ApartmentController extends Controller
             'latitude' => 'required',
             'longitude' => 'required',
             'services' => 'required',
-            'slug' => 'nullable',
-
         ]);
 
         if ($request->file('image')) {
@@ -171,7 +169,6 @@ class ApartmentController extends Controller
                 'latitude' => 'required',
                 'longitude' => 'required',
                 'services' => 'required',
-                'slug' => 'nullable',
             ]);
             if ($request->file('image')) {
                 Storage::delete($apartment->image);
@@ -179,7 +176,7 @@ class ApartmentController extends Controller
                 $validate['image'] = $image;
             }
 
-            
+
 
             /* --------slug ------- */
             $apartments_array = Apartment::all();
