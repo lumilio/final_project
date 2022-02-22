@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateApartmentServiceTable extends Migration
+class CreateApartmentSponsorTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateApartmentServiceTable extends Migration
      */
     public function up()
     {
-        Schema::create('apartment_service', function (Blueprint $table) {
+        Schema::create('apartment_sponsor', function (Blueprint $table) {
             $table->unsignedBigInteger('apartment_id')->nullable();
-            $table->unsignedBigInteger('service_id')->nullable();
+            $table->unsignedBigInteger('sponsor_id')->nullable();
             $table->foreign('apartment_id')->references('id')->on('apartments')->cascadeOnDelete();
-            $table->foreign('service_id')->references('id')->on('services')->cascadeOnDelete();
+            $table->foreign('sponsor_id')->references('id')->on('sponsors')->cascadeOnDelete();
+            $table->date('start_date');
+            $table->date('end_date');
         });
     }
 
@@ -28,6 +30,6 @@ class CreateApartmentServiceTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('apartment_service');
+        Schema::dropIfExists('apartment_sponsor');
     }
 }

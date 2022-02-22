@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('navbar')
+@include('partials.adv')
+@endsection
+
 @section('content')
     <div class="my-5 container">
         <h2 class="mb-4">{{ $apartment->title }}</h2>

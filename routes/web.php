@@ -40,5 +40,6 @@ Route::middleware('auth')->prefix('registered')->namespace('Registered')->name('
     Route::resource('apartments', 'ApartmentController');
 
     Route::resource('contacts', 'ContactController');
-});
 
+    Route::resource('sponsors', 'SponsorController');
+});

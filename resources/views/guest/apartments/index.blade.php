@@ -1,17 +1,22 @@
 @extends('layouts.app')
 
+@section('navbar')
+@include('partials.guestNavbar')
+@endsection
+
 @section('content')
-    <div class="container-fluid d-flex justify-content-center align-items-center hero_image">
-        <searchbox-component></searchbox-component>
+    <div class="container-fluid d-flex justify-content-center hero_image">
+        <searchbar-component></searchbar-component>
     </div>
     <div class="container-fluid d-flex justify-content-center">
         <div class="container d-flex justify-content-center flex-wrap py-5">
 
             @forelse ($apartments as $apartment)
-                <a href="{{ route('guest.apartments.show', $apartment->slug) }}"
-                    class="card justify-content-between card_promo m-3">
-                    <img class="card-img-top thumb" src="{{ asset('storage/' . $apartment->image) }}"
-                        alt="Immagine appartamento">
+
+                <div class="card justify-content-between card_promo m-3">
+                    <a href="{{ route('guest.apartments.show', $apartment->slug) }}">
+
+                    <img class="card-img-top thumb" src="{{ asset('storage/' . $apartment->image) }}" alt="Card image cap">
                     <p class="promo">Promotion</p>
                     <h2 class="card-text m-3 card_title">{{ $apartment->title }}</h2>
                     <div class="box">
@@ -40,6 +45,7 @@
                         <span>View details</span>
                     </div>
                 </a>
+                </div>
             @empty
                 <p>no data</p>
             @endforelse
