@@ -10,7 +10,8 @@
             @forelse ($apartments as $apartment)
                 <a href="{{ route('guest.apartments.show', $apartment->slug) }}"
                     class="card justify-content-between card_promo m-3">
-                    <img class="card-img-top thumb" src="{{ asset('storage/' . $apartment->image) }}" alt="Card image cap">
+                    <img class="card-img-top thumb" src="{{ asset('storage/' . $apartment->image) }}"
+                        alt="Immagine appartamento">
                     <p class="promo">Promotion</p>
                     <h2 class="card-text m-3 card_title">{{ $apartment->title }}</h2>
                     <div class="box">

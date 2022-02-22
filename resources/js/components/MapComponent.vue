@@ -42,15 +42,20 @@ export default {
 
       var marker = new tt.Marker().setLngLat(location).addTo(map);
       var popup = new tt.Popup({ offset: popupOffset }).setHTML(
-        `<img class="w-25 mb-2" src="/storage/${this.apartment.image}" alt="Immagine appartamento">` +
-          "<p>" +
-          this.apartment.title +
-          "</p>" +
-          "<p>" +
-          this.apartment.address +
-          "</p>"
+        `<div class="bg_primary text-white m-auto d-flex flex-column">
+            <img class="w-50 mb-2 align-self-center" src="/storage/${this.apartment.image}" alt="Immagine appartamento">
+            <p>${this.apartment.title}</p>
+            <p>${this.apartment.address}</p>
+          </div>`
       );
       marker.setPopup(popup).togglePopup();
+      // console.log(popup);
+      console.log(marker._element);
+      marker._element.innerHTML =
+        '<div class="circle rounded-circle text-white bg-dark d-flex p-2 justify-content-center align-items-center"><i class="fas fa-home"></i></div>';
+
+      popup._content.classList.add("bg_primary");
+      popup._content.classList.add("col");
     },
   },
 

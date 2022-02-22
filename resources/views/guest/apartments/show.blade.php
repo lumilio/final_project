@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="mt-5 container">
+    <div class="my-5 container">
         <h2 class="mb-4">{{ $apartment->title }}</h2>
         <h3><i class="fas fa-map-marker-alt"></i> {{ $apartment->address }}.</h3>
         <div class="row">
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-xl-6">
                 <div>
                     <img class="rounded-start" width="100%" src="{{ asset('storage/' . $apartment->image) }}"
                         alt="Immagine appartamento">
@@ -42,9 +42,41 @@
                 </div>
             </div>
             <!---- descrizione appartamento ----->
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-xl-6">
                 @if ($apartment->description)
-                    <p class="apartment_description">{{ $apartment->description }}</p>
+                    @if (strlen($apartment->description) > 2100)
+                        <p class="apartment_description">{{ substr($apartment->description, 0, 2100) . '...' }}
+                            <a type="button" class="text-primary" data-bs-toggle="modal" data-bs-target="#showMore">Mostra
+                                altro</a>
+                        </p>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="showMore" tabindex="-1" role="dialog"
+                            aria-labelledby="modal_{{ $apartment->id }}" aria-hidden="true">
+                            <div class="modal-dialog col-4 col-md-12" style="max-width: 800px!important;" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">
+                                            Descrizione Completa
+                                        </h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body ">
+                                        {{ $apartment->description }}
+                                    </div>
+                                    <div class="modal-footer">
+                                        <input type="button" class="btn bg_primary text-white" data-bs-dismiss="modal"
+                                            value="OK">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    @else
+                        <p class="apartment_description">{{ $apartment->description }}</p>
+                    @endif
                 @else
                     <p>Nessuna descrizione.</p>
                 @endif
@@ -61,6 +93,7 @@
 
         <div class="message_container container">
             <div class="row mb-5 bg_primary p-3">
+                <h3 class="text-white">Contatta il proprietario</h3>
 
                 <!-------------- form per contattare il proprietario dell'annuncio --------------------------->
                 <form action="{{ route('guest.contacts.store') }}" method='post'>
@@ -74,10 +107,10 @@
                         <div class="row mb-2">
                             <div class="col-6">
                                 <label for="name" class="form-label"></label>
-                                <input type="text" name="name" id="name" class="form-control" placeholder="Mario Bross"
-                                    required minleght='4' maxlenght='50' aria-describedby="nameHelper"
-                                    value="{{ old('name') }}">
-                                <small id="helpId" class="text-white">Inserisci il tuo nome</small>
+                                <input type="text" name="name" id="name" class="form-control"
+                                    placeholder="Come ti chiami?" required minleght='4' maxlenght='50'
+                                    aria-describedby="nameHelper" value="{{ old('name') }}">
+                                <small id="helpId" class="text-white">Inserisci il tuo nome e cognome</small>
                                 @error('name')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
@@ -85,15 +118,14 @@
                             <div class="col-6">
                                 <label for="email" class="form-label"></label>
                                 @auth
-                                    <input type="email" name="email" id="email" class="form-control"
-                                        placeholder="mario.bross@gmail.com" required aria-describedby="emailHelper"
-                                        value="{{ Auth::user()->email }}">
+                                    <input type="email" name="email" id="email" class="form-control" required
+                                        aria-describedby="emailHelper" value="{{ Auth::user()->email }}">
                                 @else
                                     <input type="email" name="email" id="email" class="form-control"
-                                        placeholder="mario.bross@gmail.com" required aria-describedby="emailHelper"
+                                        placeholder="email@example.com" required aria-describedby="emailHelper"
                                         value="{{ old('email') }}">
                                 @endauth
-                                <small id="helpId" class="text-white">inserici la tua mail migliore</small>
+                                <small id="helpId" class="text-white">Inserici la tua mail</small>
                                 @error('email')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
@@ -119,9 +151,9 @@
                         </div>
 
                         <div class="col">
-                            <textarea class="form-control" name="message" required id="message"
-                                rows="3">{{ old('message') }}</textarea>
-                            <small id="message" class="text-white">Scrivi il tuo messaggio al venditore
+                            <textarea class="form-control" name="message" required id="message" rows="3"
+                                placeholder="Inserisci il messaggio">{{ old('message') }}</textarea>
+                            <small id="message" class="text-white">Inserisci il tuo messaggio al proprietario
                                 dell'appartamento</small>
                             @error('message')
                                 <div class="alert alert-danger">{{ $message }}</div>
