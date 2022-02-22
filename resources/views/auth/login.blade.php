@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.adv')
 
 @section('content')
 <div class="container-fluid background_form">

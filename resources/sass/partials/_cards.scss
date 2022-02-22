@@ -8,6 +8,10 @@
         color: $black;
         box-shadow: 5px 10px 18px $border;
     }
+    a {
+        text-decoration: none;
+        color: $black;
+    }
     .box {
         p {
             display: -webkit-box;

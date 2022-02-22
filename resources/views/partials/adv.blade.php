@@ -1,4 +1,4 @@
-<nav class="home navbar-expand-md navbar-light px-5">
+<nav class="home adv navbar-expand-md navbar-light px-5">
     <div class="container navbar">
         <a href="{{ url('/') }}">
             <img class="logo" height="50" src="{{ asset('img/logo_white.svg') }}" alt="Logo">
@@ -8,17 +8,8 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
-            {{-- <form class="d-flex m-auto align-items-center">
-                <div class="search_bar d-flex m-auto align-items-center">
-                    <input class="form-control me-2 search" type="search" placeholder="Search an apartment"
-                        aria-label="Search">
-                    <i class="fa-solid fa-magnifying-glass fa-lg search_icon"></i>
-                </div>
-
-
-            </form> --}}
 
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav justify-content-end align-items-center">

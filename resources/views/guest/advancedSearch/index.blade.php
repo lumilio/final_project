@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.adv')
 
 @section('content')
-    <div class="container-fluid d-flex justify-content-center">
+    <div class="container-fluid justify-content-center">
         <searchbar-component></searchbar-component>
         <advanced-search :services='{{ json_encode($services) }}'></advanced-search>
     </div>
