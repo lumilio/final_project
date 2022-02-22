@@ -11,7 +11,6 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav justify-content-end align-items-center">
                 <!-- Authentication Links -->
