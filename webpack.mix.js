@@ -16,5 +16,4 @@ mix.options({ processCssUrls: false })
     .js("resources/js/app.js", "public/js")
     .js("resources/js/registered.js", "public/js")
     .sass("resources/sass/app.scss", "public/css")
-    .sass("resources/sass/adv.scss", "public/css")
     .sass("resources/sass/registered.scss", "public/css");

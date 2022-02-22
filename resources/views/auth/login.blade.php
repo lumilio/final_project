@@ -1,4 +1,8 @@
-@extends('layouts.adv')
+@extends('layouts.app')
+
+@section('navbar')
+@include('partials.adv')
+@endsection
 
 @section('content')
 <div class="container-fluid background_form">

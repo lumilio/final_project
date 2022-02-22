@@ -37,9 +37,10 @@
 <body>
     <div id="app">
 
-        <nav>
-            @include('partials.guestNavbar')
-        </nav>
+        <header>
+            @yield('navbar')
+        </header>
+
 
         <main>
             @yield('content')

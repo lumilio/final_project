@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('navbar')
+@include('partials.guestNavbar')
+@endsection
+
 @section('content')
     <div class="container-fluid d-flex justify-content-center hero_image">
         <searchbar-component></searchbar-component>
