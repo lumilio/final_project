@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('navbar')
+@include('partials.adv')
+@endsection
+
 @section('content')
     <div class="mt-5 container d-flex justuify-content-center flex-wrap">
         <div style='max-width:500px' class="container d-flex flex-column">

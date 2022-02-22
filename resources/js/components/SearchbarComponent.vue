@@ -1,5 +1,8 @@
 <template>
-    <div id="searchbar" class="w-75"></div>
+    <div
+        id="searchbar"
+        class="search_bar d-flex justify-content-center align-items-center"
+    ></div>
 </template>
 
 <script>

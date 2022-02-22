@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('navbar')
+@include('partials.adv')
+@endsection
+
 @section('content')
     <div class="container-fluid background_form_reg">
         <div class="row justify-content-center">

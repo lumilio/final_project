@@ -10,7 +10,7 @@
 
         <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
-            <form class="d-flex m-auto align-items-center">
+            {{-- <form class="d-flex m-auto align-items-center">
                 <div class="search_bar d-flex m-auto align-items-center">
                     <input class="form-control me-2 search" type="search" placeholder="Search an apartment"
                         aria-label="Search">
@@ -18,7 +18,7 @@
                 </div>
 
 
-            </form>
+            </form> --}}
 
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav justify-content-end align-items-center">
