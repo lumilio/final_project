@@ -1,15 +1,16 @@
 <nav class="home adv navbar-expand-md navbar-light px-5">
     <div class="container navbar">
+        <!-- logo -->
         <a href="{{ url('/') }}">
             <img class="logo" height="50" src="{{ asset('img/logo_white.svg') }}" alt="Logo">
         </a>
+        <!-- Toggle -->
         <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <!-- Left Side Of Navbar -->
 
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav justify-content-end align-items-center">
