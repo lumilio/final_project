@@ -12,6 +12,7 @@
         <div class="container d-flex justify-content-center flex-wrap py-5">
 
             @forelse ($apartments as $apartment)
+
                 <div class="card justify-content-between card_promo m-3">
                     <a href="{{ route('guest.apartments.show', $apartment->slug) }}">
 
@@ -38,8 +39,6 @@
                             </div>
                         @endforeach
                         <!-- -------------------------- -->
-
-
                     </div>
                     <div
                         class="button_details p-2 w-50 justify-content-center align-items-center text-center text-white m-auto mt-4 mb-4">
