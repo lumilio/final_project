@@ -68,7 +68,7 @@ const app = new Vue({
     },
 
     mounted() {
-        //this.createMap();
-        this.verifyPassword();
+        const registerButton = document.getElementById('register_button');
+        registerButton.addEventListener('click', this.verifyPassword());
     }
 });
