@@ -42,11 +42,13 @@ class ApartmentController extends Controller
             $distance = 20;
         } else
             $distance = $request->distance;
+
         if ($request->n_bed < 1) {
             $n_bed = 1;
         } else
             $n_bed = $request->n_bed;
-        if ($request->n_room < 1) {
+
+        if ($request->n_rooms < 1) {
             $n_rooms = 1;
         } else
             $n_rooms = $request->n_rooms;

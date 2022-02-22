@@ -86,7 +86,7 @@
         </div>
         <div class="row">
             <a
-                href="#"
+                :href="'/guest/apartments/' + apartment.slug"
                 class="card justify-content-between card_promo m-3"
                 v-for="apartment in apartments"
                 :key="apartment.id"
@@ -126,8 +126,10 @@ export default {
             distance: null,
         };
     },
-    props: { services: Array },
-
+    props: {
+        services: Array,
+        show_route: String,
+    },
     methods: {
         searchFunction() {
             console.log(this.userInput);
