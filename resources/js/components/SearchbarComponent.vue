@@ -1,7 +1,7 @@
 <template>
     <div
         id="searchbar"
-        class="search_bar d-flex justify-content-center align-items-center"
+        class="mb-4 search_bar d-flex justify-content-center align-items-center"
     ></div>
 </template>
 
