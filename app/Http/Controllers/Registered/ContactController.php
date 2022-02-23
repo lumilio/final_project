@@ -22,23 +22,23 @@ class ContactController extends Controller
     {
         $user_id = Auth::user()->id;
         $apartments_array = Apartment::all();
-        $contacts_array = Contact::all();
+        $contacts_array = Contact::orderBy('created_at', 'desc')->get();
         $display = [];
 
-        foreach($apartments_array as $apartment){
-            if($apartment->user_id == $user_id){
-                foreach($contacts_array as $contact){
-                    if($contact->apartment_id == $apartment->id){
+        foreach ($apartments_array as $apartment) {
+            if ($apartment->user_id == $user_id) {
+                foreach ($contacts_array as $contact) {
+                    if ($contact->apartment_id == $apartment->id) {
                         array_push($display, $contact);
                     }
                 }
             }
         }
         //ddd($display);
-        return view('registered.contacts.index',compact('display'));
+        return view('registered.contacts.index', compact('display'));
     }
 
-    
+
     /**
      * Display the specified resource.
      *
@@ -51,25 +51,25 @@ class ContactController extends Controller
         $apartments_array = Apartment::all();
         $contacts_array = Contact::all();
         $contact_id_array = [];
-        
-        foreach($apartments_array as $apartment){
-            if($apartment->user_id == Auth::id()){
-                foreach($contacts_array as $index){
-                    if($index->apartment_id == $apartment->id){
+
+        foreach ($apartments_array as $apartment) {
+            if ($apartment->user_id == Auth::id()) {
+                foreach ($contacts_array as $index) {
+                    if ($index->apartment_id == $apartment->id) {
                         array_push($contact_id_array, $index->id);
                     }
                 }
             }
         }
         //ddd($contact_id_array);
-        if(in_array($contact->id, $contact_id_array)){
+        if (in_array($contact->id, $contact_id_array)) {
             return view('registered.contacts.show', compact('contact'));
-        } else{
+        } else {
             abort(403);
         }
     }
-    
-    
+
+
     /**
      * Remove the specified resource from storage.
      *
@@ -79,6 +79,6 @@ class ContactController extends Controller
     public function destroy(Contact $contact)
     {
         $contact->delete();
-        return redirect()->route('registered.contacts.index')->with('message', "hai eliminato un messaggio ricevuto da {$contact->email}");
+        return redirect()->route('registered.contacts.index')->with('message', "Hai eliminato il messaggio ricevuto da {$contact->email}");
     }
 }

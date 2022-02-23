@@ -32,36 +32,54 @@ class ApartmentController extends Controller
 
         //Alternative  Giuseppe method
 
-        $requestQuery = $request->query();
+        //$requestQuery = $request->query();
         $reqServices = explode(',', $request->services);
         $latitude = $request->latitude;
         $longitude = $request->longitude;
-        $distance = $request->distance;
+        //$distance = $request->distance;
+
+        if ($request->distance < 20) {
+            $distance = 20;
+        } else
+            $distance = $request->distance;
+
+        if ($request->n_bed < 1) {
+            $n_bed = 1;
+        } else
+            $n_bed = $request->n_bed;
+
+        if ($request->n_rooms < 1) {
+            $n_rooms = 1;
+        } else
+            $n_rooms = $request->n_rooms;
+
 
 
         /* funzione per calcolare la distanza */
+
+
+
+        //$aparts = Apartment::all();
+        $aparts = Apartment::where('n_bed', '>=', $n_bed)
+            ->where('n_rooms', '>=', $n_rooms)
+            ->get();
+
+
+        if (!empty($request->services)) {
+            $aparts = Apartment::where('n_bed', '>=', $n_bed)
+                ->where('n_rooms', '>=', $n_rooms)
+                ->whereHas('services', function ($param) use ($reqServices) {
+                    $param->WhereIn('service_id', $reqServices);
+                })->get();
+        }
+
+
         function calcDist($lat1, $lon1, $lat2, $lon2)
         {
             $distance = (3958 * 3.1415926 * sqrt(($lat2 - $lat1) * ($lat2 - $lat1) + cos($lat2 / 57.29578) * cos($lat1 / 57.29578) * ($lon2 - $lon1) * ($lon2 - $lon1)) / 180);
             return $distance * 1.852; //Converto miglia in chilometri
 
         };
-
-
-
-        //$aparts = Apartment::all();
-        $aparts = Apartment::where('n_bed', '>', $requestQuery['n_bed'])
-            ->where('n_rooms', '>', $requestQuery['n_rooms'])
-            ->get();
-
-
-        if (!empty($request->services)) {
-            $aparts = Apartment::where('n_bed', '>', $requestQuery['n_bed'])
-                ->where('n_rooms', '>', $requestQuery['n_rooms'])
-                ->whereHas('services', function ($param) use ($reqServices) {
-                    $param->WhereIn('service_id', $reqServices);
-                })->get();
-        }
         /* condizione by pizzi per la distanza */
         if ($request->latitude != null && $request->longitude != null) {
             $filterByDistance = [];
