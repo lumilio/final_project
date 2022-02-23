@@ -11,13 +11,14 @@
                 {{ session('message') }}
             </div>
         @endif
-        <div class="table-responsive">
+        <div class="table-responsive-lg">
             <table class="table table-striped table-sm">
                 <thead>
                     <tr>
-                        <th scope="col">email</th>
-                        <th scope="col"></th>
-                        <th scope="col">oggetto</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Data</th>
+                        <th scope="col">Oggetto</th>
+                         <th scope="col">Messaggio</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
@@ -27,6 +28,7 @@
                         <td>{{$contact->email}}</td>
                         <td>{{$contact->created_at}}</td>
                         <td>{{$contact->oggetto_mail}}</td>
+                        <td>{{$contact->message}}</td>
                         <td class='d-flex'>
                             <a href="{{route('registered.contacts.show',$contact->id)}}"><i class="fa-solid me-3 fa-glasses"></i></a>
 
@@ -38,13 +40,13 @@
                                     padding: 0;
                                     font: inherit;
                                     cursor: pointer;
-                                    outline: inherit;' 
+                                    outline: inherit;'
                                     type="button" style='border-box:none;'class="bg-none"
                                     data-bs-toggle="modal"
                                     data-bs-target="#delete{{ $contact->id }}">
                                     <i class="text-danger ms-3 fa-solid fa-trash"></i>
                             </button>
-                                
+
                             <!-- Modal -->
                             <div class="modal fade" id="delete{{ $contact->id }}" tabindex="-1" role="dialog" aria-labelledby="modal_{{ $contact->id }}" aria-hidden="true">
                                 <div class="modal-dialog" role="document">

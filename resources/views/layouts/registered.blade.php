@@ -40,7 +40,6 @@
                     </a>
 
                     <div class="dropdown-menu position-absolute dropdown-menu-right" aria-labelledby="navbarDropdown">
-
                         <a class="dropdown-item" href="{{ route('registered.dashboard') }}">Dashboard</a>
                         <a class="dropdown-item" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
@@ -63,7 +62,7 @@
 
         <div class="container-fluid">
             <div class="row">
-                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
                     <div class="position-sticky pt-3">
                         <ul class="nav flex-column">
                             <li class="nav-item">
@@ -82,7 +81,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('registered.contacts.index') }}">
                                     <span data-feather="file"></span>
-                                    inbox
+                                    Messagges
                                 </a>
                             </li>
 

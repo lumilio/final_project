@@ -10,7 +10,7 @@
     }
     a {
         text-decoration: none;
-        color: $black;
+        color: $white;
     }
     .box {
         p {
@@ -66,20 +66,29 @@
 }
 
 //Responsive
-@media (max-width: 991px) {
-    .card {
-        width: 30%;
+@media (max-width: 992px) {
+    .card_promo {
+        .thumb {
+            height: 150px;
+        }
     }
 }
 
 @media (max-width: 576px) {
     .card {
         width: 43%;
+        .thumb {
+            height: 130px;
+        }
     }
 }
 
 @media (max-width: 320px) {
     .card {
         width: 100%;
+        margin-bottom: 2rem;
+        .thumb {
+            height: 150px;
+        }
     }
 }

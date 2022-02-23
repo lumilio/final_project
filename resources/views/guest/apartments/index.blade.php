@@ -14,8 +14,8 @@
             @forelse ($apartments as $apartment)
                 <div class="card justify-content-between card_promo m-3">
                     <a href="{{ route('guest.apartments.show', $apartment->slug) }}">
-
                     <img class="card-img-top thumb" src="{{ asset('storage/' . $apartment->image) }}" alt="Card image cap">
+                    </a>
                     <p class="promo">Promotion</p>
                     <h2 class="card-text m-3 card_title">{{ $apartment->title }}</h2>
                     <div class="box">
@@ -41,11 +41,10 @@
 
 
                     </div>
-                    <div
-                        class="button_details p-2 w-50 justify-content-center align-items-center text-center text-white m-auto mt-4 mb-4">
-                        <span>View details</span>
+                    <div class="button_details p-2 w-50 justify-content-center align-items-center text-center text-white m-auto mt-4 mb-4">
+                        <span> <a href="{{ route('guest.apartments.show', $apartment->slug) }}">View details</a></span>
                     </div>
-                </a>
+
                 </div>
             @empty
                 <p>no data</p>
