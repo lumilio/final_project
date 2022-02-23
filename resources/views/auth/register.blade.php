@@ -7,11 +7,11 @@
 @section('content')
     <div class="container-fluid background_form_reg">
         <div class="row justify-content-center">
-            <div class="col-md-4">
+            <div class="col-md-6 d-flex justify-content-center">
                 <div class="card card_title">
                     <div class="card-header card_head">{{ __('Register') }}</div>
 
-                    <div class="card-body form_log">
+                    <div class="card-body form_log px-0">
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
 
