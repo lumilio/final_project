@@ -41,7 +41,7 @@
                         <!-- -------------------------- -->
                     </div>
                     <div class="button_details p-2 w-50 justify-content-center align-items-center text-center text-white m-auto mt-4 mb-4">
-                        <span> <a href="{{ route('guest.apartments.show', $apartment->slug) }}">View details</a></span>
+                        <span><a href="{{ route('guest.apartments.show', $apartment->slug) }}">View details</a></span>
                     </div>
 
                 </div>
