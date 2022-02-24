@@ -1,12 +1,13 @@
 <template>
     <div
         id="searchbar"
-        class="mb-4 search_bar d-flex justify-content-center align-items-center"
+        class="col-md-6 mb-4 mx-4 search_bar d-flex justify-content-center align-items-center"
     >
         <a @click="saveCo()" class="btn btn-primary" href="/research"
             >Cerca tra in nostri appartamenti!</a
         >
     </div>
+
 </template>
 
 <script>
