@@ -152,8 +152,8 @@ export default {
             n_bed: "",
             n_rooms: "",
             v_services: [],
-            coordinates: {},
             distance: null,
+            coordinates: {},
         };
     },
     props: {
@@ -186,6 +186,13 @@ export default {
             this.coordinates = data;
         });
         console.log(this.coordinates);
+        if (localStorage.coordinates) {
+            this.coordinates = JSON.parse(localStorage.getItem("coordinates"));
+            console.log(this.coordinates);
+        }
+    },
+    mounted() {
+        this.searchFunction();
     },
 };
 /*appunti prima di iniziare
