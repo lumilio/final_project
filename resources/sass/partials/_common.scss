@@ -1,0 +1,10 @@
+.hover_blue {
+    &:hover {
+        background-color: $cyan;
+        cursor: pointer;
+    }
+}
+
+.bg_primary{
+    background-color: $darkazure;
+}

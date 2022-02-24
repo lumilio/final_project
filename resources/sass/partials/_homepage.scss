@@ -1,0 +1,28 @@
+.hero_image {
+    margin-top: -150px;
+    height: 1000px;
+    background-image: url(../img/home.jpeg);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+//Responsive
+@media (max-width: 576px) {
+    .hero_image {
+        background-position: top;
+        background-size: cover;
+        height: 400px;
+        padding-top: 10rem;
+        margin-top: -190px;
+    }
+}
+
+@media (max-width: 320px) {
+    .hero_image {
+        background-position: top;
+        background-size: cover;
+        height: 400px;
+        padding-top: 10rem;
+        margin-top: -190px;
+    }
+}
