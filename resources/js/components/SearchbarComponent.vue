@@ -3,8 +3,9 @@
         id="searchbar"
         class="mb-4 search_bar d-flex justify-content-center align-items-center"
     >
-        <button class=" btn btn-primary" @click="saveCo()">salva la ricerca</button>
-        <a class="btn btn-primary" href="/research">vai alla ricerca</a></a>
+        <a @click="saveCo()" class="btn btn-primary" href="/research"
+            >Cerca tra in nostri appartamenti!</a
+        >
     </div>
 </template>
 
@@ -53,18 +54,21 @@ export default {
                     data.data.result.position.lng
                 );
                 Bus.$emit("sendCoordinates", this.coordinates);
+                const parsed = JSON.stringify(this.coordinates);
+                localStorage.setItem("coordinates", parsed);
+                console.log("salviamo le coordinate", localStorage);
             });
         },
         /* saveCo() {
             localStorage.coordinates = this.coordinates;
             console.log("salviamo le coordinate", localStorage);
         }, */
-        saveCo() {
-        const parsed = JSON.stringify(this.coordinates);
-        localStorage.setItem('coordinates', parsed);
-        console.log("salviamo le coordinate", localStorage);
-        }
-                },
+        /* saveCo() {
+            const parsed = JSON.stringify(this.coordinates);
+            localStorage.setItem("coordinates", parsed);
+            console.log("salviamo le coordinate", localStorage);
+        }, */
+    },
 
     mounted() {
         this.createSearchbox();

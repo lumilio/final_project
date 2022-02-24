@@ -185,7 +185,9 @@ export default {
             console.log(this.coordinates);
         }
     },
-    mounted() {},
+    mounted() {
+        this.searchFunction();
+    },
 };
 /*appunti prima di iniziare
 
