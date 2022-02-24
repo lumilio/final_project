@@ -233,7 +233,7 @@ class ApartmentController extends Controller
     public function showStatistics(Apartment $apartment)
     {
         
-        $views_years = [];  //ok
+        $views_years = [];
         $views_months = [
             '1' => [],
             '2' => [],
@@ -249,9 +249,6 @@ class ApartmentController extends Controller
             '12' => [],
         ];
         $times_array = [];
-
-
-        $x=[];
         
 
         foreach ($apartment->views as $view) {
@@ -262,24 +259,31 @@ class ApartmentController extends Controller
         }
 
         foreach ($views_years as $year) {
-            array_push($times_array, $views_months);  //[$year => $views_months]
+            array_push($times_array, [$year => $views_months]);  //[$year => $views_months]
         }
 
-
-
-        
-        ddd($times_array);
-        
-        foreach ($apartment->views as $view) {
-            if(date("y", strtotime($view->created_at)) == $year){
-                array_push($times_array[$year][1], $view);
-            }  
+        foreach ($times_array as $key0 => $index) {
+            foreach ($index as $key1 => $i1) {
+                foreach ($i1 as $key2 => $i2) {
+                    foreach ($apartment->views as $view) {
+                        if(
+                        date("y", strtotime($view->created_at)) == $key1 &&
+                        date("m", strtotime($view->created_at)) == $key2)
+                        {
+                            array_push($times_array[$key0][$key1][$key2], $view);
+                        }
+                    }
+                }
+            }
         }
-        
-        
-        //ddd($views_years);
 
-
+        //ddd($apartment->views);
+        //ddd($times_array);
+        //ddd(date("y", strtotime($view->created_at)));
+        ddd($views_years);
+        //ddd($views_months);
+        //ddd($views_years[1]);
+        //ddd(date("m", strtotime($view->created_at)));
 
         return view('registered.statistics.index', compact('apartment'));
     }
