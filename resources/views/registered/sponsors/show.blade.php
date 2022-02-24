@@ -2,7 +2,8 @@
 
 @section('content')
     @include('partials.error')
-    <form method="post" id="payment-form" action="{{ route('registered.checkout', $sponsor->id) }}">
+    <form method="post" id="payment-form"
+        action="{{ route('registered.checkout', ['apartment' => $apartment->id, 'sponsor' => $sponsor->id]) }}">
         @csrf
         <section>
             <div>
