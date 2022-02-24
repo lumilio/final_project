@@ -15,9 +15,9 @@
         <div class="text-end mb-3">
             <a class="btn btn-primary text-white" href="{{ route('registered.apartments.create') }}"
                 role="button">Inserisci un
-                Appartemento</a>
+                Appartamento</a>
         </div>
-        <div class="table-responsive">
+        <div class="table-responsive-lg">
             <table class="table table-striped table-sm">
                 <thead>
                     <tr>
@@ -95,7 +95,7 @@
                                     </div>
                                 </div>
                                 <a href="{{ route('registered.sponsors.index', $apartment->id) }}"
-                                    class="btn btn-warning">
+                                    class="btn bg-warning">
                                     Sponsorizza
                                 </a>
                             </td>

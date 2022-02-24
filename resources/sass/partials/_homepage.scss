@@ -2,7 +2,6 @@
     margin-top: -150px;
     height: 1000px;
     background-image: url(../img/home.jpeg);
-    background-color: $darkazure;
     background-position: center;
     background-repeat: no-repeat;
 }
@@ -13,6 +12,8 @@
         background-position: top;
         background-size: cover;
         height: 400px;
+        padding-top: 10rem;
+        margin-top: -190px;
     }
 }
 
@@ -21,5 +22,7 @@
         background-position: top;
         background-size: cover;
         height: 400px;
+        padding-top: 10rem;
+        margin-top: -190px;
     }
 }
