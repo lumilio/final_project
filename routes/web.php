@@ -41,5 +41,7 @@ Route::middleware('auth')->prefix('registered')->namespace('Registered')->name('
 
     Route::resource('contacts', 'ContactController');
 
-    Route::resource('sponsors', 'SponsorController');
+    Route::resource('sponsors', 'SponsorController')->only(['index', 'show']);
+
+    Route::post('sponsors/checkout/{sponsor}', 'SponsorController@checkout')->name('checkout');
 });

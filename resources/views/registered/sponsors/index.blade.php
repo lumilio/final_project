@@ -8,13 +8,15 @@
                 uno dei seguenti
                 pacchetti:</p>
             @foreach ($sponsors as $sponsor)
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="card text-center card_sponsor rounded-3 p-3 mb-4">
-                        <h2 class="text-center sponsor_name">{{ $sponsor->name }}</h2>
-                        <div class="card-body border-top justify-content-between d-flex flex-column">
-                            <p class="border-bottom price">Prezzo: <br>{{ $sponsor->price }}€</p>
-                            <p class="border-bottom time">Durata sponsorizzazione: <br>{{ $sponsor->duration }} ore</p>
-                            <a class="btn btn-orange text-white" href="">
+
+                <div class="col-4">
+                    <div class="card rounded-3 p-3">
+                        <h2 class="text-center">{{ $sponsor->name }}</h2>
+                        <div class="card-body border-top">
+                            <p>Prezzo: {{ $sponsor->price }}€</p>
+                            <p>Durata sponsorizzazione: {{ $sponsor->duration }} ore</p>
+                            <a class="btn btn-warning" href="{{ route('registered.sponsors.show', $sponsor->id) }}">
+
                                 Acquista
                             </a>
                         </div>
