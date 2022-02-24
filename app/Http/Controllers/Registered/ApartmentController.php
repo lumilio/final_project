@@ -232,10 +232,56 @@ class ApartmentController extends Controller
 
     public function showStatistics(Apartment $apartment)
     {
-        // foreach ($apartment->views as $view) {
-        //     if (date("m", strtotime($view->created_at)) == ) {
-        //     }
-        // }
+        
+        $views_years = [];  //ok
+        $views_months = [
+            '1' => [],
+            '2' => [],
+            '3' => [],
+            '4' => [],
+            '5' => [],
+            '6' => [],
+            '7' => [],
+            '8' => [],
+            '9' => [],
+            '10' => [],
+            '11' => [],
+            '12' => [],
+        ];
+        $times_array = [];
+
+
+        $x=[];
+        
+
+        foreach ($apartment->views as $view) {
+            if (!(in_array(date("y", strtotime($view->created_at)), $views_years))){
+                $anno = date("y", strtotime($view->created_at));
+                array_push($views_years, $anno);
+            }
+        }
+
+        foreach ($views_years as $year) {
+            array_push($times_array, $views_months);  //[$year => $views_months]
+        }
+
+
+
+        
+        ddd($times_array);
+        
+        foreach ($apartment->views as $view) {
+            if(date("y", strtotime($view->created_at)) == $year){
+                array_push($times_array[$year][1], $view);
+            }  
+        }
+        
+        
+        //ddd($views_years);
+
+
+
         return view('registered.statistics.index', compact('apartment'));
     }
 }
+
