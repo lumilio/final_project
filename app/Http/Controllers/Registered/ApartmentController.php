@@ -232,7 +232,9 @@ class ApartmentController extends Controller
 
     public function showStatistics(Apartment $apartment)
     {
-        
+
+
+        /* ------------------------------------- visualizzazioni ------------------------------------- */
         $views_years = [];
         $views_months = [
             '1' => [],
@@ -249,7 +251,6 @@ class ApartmentController extends Controller
             '12' => [],
         ];
         $times_array = [];
-        
 
         foreach ($apartment->views as $view) {
             if (!(in_array(date("y", strtotime($view->created_at)), $views_years))){
@@ -257,11 +258,9 @@ class ApartmentController extends Controller
                 array_push($views_years, $anno);
             }
         }
-
         foreach ($views_years as $year) {
             array_push($times_array, [$year => $views_months]);  //[$year => $views_months]
         }
-
         foreach ($times_array as $key0 => $index) {
             foreach ($index as $key1 => $i1) {
                 foreach ($i1 as $key2 => $i2) {
@@ -277,15 +276,19 @@ class ApartmentController extends Controller
             }
         }
 
-        //ddd($apartment->views);
-        //ddd($times_array);
-        //ddd(date("y", strtotime($view->created_at)));
-        ddd($views_years);
-        //ddd($views_months);
-        //ddd($views_years[1]);
-        //ddd(date("m", strtotime($view->created_at)));
+        $views_array = array_reverse($times_array);
 
-        return view('registered.statistics.index', compact('apartment'));
+        $views_2022 = $views_array[0][22];
+        $views_2023 = $views_array[1][23];
+        $views_2024 = $views_array[2][24];
+        //...
+        //...
+        //...
+        //... per aggiungere un anno in futuro seguire lo schema...
+        /* -------------------------------------------------------------------------------------------- */
+
+
+        return view('registered.statistics.index', compact('apartment','views_2022','views_2023'));
     }
 }
 
