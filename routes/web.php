@@ -41,7 +41,7 @@ Route::middleware('auth')->prefix('registered')->namespace('Registered')->name('
 
     Route::resource('contacts', 'ContactController');
 
-    Route::resource('sponsors', 'SponsorController')->only(['index', 'show']);
-
-    Route::post('sponsors/checkout/{sponsor}', 'SponsorController@checkout')->name('checkout');
+    Route::get('apartments/{apartment}/sponsors', 'SponsorController@index')->name('sponsors.index');
+    Route::get('apartments/{apartment}/sponsors/{sponsor}', 'SponsorController@show')->name('sponsors.show');
+    Route::post('apartments/{apartment}/sponsors/{sponsor}/checkout', 'SponsorController@checkout')->name('checkout');
 });
