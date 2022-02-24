@@ -66,30 +66,29 @@ class ApartmentController extends Controller
         }
         $validate['user_id'] = Auth::id();
 
-        
+
 
 
 
         /* --------slug ------- */
         $apartments_array = Apartment::all();
         $array_same_title = array();
-        
-        if($apartments_array->count() > 0){
-            foreach($apartments_array as $index){
-                if($index->title == $request->title){
+
+        if ($apartments_array->count() > 0) {
+            foreach ($apartments_array as $index) {
+                if ($index->title == $request->title) {
                     array_push($array_same_title, $index);
                 }
             }
         }
-        foreach ($array_same_title as $i){
-            if ($i->slug == Str::slug($validate['title'])){
+        foreach ($array_same_title as $i) {
+            if ($i->slug == Str::slug($validate['title'])) {
                 $validate['slug'] = Str::slug($validate['title'] . '-' . count($array_same_title));
-            }
-            else if ( $i->slug == Str::slug($validate['title'] . '-' . (count($array_same_title)))) {
-                $validate['slug'] = Str::slug($validate['title'] . '-' . (count($array_same_title)+1));
+            } else if ($i->slug == Str::slug($validate['title'] . '-' . (count($array_same_title)))) {
+                $validate['slug'] = Str::slug($validate['title'] . '-' . (count($array_same_title) + 1));
             }
         }
-        if($array_same_title == []){
+        if ($array_same_title == []) {
             $validate['slug'] = Str::slug($validate['title']);
         }
 
@@ -99,11 +98,11 @@ class ApartmentController extends Controller
         //ddd(Str::slug($validate['title']));
         //ddd(Str::slug($validate['title'] . '-' . count($array_same_title)));
         //ddd(Str::slug($validate['title'] . '-' . (count($array_same_title)+1)));
-        
+
         /* -------------------- */
-        
-        
-        
+
+
+
 
 
 
@@ -181,23 +180,22 @@ class ApartmentController extends Controller
             /* --------slug ------- */
             $apartments_array = Apartment::all();
             $array_same_title = array();
-            
-            if($apartments_array->count() > 0){
-                foreach($apartments_array as $index){
-                    if($index->title == $request->title){
+
+            if ($apartments_array->count() > 0) {
+                foreach ($apartments_array as $index) {
+                    if ($index->title == $request->title) {
                         array_push($array_same_title, $index);
                     }
                 }
             }
-            foreach ($array_same_title as $i){
-                if ($i->slug == Str::slug($validate['title'])){
+            foreach ($array_same_title as $i) {
+                if ($i->slug == Str::slug($validate['title'])) {
                     $validate['slug'] = Str::slug($validate['title'] . '-' . count($array_same_title));
-                }
-                else if ( $i->slug == Str::slug($validate['title'] . '-' . (count($array_same_title)))) {
-                    $validate['slug'] = Str::slug($validate['title'] . '-' . (count($array_same_title)+1));
+                } else if ($i->slug == Str::slug($validate['title'] . '-' . (count($array_same_title)))) {
+                    $validate['slug'] = Str::slug($validate['title'] . '-' . (count($array_same_title) + 1));
                 }
             }
-            if($array_same_title == []){
+            if ($array_same_title == []) {
                 $validate['slug'] = Str::slug($validate['title']);
             }
             /* -------------------- */
@@ -230,5 +228,14 @@ class ApartmentController extends Controller
         } else {
             abort(403);
         }
+    }
+
+    public function showStatistics(Apartment $apartment)
+    {
+        // foreach ($apartment->views as $view) {
+        //     if (date("m", strtotime($view->created_at)) == ) {
+        //     }
+        // }
+        return view('registered.statistics.index', compact('apartment'));
     }
 }

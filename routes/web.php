@@ -39,7 +39,7 @@ Route::middleware('auth')->prefix('registered')->namespace('Registered')->name('
     Route::get('/', 'HomeController@index')->name('dashboard');
     Route::resource('apartments', 'ApartmentController');
 
+    Route::get('apartments/{apartment}/statistics', 'ApartmentController@showStatistics')->name('statistics');
     Route::resource('contacts', 'ContactController');
-
     Route::resource('sponsors', 'SponsorController');
 });
