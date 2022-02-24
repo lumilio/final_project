@@ -14,7 +14,7 @@
                         <div class="card-body border-top">
                             <p>Prezzo: {{ $sponsor->price }}€</p>
                             <p>Durata sponsorizzazione: {{ $sponsor->duration }} ore</p>
-                            <a class="btn btn-warning" href="">
+                            <a class="btn btn-warning" href="{{ route('registered.sponsors.show', $sponsor->id) }}">
                                 Acquista
                             </a>
                         </div>
