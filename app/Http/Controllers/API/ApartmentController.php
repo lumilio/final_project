@@ -89,8 +89,12 @@ class ApartmentController extends Controller
 
                 if ($distanceApartment < $distance || ($latitude === null && $longitude === null)) {
                     $filterByDistance[] = $apartment;
+                    //$filterByDistance[] = [$distanceApartment => $apartment];
                 }
             }
+            //$sortFilterDistance = array_multisort($filterByDistance);
+            //ddd($sortFilterDistance);
+            //ddd($filterByDistance);
         }
 
         return ApartmentResource::collection($filterByDistance);
