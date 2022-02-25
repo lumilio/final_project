@@ -1,0 +1,53 @@
+.tt-search-box {
+    width: 580px;
+}
+.btn_search {
+    background-color: $buttonhover;
+    &:hover {
+        background-color: $button;
+    }
+}
+.font_style {
+    font-family: "Inter";
+}
+.map {
+    height: 400px;
+}
+
+//Responsive
+@media (max-width: 992px) {
+    .tt-search-box {
+        width: 500px;
+    }
+    .card_adv {
+        width: 60%;
+        .thumb {
+            height: 150px;
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .tt-search-box {
+        width: 400px;
+    }
+    .fields {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 320px) {
+    .tt-search-box {
+        width: 400px;
+    }
+    .btn_search {
+        font-size: 12px;
+    }
+    .service_name {
+        font-size: 13px;
+    }
+
+    .card_adv {
+        width: 100%;
+    }
+}

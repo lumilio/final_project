@@ -1,13 +1,17 @@
 @extends('layouts.app')
 
+@section('navbar')
+@include('partials.adv')
+@endsection
+
 @section('content')
 <div class="container-fluid background_form">
     <div class="row justify-content-center">
-        <div class="col-md-4">
+        <div class="col-md-4 col-sm-6 d-flex justify-content-center align-items-center">
             <div class="card card_title">
                 <div class="card-header card_head">{{ __('Login') }}</div>
 
-                <div class="card-body form_log">
+                <div class="card-body form_log px-0">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
@@ -53,13 +57,13 @@
 
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-8 title_input">
+                            <div class="col-md-8 d-flex justify-content-center title_input">
                                 <button type="submit" class="button_log">
                                     {{ __('Login') }}
                                 </button>
 
                                 @if (Route::has('password.request'))
-                                    <a class="btn link" href="{{ route('password.request') }}">
+                                    <a class="btn link fs-6" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif

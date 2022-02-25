@@ -1,30 +1,15 @@
 <template>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <h1>TESTIAMO IL COMPONENTE</h1>
-                    <input
-                        class="form-control mr-sm-2"
-                        type="text"
-                        placeholder="fai una ricerca"
-                        v-model="userInput"
-                    />
-                    <button
-                        class="btn btn-primary my-2 my-sm-0"
-                        @click="searchFunction()"
+    <div class="container font_style">
+        <div class="row justify-content-left">
+            <!-- Filter Rooms and Kilometers -->
+            <div class="col-md-6">
+                <div class="row justify-content-left">
+                    <div
+                        class="d-flex flex-wrap justify-content-left align-items-center"
                     >
-                        Search
-                    </button>
-
-                    <button class="" @click="serviceFunction()">
-                        click di prova
-                    </button>
-
-                    <div class="d-flex flex-wrap">
-                        <div style="max-width: 70px" class="mx-2 mb-3">
+                        <div class="col-6 col-sm-3 mx-2 mb-3 fields">
                             <label for="n_rooms" class="form-label">
-                                n Camere min</label
+                                N° camere Min</label
                             >
                             <input
                                 type="number"
@@ -34,13 +19,13 @@
                                 name="n_rooms"
                                 id="n_rooms"
                                 aria-describedby="n_roomsHelper"
-                                placeholder="0"
+                                placeholder="1"
                                 v-model="n_rooms"
                             />
                         </div>
-                        <div style="max-width: 70px" class="mx-2 mb-3">
+                        <div class="col-6 col-sm-3 mx-2 mb-3 fields">
                             <label for="n_bed" class="form-label"
-                                >n letti min</label
+                                >N° letti Min</label
                             >
                             <input
                                 type="number"
@@ -50,13 +35,13 @@
                                 name="n_bed"
                                 id="n_bed"
                                 aria-describedby="n_bedHelper"
-                                placeholder="0"
+                                placeholder="1"
                                 v-model="n_bed"
                             />
                         </div>
-                        <div style="max-width: 70px" class="mx-2 mb-3">
+                        <div class="col-6 col-sm-3 mx-2 mb-3 fields">
                             <label for="distance" class="form-label"
-                                >raggio distanza in km</label
+                                >Raggio distanza Km</label
                             >
                             <input
                                 type="number"
@@ -66,59 +51,93 @@
                                 name="distance"
                                 id="distance"
                                 aria-describedby="distanceHelper"
-                                placeholder="0"
+                                placeholder="20"
                                 v-model="distance"
                             />
                         </div>
-                        <div>
-                            <div
-                                class="mb-3"
-                                v-for="service in services"
-                                v-bind:key="service.id"
-                            >
-                                <div class="form-check">
-                                    <input
-                                        type="checkbox"
-                                        class="form-check-input"
-                                        :name="service.name"
-                                        :id="service.id"
-                                        :value="service.id"
-                                        v-model="v_services"
-                                    />
-                                    <label class="form-check-label" for="">
-                                        {{ service.name }}
-                                    </label>
-                                </div>
+                    </div>
+                    <!--Services filter -->
+                    <div
+                        class="d-flex service_checkbox flex-wrap justify-content-left align-items-center"
+                    >
+                        <div
+                            class="py-2"
+                            v-for="service in services"
+                            v-bind:key="service.id"
+                        >
+                            <div class="form-check mx-2">
+                                <input
+                                    type="checkbox"
+                                    class="form-check-input"
+                                    :name="service.name"
+                                    :id="service.id"
+                                    :value="service.id"
+                                    v-model="v_services"
+                                />
+                                <label
+                                    class="form-check-label service_name"
+                                    for=""
+                                >
+                                    {{ service.name }}
+                                </label>
                             </div>
+                        </div>
+                    </div>
+                    <!-- Button Advanced Search -->
+                    <div class="col-md-6">
+                        <div
+                            class="d-flex mx-1 justify-content-left align-items-center"
+                        >
+                            <button
+                                class="btn btn_search text-white my-3"
+                                @click="searchFunction()"
+                            >
+                                Ricerca avanzata
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <a
-                href="#"
-                class="card justify-content-between card_promo m-3"
-                v-for="apartment in apartments"
-                :key="apartment.id"
-            >
-                <img
-                    class="card-img-top thumb"
-                    :src="'storage/' + apartment.image"
-                    alt="Card image cap"
-                />
-                <p class="promo">Promotion</p>
-                <h2 class="card-text m-3 card_title">{{ apartment.title }}</h2>
-                <div class="box">
-                    <p class="card-text m-3">{{ apartment.description }}</p>
-                </div>
-
+            <!-- Mappa -->
+            <div class="col-md-6">
                 <div
-                    class="button_details p-2 w-50 justify-content-center align-items-center text-center text-white m-auto mt-4 mb-4"
+                    class="d-flex justify-content-center align-items-center map bg-dark"
                 >
-                    <span>View details</span>
+                    <p class="text-white text-center fs-4">Mappa</p>
                 </div>
-            </a>
+            </div>
+        </div>
+
+        <!-- Results Advanced search -->
+        <div class="row mt-4">
+            <div
+                class="d-flex flex-wrap justify-content-center align-items-center"
+            >
+                <a
+                    :href="'/guest/apartments/' + apartment.slug"
+                    class="card justify-content-between card_promo m-3"
+                    v-for="apartment in apartments"
+                    :key="apartment.id"
+                >
+                    <img
+                        class="card-img-top thumb"
+                        :src="'storage/' + apartment.image"
+                        alt="Card image cap"
+                    />
+                    <p class="promo">Promotion</p>
+                    <h2 class="card-text m-3 card_title">
+                        {{ apartment.title }}
+                    </h2>
+                    <div class="box">
+                        <p class="card-text m-3">{{ apartment.description }}</p>
+                    </div>
+                    <div
+                        class="button_details p-2 w-50 justify-content-center align-items-center text-center text-white m-auto mt-4 mb-4"
+                    >
+                        <span>View details</span>
+                    </div>
+                </a>
+            </div>
         </div>
     </div>
 </template>
@@ -133,18 +152,20 @@ export default {
             n_bed: "",
             n_rooms: "",
             v_services: [],
-            coordinates: {},
             distance: null,
+            coordinates: {},
         };
     },
-    props: { services: Array },
-
+    props: {
+        services: Array,
+        show_route: String,
+    },
     methods: {
         searchFunction() {
             console.log(this.userInput);
             axios
                 .get(
-                    `/api/apartments?address=${this.userInput}&n_rooms=${this.n_rooms}&n_bed=${this.n_bed}&services=${this.v_services}&latitude=${this.coordinates.lat}&longitude=${this.coordinates.lon}&distance=${this.distance}`
+                    `/api/apartments?n_rooms=${this.n_rooms}&n_bed=${this.n_bed}&services=${this.v_services}&latitude=${this.coordinates.lat}&longitude=${this.coordinates.lon}&distance=${this.distance}`
                 )
                 .then((response) => {
                     this.apartments = response.data.data;
@@ -165,6 +186,13 @@ export default {
             this.coordinates = data;
         });
         console.log(this.coordinates);
+        if (localStorage.coordinates) {
+            this.coordinates = JSON.parse(localStorage.getItem("coordinates"));
+            console.log(this.coordinates);
+        }
+    },
+    mounted() {
+        this.searchFunction();
     },
 };
 /*appunti prima di iniziare
