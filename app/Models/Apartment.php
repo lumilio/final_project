@@ -29,9 +29,8 @@ class Apartment extends Model
 
     public function sponsors(): BelongsToMany
     {
-        return $this->belongsToMany(Sponsor::class);
+        return $this->belongsToMany(Sponsor::class)->withPivot('start_date', 'end_date');;
     }
-
     /**
      * Get all of the views for the Apartment
      *
@@ -41,4 +40,5 @@ class Apartment extends Model
     {
         return $this->hasMany(View::class);
     }
+
 }

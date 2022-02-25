@@ -93,20 +93,6 @@ class ApartmentController extends Controller
             $validate['slug'] = Str::slug($validate['title']);
         }
 
-        //ddd($apartments_array);
-        //ddd(last($array_same_title)->slug);
-        //ddd($array_same_title);
-        //ddd(Str::slug($validate['title']));
-        //ddd(Str::slug($validate['title'] . '-' . count($array_same_title)));
-        //ddd(Str::slug($validate['title'] . '-' . (count($array_same_title)+1)));
-
-        /* -------------------- */
-
-
-
-
-
-
         $apartment = Apartment::create($validate);
 
         if ($request->has('services')) {
@@ -297,4 +283,5 @@ class ApartmentController extends Controller
         return view('registered.statistics.index', compact('apartment','views_array'));
     }
 }
+
 
