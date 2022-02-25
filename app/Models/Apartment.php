@@ -31,4 +31,14 @@ class Apartment extends Model
     {
         return $this->belongsToMany(Sponsor::class)->withPivot('start_date', 'end_date');;
     }
+    /**
+     * Get all of the views for the Apartment
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function views(): HasMany
+    {
+        return $this->hasMany(View::class);
+    }
+
 }

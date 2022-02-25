@@ -98,6 +98,10 @@
                                     class="btn bg-warning">
                                     Sponsorizza
                                 </a>
+                                <a href="{{ route('registered.statistics', $apartment->id) }}" class="btn btn-primary"><i
+                                        class="fas fa-eye text-white"></i>
+                                    Statistiche
+                                </a>
                             </td>
                         </tr>
                     @endforeach

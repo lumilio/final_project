@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Registered;
 use App\Http\Controllers\Controller;
 use App\Models\Apartment;
 use App\Models\Service;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -215,4 +216,72 @@ class ApartmentController extends Controller
             abort(403);
         }
     }
+
+    public function showStatistics(Apartment $apartment)
+    {
+
+        /* ------------------------------------- messaggi ------------------------------------- */
+
+
+
+
+
+        /* ------------------------------------- visualizzazioni ------------------------------------- */
+        $views_years = [];
+        $views_months = [
+            '1' => [],
+            '2' => [],
+            '3' => [],
+            '4' => [],
+            '5' => [],
+            '6' => [],
+            '7' => [],
+            '8' => [],
+            '9' => [],
+            '10' => [],
+            '11' => [],
+            '12' => [],
+        ];
+        $times_array = [];
+
+        foreach ($apartment->views as $view) {
+            if (!(in_array(date("y", strtotime($view->created_at)), $views_years))){
+                $anno = date("y", strtotime($view->created_at));
+                array_push($views_years, $anno);
+            }
+        }
+        foreach ($views_years as $year) {
+            array_push($times_array, [$year => $views_months]);  //[$year => $views_months]
+        }
+        foreach ($times_array as $key0 => $index) {
+            foreach ($index as $key1 => $i1) {
+                foreach ($i1 as $key2 => $i2) {
+                    foreach ($apartment->views as $view) {
+                        if(
+                        date("y", strtotime($view->created_at)) == $key1 &&
+                        date("m", strtotime($view->created_at)) == $key2)
+                        {
+                            array_push($times_array[$key0][$key1][$key2], $view);
+                        }
+                    }
+                }
+            }
+        }
+
+        $views_array = array_reverse($times_array);
+
+        //$views_2022 = $views_array[0][22];
+        //$views_2023 = $views_array[1][23];
+        //$views_2024 = $views_array[2][24];
+        //...
+        //...
+        //...
+        //... per aggiungere un anno in futuro seguire lo schema...
+        /* -------------------------------------------------------------------------------------------- */
+
+
+        return view('registered.statistics.index', compact('apartment','views_array'));
+    }
 }
+
+
