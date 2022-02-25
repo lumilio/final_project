@@ -9,7 +9,6 @@
         </p>
 
         <div class='d-flex flex-column' >
-
             <span>2022</span>
             <span>gen, views:{{count($views_array[0][22][1])}}, messages:, </span>
             <span>feb, views:{{count($views_array[0][22][2])}}, messages:, </span>
@@ -25,11 +24,10 @@
             <span>dec, views:{{count($views_array[0][22][12])}}, messages:, </span>
 
 
-
-
-
-            
-            {{-- **** ESEMPIO ***
+            {{-- **** ESEMPIO prossimi anni; se non ci sono views negli anni dopo non funzionano ***
+                *
+                *
+                *
                  <span>2023</span>
             <span>gen, views:{{count($views_array[1][23][1])}}, messages:, </span>
             <span>feb, views:{{count($views_array[1][23][2])}}, messages:, </span>
@@ -56,7 +54,14 @@
             <span>ott, views:{{count($views_array[2][24][10])}}, messages:, </span>
             <span>nov, views:{{count($views_array[2][24][11])}}, messages:, </span>
             <span>dec, views:{{count($views_array[2][24][12])}}, messages:, </span>
-            --}}
+                *
+                *
+                *
+                --}}     
         </div>
+
+
+
+
     </div>
 @endsection

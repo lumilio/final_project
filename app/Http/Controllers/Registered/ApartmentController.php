@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Registered;
 use App\Http\Controllers\Controller;
 use App\Models\Apartment;
 use App\Models\Service;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -234,8 +235,6 @@ class ApartmentController extends Controller
     {
 
         /* ------------------------------------- messaggi ------------------------------------- */
-
-
 
 
 
