@@ -233,6 +233,13 @@ class ApartmentController extends Controller
     public function showStatistics(Apartment $apartment)
     {
 
+        /* ------------------------------------- messaggi ------------------------------------- */
+
+
+
+
+
+
 
         /* ------------------------------------- visualizzazioni ------------------------------------- */
         $views_years = [];
@@ -278,9 +285,9 @@ class ApartmentController extends Controller
 
         $views_array = array_reverse($times_array);
 
-        $views_2022 = $views_array[0][22];
-        $views_2023 = $views_array[1][23];
-        $views_2024 = $views_array[2][24];
+        //$views_2022 = $views_array[0][22];
+        //$views_2023 = $views_array[1][23];
+        //$views_2024 = $views_array[2][24];
         //...
         //...
         //...
@@ -288,7 +295,7 @@ class ApartmentController extends Controller
         /* -------------------------------------------------------------------------------------------- */
 
 
-        return view('registered.statistics.index', compact('apartment','views_2022','views_2023'));
+        return view('registered.statistics.index', compact('apartment','views_array'));
     }
 }
 
