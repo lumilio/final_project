@@ -221,10 +221,65 @@ class ApartmentController extends Controller
     {
 
         /* ------------------------------------- messaggi ------------------------------------- */
+        $all_contacts = Contact::all();
+        $fill_contacts = [];
+        $contacts_years = [];
+        $contacts_months = [
+            '1' => [],
+            '2' => [],
+            '3' => [],
+            '4' => [],
+            '5' => [],
+            '6' => [],
+            '7' => [],
+            '8' => [],
+            '9' => [],
+            '10' => [],
+            '11' => [],
+            '12' => [],
+        ];
+        $times_array_message = [];
+
+        foreach ($all_contacts as $contact) {
+            if($contact->apartment_id == $apartment->id){
+                array_push($fill_contacts, $contact);
+            }
+        }
+        foreach ($fill_contacts as $contact_fill) {
+            if (!(in_array(date("y", strtotime($contact_fill->created_at)), $contacts_years))){
+                $anno = date("y", strtotime($contact_fill->created_at));
+                array_push($contacts_years, $anno);
+            }
+        }
+        foreach ($contacts_years as $year) {
+            array_push($times_array_message, [$year => $contacts_months]);  //[$year => $views_months]
+        }
+
+        foreach ($times_array_message as $key0 => $index) {
+            foreach ($index as $key1 => $i1) {
+                foreach ($i1 as $key2 => $i2) {
+                    foreach ($fill_contacts as $item) {
+                        if(
+                        date("y", strtotime($item->created_at)) == $key1 &&
+                        date("m", strtotime($item->created_at)) == $key2)
+                        {
+                            array_push($times_array_message[$key0][$key1][$key2], $item);
+                        }
+                    }
+                }
+            }
+        }
+
+        $contacts_array = array_reverse($times_array_message);
 
 
-
-
+        // messaggi del 2022 = $views_array[0][22];
+        // messaggi del 2023 = $views_array[1][23];
+        // messaggi del 2024 = $views_array[2][24];
+        //...
+        //...
+        //...
+        //... per aggiungere un anno in futuro seguire lo schema...
 
         /* ------------------------------------- visualizzazioni ------------------------------------- */
         $views_years = [];
@@ -270,17 +325,19 @@ class ApartmentController extends Controller
 
         $views_array = array_reverse($times_array);
 
-        //$views_2022 = $views_array[0][22];
-        //$views_2023 = $views_array[1][23];
-        //$views_2024 = $views_array[2][24];
+        // views del 2022 = $views_array[0][22];
+        // views del 2023 = $views_array[1][23];
+        // views del 2024 = $views_array[2][24];
         //...
         //...
         //...
         //... per aggiungere un anno in futuro seguire lo schema...
         /* -------------------------------------------------------------------------------------------- */
 
-
-        return view('registered.statistics.index', compact('apartment','views_array'));
+        $data = [];
+        array_push($data, $views_array, $contacts_array);
+        
+        return view('registered.statistics.index', compact('apartment','data'));
     }
 }
 
