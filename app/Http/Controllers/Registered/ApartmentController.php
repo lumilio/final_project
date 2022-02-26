@@ -334,8 +334,10 @@ class ApartmentController extends Controller
         //... per aggiungere un anno in futuro seguire lo schema...
         /* -------------------------------------------------------------------------------------------- */
 
-
-        return view('registered.statistics.index', compact('apartment','views_array','contacts_array'));
+        $data = [];
+        array_push($data, $views_array, $contacts_array);
+        
+        return view('registered.statistics.index', compact('apartment','data'));
     }
 }
 

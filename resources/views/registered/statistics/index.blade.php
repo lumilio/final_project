@@ -2,26 +2,47 @@
 
 @section('content')
     <div class="container">
-        <h2>Visualizzazioni dell'appartamento: {{ $apartment->title }}</h2>
-        <p>
-            Totale visualizzazioni di sempre:
-            {{ count($apartment->views) }}
-        </p>
+        <h2>Statistiche dell'appartamento: {{ $apartment->title }}</h2>
 
-        <div class='d-flex flex-column' >
-            <span>2022</span>
-            <span>gen, views:{{count($views_array[0][22][1])}}, messages:{{count($contacts_array[0][22][1])}}, </span>
-            <span>feb, views:{{count($views_array[0][22][2])}}, messages:{{count($contacts_array[0][22][2])}}, </span>
-            <span>mar, views:{{count($views_array[0][22][3])}}, messages:{{count($contacts_array[0][22][3])}}, </span>
-            <span>apr, views:{{count($views_array[0][22][4])}}, messages:{{count($contacts_array[0][22][4])}}, </span>
-            <span>mag, views:{{count($views_array[0][22][5])}}, messages:{{count($contacts_array[0][22][5])}}, </span>
-            <span>giu, views:{{count($views_array[0][22][6])}}, messages:{{count($contacts_array[0][22][6])}}, </span>
-            <span>lug, views:{{count($views_array[0][22][7])}}, messages:{{count($contacts_array[0][22][7])}}, </span>
-            <span>ago, views:{{count($views_array[0][22][8])}}, messages:{{count($contacts_array[0][22][8])}}, </span>
-            <span>set, views:{{count($views_array[0][22][9])}}, messages:{{count($contacts_array[0][22][9])}}, </span>
-            <span>ott, views:{{count($views_array[0][22][10])}}, messages:{{count($contacts_array[0][22][10])}}, </span>
-            <span>nov, views:{{count($views_array[0][22][11])}}, messages:{{count($contacts_array[0][22][11])}}, </span>
-            <span>dec, views:{{count($views_array[0][22][12])}}, messages:{{count($contacts_array[0][22][12])}}, </span>  
+        <div style='width: 50%'>
+
+            <div class="table-responsive-lg">
+                <table class="table table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th  class='text-center'>Periodo</th>
+                            <th  class='text-center'>n. Visualizzazioni</th>
+                            <th  class='text-center'>n. Messaggi ricevuti</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($data[0] as $key0 => $index0)
+                        @foreach ($index0 as $key1 => $index1)
+                        @foreach ($index1 as $key2 => $index2)
+                            <tr>
+                                <td class='text-center'>{{$key2}} / 20{{$key1}}</td>
+                                <td class='text-center'>
+                                    @if(count($index2) != 0)
+                                    {{count($index2)}}
+                                    @else
+                                    -
+                                    @endif
+                                </td>
+                                <td class='text-center'>
+                                    @if(isset($data[1][$key0][$key1][$key2]) && count($data[1][$key0][$key1][$key2]) != 0)
+                                    {{count($data[1][$key0][$key1][$key2])}}
+                                    @else
+                                    -
+                                    @endif
+                                </td>
+                            </tr>
+                        @endforeach
+                        @endforeach
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
+
     </div>
 @endsection
