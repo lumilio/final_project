@@ -3,9 +3,7 @@
 @section('content')
     <div class="container">
         <h2>Statistiche dell'appartamento: {{ $apartment->title }}</h2>
-
-        <div style='width: 50%'>
-
+        <div class='mt-5' style='width: 50%'>
             <div class="table-responsive-lg">
                 <table class="table table-striped table-sm">
                     <thead>
@@ -43,6 +41,5 @@
                 </table>
             </div>
         </div>
-
     </div>
 @endsection
