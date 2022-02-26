@@ -1,11 +1,12 @@
 <template>
     <div
         id="searchbar"
-        class="col-md-6 mb-4 mx-4 search_bar d-flex flex-row-reverse justify-content-center align-items-center"
+        placeholder="Search"
+        class="resp col-md-6 mb-4 mx-4 search_bar d-flex flex-row-reverse justify-content-center align-items-center"
     >
         <a
             @click="saveCo()"
-            class="btn py-1 fw-bold search text-white mt-2"
+            class="btn py-1 fw-bold search mx-2 text-white"
             href="/research"
             >Cerca</a
         >

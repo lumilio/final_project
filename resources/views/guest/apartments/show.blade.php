@@ -26,7 +26,7 @@
                     <!--------- servizi --------->
                     <p class="my-3"> Servizi disponibili:
                         @forelse ($apartment->services as $service)
-                            <div class="badge p-2 me-3 text-black bg-icon ">
+                            <div class="badge mb-2 p-2 me-3 text-black bg-icon ">
                                 <span>
                                     <img class="mx-2" height="20"
                                         src="{{ asset('img/service_logo/' . $service->icon . '.svg') }}"
@@ -109,7 +109,7 @@
                             </div>
                         @endif
                         <div class="row mb-2">
-                            <div class="col-6">
+                            <div class="col-md-6">
                                 <label for="name" class="form-label"></label>
                                 <input type="text" name="name" id="name" class="form-control"
                                     placeholder="Come ti chiami?" required minleght='4' maxlenght='50'
@@ -119,7 +119,7 @@
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div class="col-6">
+                            <div class="col-md-6">
                                 <label for="email" class="form-label"></label>
                                 @auth
                                     <input type="email" name="email" id="email" class="form-control" required

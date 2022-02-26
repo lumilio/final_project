@@ -1,13 +1,17 @@
 @extends('layouts.app')
 
+@section('navbar')
+@include('partials.adv')
+@endsection
+
 @section('content')
 <div class="container-fluid">
     <div class="row justify-content-center background_form">
-        <div class="col-md-4">
-            <div class="card card_title">
+            <div class="form d-flex justify-content-center align-items-start">
+                <div class="card card_title">
                 <div class="card-header card_head">{{ __('Reset Password') }}</div>
 
-                <div class="card-body form_log">
+                <div class="card-body form_log px-0">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
@@ -17,7 +21,7 @@
                     <form method="POST" action="{{ route('password.email') }}">
                         @csrf
 
-                        <div class="form-group row">
+                        <div class="form-group row card_padding">
                             <label for="email" class="col-md-6 col-form-label text-md-right title_input">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6 input_value">
@@ -31,9 +35,9 @@
                             </div>
                         </div>
 
-                        <div class="form-group row mb-0">
+                        <div class="form-group row card_padding mb-0">
                             <div class="col-md-6 title_input">
-                                <button type="submit" class="btn button_link ">
+                                <button type="submit" class="btn btn-orange text-white mt-3 ">
                                     {{ __('Send Password Reset Link') }}
                                 </button>
                             </div>
@@ -41,7 +45,9 @@
                     </form>
                 </div>
             </div>
-        </div>
+            </div>
+
+
     </div>
 </div>
 @endsection

@@ -6,6 +6,11 @@
     background-position: center;
     .card_title {
         background-color: $white;
+        width: 400px;
+    }
+    .btn-orange {
+        background-color: $button;
+        border-radius: 20px;
     }
     .card_head {
         color: $black;
@@ -120,15 +125,60 @@
 }
 
 /* Responsive */
+@media (max-width: 992px) {
+    .form {
+        .card_title {
+            width: 40%;
+            .card_padding {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            .title_input {
+                width: 90%;
+                margin: auto;
+            }
+
+            .input_value {
+                width: 90%;
+                margin: auto;
+            }
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .form {
+        .card_title {
+            width: 60%;
+            .title_input {
+                width: 90%;
+                margin: auto;
+            }
+
+            .input_value {
+                width: 90%;
+                margin: auto;
+            }
+        }
+    }
+}
 
 @media (max-width: 320px) {
-    .title_input {
-        width: 90%;
-        margin: auto;
-    }
+    .form {
+        .card_title {
+            width: 100%;
+            .title_input {
+                width: 90%;
+                margin: auto;
+            }
 
-    .input_value {
-        width: 90%;
-        margin: auto;
+            .input_value {
+                width: 90%;
+                margin: auto;
+            }
+            .link {
+                font-size: 14px;
+            }
+        }
     }
 }
