@@ -1,6 +1,7 @@
 @extends('layouts.registered')
 
 @section('content')
+
     <div class="container">
         <h2>Statistiche dell'appartamento: {{ $apartment->title }}</h2>
         <div class='mt-5' style='width: 50%'>
@@ -43,3 +44,4 @@
         </div>
     </div>
 @endsection
+
