@@ -1,9 +1,11 @@
 <template>
+    <!-- container della ricerca avanzata -->
     <div
         id="searchbar"
         placeholder="Search"
         class="resp col-md-6 mb-4 mx-4 search_bar d-flex flex-row-reverse justify-content-center align-items-center"
     >
+
         <a
             @click="saveCo()"
             class="btn py-1 fw-bold search mx-2 text-white"
@@ -23,11 +25,12 @@ export default {
                 lat: null,
                 lon: null,
             },
-            newCoordinates: null,
+            userInput: "",
         };
     },
 
     methods: {
+        /* funzione per crare la searchbox */
         createSearchbox() {
             var options = {
                 searchOptions: {
@@ -40,13 +43,21 @@ export default {
                     language: "it-IT",
                 },
             };
-
+            /* definisci variabile per la searchbox */
             var ttSearchBox = new tt.plugins.SearchBox(tt.services, options);
+            /* definisci variabile ed assegna la funzione della searchbox */
             var searchBoxHTML = ttSearchBox.getSearchBoxHTML();
+            /* prendi il contenitore nella dom ed aggiungi la searchbox ricevuta */
             document.getElementById("searchbar").append(searchBoxHTML);
+            /* crea una variabile e dai valore l'input nella searchbox */
+            var inputSrc = document.querySelector(".tt-search-box-input");
 
+            /* assegna un valore all'input della searchbar */
+            inputSrc.value = localStorage.userInput;
+
+            /* prendi le coordinate in risposta*/
             ttSearchBox.on("tomtom.searchbox.resultselected", (data) => {
-                console.log(data.data.result.position);
+                console.log(data.data.result);
                 this.$set(
                     this.coordinates,
                     "lat",
@@ -59,23 +70,16 @@ export default {
                 );
                 Bus.$emit("sendCoordinates", this.coordinates);
                 const parsed = JSON.stringify(this.coordinates);
+                this.userInput = data.data.result.address.freeformAddress;
                 localStorage.setItem("coordinates", parsed);
-                console.log("salviamo le coordinate", localStorage);
+                localStorage.setItem("userInput", this.userInput);
+                console.log(this.userInput);
             });
         },
-        /* saveCo() {
-            localStorage.coordinates = this.coordinates;
-            console.log("salviamo le coordinate", localStorage);
-        }, */
-        /* saveCo() {
-            const parsed = JSON.stringify(this.coordinates);
-            localStorage.setItem("coordinates", parsed);
-            console.log("salviamo le coordinate", localStorage);
-        }, */
     },
-
     mounted() {
         this.createSearchbox();
+        localStorage.userInput = "";
     },
 };
 </script>
