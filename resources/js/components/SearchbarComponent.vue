@@ -75,6 +75,7 @@ export default {
     },
     mounted() {
         this.createSearchbox();
+        localStorage.userInput = "";
     },
 };
 </script>
