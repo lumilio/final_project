@@ -21,6 +21,7 @@ export default {
                 lat: null,
                 lon: null,
             },
+            userInput: "",
         };
     },
 
@@ -48,7 +49,7 @@ export default {
             var inputSrc = document.querySelector(".tt-search-box-input");
 
             /* assegna un valore all'input della searchbar */
-            //inputSrc.value = localStorage.coordinates;
+            inputSrc.value = localStorage.userInput;
 
             /* prendi le coordinate in risposta*/
             ttSearchBox.on("tomtom.searchbox.resultselected", (data) => {
@@ -65,7 +66,10 @@ export default {
                 );
                 Bus.$emit("sendCoordinates", this.coordinates);
                 const parsed = JSON.stringify(this.coordinates);
+                this.userInput = data.data.result.address.freeformAddress;
                 localStorage.setItem("coordinates", parsed);
+                localStorage.setItem("userInput", this.userInput);
+                console.log(this.userInput);
             });
         },
     },
