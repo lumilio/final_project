@@ -1,6 +1,6 @@
 .card_promo {
-    width: 25%;
     border-radius: 20px;
+    min-height: 751px;
     text-decoration: none;
     font-family: "Inter";
     color: $black;
@@ -85,31 +85,4 @@
     background-color: $lightazure;
 }
 
-//Responsive
-@media (max-width: 992px) {
-    .card_promo {
-        width: 30%;
-        .thumb {
-            height: 150px;
-        }
-    }
-}
 
-@media (max-width: 576px) {
-    .card {
-        width: 43%;
-        .thumb {
-            height: 130px;
-        }
-    }
-}
-
-@media (max-width: 320px) {
-    .card {
-        width: 100%;
-        margin-bottom: 2rem;
-        .thumb {
-            height: 150px;
-        }
-    }
-}

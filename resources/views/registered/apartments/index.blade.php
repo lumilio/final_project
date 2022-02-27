@@ -3,10 +3,8 @@
 @section('content')
     <div class="container-fluid">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">Elementi</h1>
+            <h1 class="h2">Appartamenti</h1>
         </div>
-
-        <h2>Appartamenti</h2>
         @if (session('message'))
             <div class="alert alert-success">
                 {{ session('message') }}
@@ -24,10 +22,16 @@
                         <th scope="col">Id</th>
                         <th scope="col">Indirizzo</th>
                         <th scope="col">Immagine</th>
+                        <th scope="col">Titolo</th>
                         <th scope="col">Visibilità</th>
                         <th scope="col">Creato il</th>
                         <th scope="col">Aggiornato il</th>
                         <th scope="col">Azioni</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -39,6 +43,7 @@
                                 <img height="50" src="{{ asset('storage/' . $apartment->image) }}"
                                     alt="{{ $apartment->title }}">
                             </td>
+                            <td>{{ $apartment->title }}</td>
                             <td>
                                 @if ($apartment->visibility === 1)
                                     <div class="visibility ">
@@ -55,8 +60,14 @@
                             <td>
                                 <a href="{{ route('guest.apartments.show', $apartment->slug) }}"
                                     class="btn btn_show"><i class="fas fa-eye text-white"></i></a>
+                            </td>
+
+                            <td>
                                 <a href="{{ route('registered.apartments.edit', $apartment->id) }}"
                                     class="btn btn_pencil text-white"><i class="fas fa-pencil-alt"></i></a>
+                            </td>
+
+                            <td>
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                                     data-bs-target="#delete{{ $apartment->id }}">
@@ -64,7 +75,7 @@
                                 </button>
 
                                 <!-- Modal -->
-                                <div class="modal fade" id="delete{{ $apartment->id }}" tabindex="-1" role="dialog"
+                                <div class="modal fade text-dark" id="delete{{ $apartment->id }}" tabindex="-1" role="dialog"
                                     aria-labelledby="modal_{{ $apartment->id }}" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
@@ -94,10 +105,15 @@
                                         </div>
                                     </div>
                                 </div>
+                            </td>
+
+                            <td>
                                 <a href="{{ route('registered.sponsors.index', $apartment->id) }}"
                                     class="btn dark_yellow text-white"><i class="fa-solid fa-rectangle-ad"></i>
                                     Sponsorizza
                                 </a>
+                            </td>
+                            <td>
                                 <a href="{{ route('registered.statistics', $apartment->id) }}" class="btn text-white static"><i
                                         class="fa-solid fa-chart-line"></i>
                                     Statistiche
