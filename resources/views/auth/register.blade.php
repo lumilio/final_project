@@ -7,7 +7,7 @@
 @section('content')
     <div class="container-fluid background_form_reg">
         <div class="row justify-content-center">
-            <div class="col-md-6 d-flex justify-content-center">
+            <div class="form d-flex justify-content-center align-items-center">
                 <div class="card card_title">
                     <div class="card-header card_head">{{ __('Register') }}</div>
 
@@ -17,7 +17,7 @@
 
 
 
-                            <div class="form-group row pb-2">
+                            <div class="form-group row card_padding pb-2">
                                 <label for="email" class="col-md-6 col-form-label text-md-right title_input">
                                     <p class="rule">I campi con l'asterisco sono obbligatori.</p>
                                     <span class="symbol">*</span>
@@ -36,7 +36,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row pb-2">
+                            <div class="form-group row card_padding pb-2">
                                 <label for="password" class="col-md-6 col-form-label text-md-right title_input">
                                     <span class="symbol">*</span>
                                     {{ __('Password') }}</label>
@@ -54,7 +54,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row pb-2">
+                            <div class="form-group row card_padding pb-2">
                                 <label for="password-confirm" class="col-md-6 col-form-label text-md-right title_input">
                                     <span class="symbol">*</span>
                                     {{ __('Confirm Password') }}</label>
@@ -65,7 +65,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row pb-2">
+                            <div class="form-group row card_padding pb-2">
                                 <label for="name"
                                     class="col-md-6 col-form-label text-md-right title_input">{{ __('Name') }}</label>
 
@@ -80,7 +80,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="form-group row pb-2">
+                            <div class="form-group row card_padding pb-2">
                                 <label for="lastname"
                                     class="col-md-6 col-form-label text-md-right title_input">{{ __('Lastname') }}</label>
 
@@ -96,7 +96,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="form-group row pb-2">
+                            <div class="form-group row card_padding pb-2">
                                 <label for="date_of_birth"
                                     class="col-md-6 col-form-label text-md-right title_input">{{ __('Date of birth') }}</label>
 
@@ -114,7 +114,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row mb-0">
+                            <div class="form-group row card_padding mb-0">
                                 <div class="col-md-6 title_input">
                                     <button id="register_button" type="submit" class="btn button_reg">
                                         {{ __('Register') }}

@@ -15,7 +15,7 @@ class AddApartmentIdToContactsTable extends Migration
     {
         Schema::table('contacts', function (Blueprint $table) {
             $table->unsignedBigInteger('apartment_id')->nullable()->after('id');
-            $table->foreign('apartment_id')->references('id')->on('apartments');
+            $table->foreign('apartment_id')->references('id')->on('apartments')->onDelete('set null');
         });
     }
 

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Apartment;
 use App\Models\Sponsor;
 use Braintree\Gateway;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -54,12 +55,16 @@ class SponsorController extends Controller
 
 
             // ddd($pivot);
+            $start_date = Carbon::now('Europe/Rome');
+            $end_date = $start_date->addHours($sponsor->duration)->format('Y-m-d H:i:s');
+
+            // ddd($start_date, $end_date);
 
             $data = [
                 'apartment_id' => $apartment->id,
                 'sponsor_id' => $sponsor->id,
                 'start_date' => $transaction->createdAt,
-                'end_date' => '2028-08-06', //aggiungere la data di scadenza
+                'end_date' => $end_date, //aggiungere la data di scadenza
             ];
 
             DB::table('apartment_sponsor')->insert($data);

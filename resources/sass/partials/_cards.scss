@@ -1,6 +1,6 @@
 .card_promo {
-    width: 25%;
     border-radius: 20px;
+    min-height: 751px;
     text-decoration: none;
     font-family: "Inter";
     color: $black;
@@ -65,30 +65,24 @@
     }
 }
 
-//Responsive
-@media (max-width: 992px) {
-    .card_promo {
-        .thumb {
-            height: 150px;
-        }
+//Show Cards
+.place {
+    color: $menu;
+}
+.back_icon {
+    background-color: $icona;
+    .icon_show {
+        color: $buttonhover;
     }
+    .text_service {
+        color: $button;
+    }
+}
+.service_text {
+    color: $darkazure;
+}
+.bg-icon {
+    background-color: $lightazure;
 }
 
-@media (max-width: 576px) {
-    .card {
-        width: 43%;
-        .thumb {
-            height: 130px;
-        }
-    }
-}
 
-@media (max-width: 320px) {
-    .card {
-        width: 100%;
-        margin-bottom: 2rem;
-        .thumb {
-            height: 150px;
-        }
-    }
-}

@@ -1,67 +1,48 @@
 @extends('layouts.registered')
 
 @section('content')
+
     <div class="container">
-        <h2>Visualizzazioni dell'appartamento: {{ $apartment->title }}</h2>
-        <p>
-            Totale visualizzazioni di sempre:
-            {{ count($apartment->views) }}
-        </p>
-
-        <div class='d-flex flex-column' >
-            <span>2022</span>
-            <span>gen, views:{{count($views_array[0][22][1])}}, messages:, </span>
-            <span>feb, views:{{count($views_array[0][22][2])}}, messages:, </span>
-            <span>mar, views:{{count($views_array[0][22][3])}}, messages:, </span>
-            <span>apr, views:{{count($views_array[0][22][4])}}, messages:, </span>
-            <span>mag, views:{{count($views_array[0][22][5])}}, messages:, </span>
-            <span>giu, views:{{count($views_array[0][22][6])}}, messages:, </span>
-            <span>lug, views:{{count($views_array[0][22][7])}}, messages:, </span>
-            <span>ago, views:{{count($views_array[0][22][8])}}, messages:, </span>
-            <span>set, views:{{count($views_array[0][22][9])}}, messages:, </span>
-            <span>ott, views:{{count($views_array[0][22][10])}}, messages:, </span>
-            <span>nov, views:{{count($views_array[0][22][11])}}, messages:, </span>
-            <span>dec, views:{{count($views_array[0][22][12])}}, messages:, </span>
-
-
-            {{-- **** ESEMPIO prossimi anni; se non ci sono views negli anni dopo non funzionano ***
-                *
-                *
-                *
-                 <span>2023</span>
-            <span>gen, views:{{count($views_array[1][23][1])}}, messages:, </span>
-            <span>feb, views:{{count($views_array[1][23][2])}}, messages:, </span>
-            <span>mar, views:{{count($views_array[1][23][3])}}, messages:, </span>
-            <span>apr, views:{{count($views_array[1][23][4])}}, messages:, </span>
-            <span>mag, views:{{count($views_array[1][23][5])}}, messages:, </span>
-            <span>giu, views:{{count($views_array[1][23][6])}}, messages:, </span>
-            <span>lug, views:{{count($views_array[1][23][7])}}, messages:, </span>
-            <span>ago, views:{{count($views_array[1][23][8])}}, messages:, </span>
-            <span>set, views:{{count($views_array[1][23][9])}}, messages:, </span>
-            <span>ott, views:{{count($views_array[1][23][10])}}, messages:, </span>
-            <span>nov, views:{{count($views_array[1][23][11])}}, messages:, </span>
-            <span>dec, views:{{count($views_array[1][23][12])}}, messages:, </span>
-            <span>2024</span> 
-            <span>gen, views:{{count($views_array[2][24][1])}}, messages:, </span>
-            <span>feb, views:{{count($views_array[2][24][2])}}, messages:, </span>
-            <span>mar, views:{{count($views_array[2][24][3])}}, messages:, </span>
-            <span>apr, views:{{count($views_array[2][24][4])}}, messages:, </span>
-            <span>mag, views:{{count($views_array[2][24][5])}}, messages:, </span>
-            <span>giu, views:{{count($views_array[2][24][6])}}, messages:, </span>
-            <span>lug, views:{{count($views_array[2][24][7])}}, messages:, </span>
-            <span>ago, views:{{count($views_array[2][24][8])}}, messages:, </span>
-            <span>set, views:{{count($views_array[2][24][9])}}, messages:, </span>
-            <span>ott, views:{{count($views_array[2][24][10])}}, messages:, </span>
-            <span>nov, views:{{count($views_array[2][24][11])}}, messages:, </span>
-            <span>dec, views:{{count($views_array[2][24][12])}}, messages:, </span>
-                *
-                *
-                *
-                --}}     
+        <h2>Statistiche dell'appartamento: {{ $apartment->title }}</h2>
+        <hr>
+        <div class='mt-5 mx-auto w-50'>
+            <div class="table-responsive-lg">
+                <table class="table table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th  class='text-center'>Periodo</th>
+                            <th  class='text-center'>n. Visualizzazioni</th>
+                            <th  class='text-center'>n. Messaggi ricevuti</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($data[0] as $key0 => $index0)
+                        @foreach ($index0 as $key1 => $index1)
+                        @foreach ($index1 as $key2 => $index2)
+                            <tr>
+                                <td class='text-center'>{{$key2}} / 20{{$key1}}</td>
+                                <td class='text-center'>
+                                    @if(count($index2) != 0)
+                                    {{count($index2)}}
+                                    @else
+                                    -
+                                    @endif
+                                </td>
+                                <td class='text-center'>
+                                    @if(isset($data[1][$key0][$key1][$key2]) && count($data[1][$key0][$key1][$key2]) != 0)
+                                    {{count($data[1][$key0][$key1][$key2])}}
+                                    @else
+                                    -
+                                    @endif
+                                </td>
+                            </tr>
+                        @endforeach
+                        @endforeach
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
-
-
-
-
     </div>
 @endsection
+

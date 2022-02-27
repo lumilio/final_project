@@ -4,6 +4,7 @@
     background-image: url(../img/home.jpeg);
     background-position: center;
     background-repeat: no-repeat;
+    background-size: cover;
 }
 
 //Responsive
@@ -21,7 +22,7 @@
     .hero_image {
         background-position: top;
         background-size: cover;
-        height: 400px;
+        height: 500px;
         padding-top: 10rem;
         margin-top: -190px;
     }
