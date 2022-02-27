@@ -1,8 +1,16 @@
 <template>
     <div
         id="searchbar"
-        class="mb-4 search_bar d-flex justify-content-center align-items-center"
-    ></div>
+        placeholder="Search"
+        class="resp col-md-6 mb-4 mx-4 search_bar d-flex flex-row-reverse justify-content-center align-items-center"
+    >
+        <a
+            @click="saveCo()"
+            class="btn py-1 fw-bold search mx-2 text-white"
+            href="/research"
+            >Cerca</a
+        >
+    </div>
 </template>
 
 <script>
@@ -15,7 +23,7 @@ export default {
                 lat: null,
                 lon: null,
             },
-            pippot: "stringa di pippo",
+            newCoordinates: null,
         };
     },
 
@@ -50,11 +58,20 @@ export default {
                     data.data.result.position.lng
                 );
                 Bus.$emit("sendCoordinates", this.coordinates);
+                const parsed = JSON.stringify(this.coordinates);
+                localStorage.setItem("coordinates", parsed);
+                console.log("salviamo le coordinate", localStorage);
             });
         },
-        sendFunction() {
-            console.log("click");
-        },
+        /* saveCo() {
+            localStorage.coordinates = this.coordinates;
+            console.log("salviamo le coordinate", localStorage);
+        }, */
+        /* saveCo() {
+            const parsed = JSON.stringify(this.coordinates);
+            localStorage.setItem("coordinates", parsed);
+            console.log("salviamo le coordinate", localStorage);
+        }, */
     },
 
     mounted() {

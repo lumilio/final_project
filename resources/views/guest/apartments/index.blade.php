@@ -8,16 +8,20 @@
     <div class="container-fluid d-flex justify-content-center hero_image">
         <searchbar-component></searchbar-component>
     </div>
-    <div class="container-fluid d-flex justify-content-center">
-        <div class="container d-flex justify-content-center flex-wrap py-5">
+    <div class="container ">
+        <div class="row  justify-content-center flex-wrap py-5">
 
             @forelse ($apartments as $apartment)
-
-                <div class="card justify-content-between card_promo m-3">
+            <div class="col-12 col-sm-12 col-md-6 col-xl-4">
+                <div class="card justify-content-between card_promo m-3 ">
                     <a href="{{ route('guest.apartments.show', $apartment->slug) }}">
-                    <img class="card-img-top thumb" src="{{ asset('storage/' . $apartment->image) }}" alt="Card image cap">
+                        <img class="card-img-top thumb" src="{{ asset('storage/' . $apartment->image) }}" alt="Card image cap">
                     </a>
+                    @foreach ($apartment->sponsors as $sponsor)
+                    @if(strtotime($sponsor->pivot->end_date) > strtotime($today))
                     <p class="promo">Promotion</p>
+                    @endif
+                     @endforeach
                     <h2 class="card-text m-3 card_title">{{ $apartment->title }}</h2>
                     <div class="box">
                         <p class="card-text m-3">{{ $apartment->description }}</p>
@@ -25,8 +29,6 @@
 
                     <h6 class="mx-3 service">Services</h6>
                     <div class="services mx-3 d-flex flex-wrap">
-
-
                         <!-- -------------------------- -->
                         @foreach ($apartment->services as $service)
                             <!-- ****** -->
@@ -45,6 +47,9 @@
                     </div>
 
                 </div>
+
+            </div>
+                
             @empty
                 <p>no data</p>
             @endforelse

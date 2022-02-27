@@ -1,8 +1,9 @@
 .tt-search-box {
-    width: 600px;
+    width: 500px;
 }
 .btn_search {
     background-color: $buttonhover;
+    font-family: "Inter";
     &:hover {
         background-color: $button;
     }
@@ -11,73 +12,17 @@
     font-family: "Inter";
 }
 .map {
-    height: 600px;
+    height: 400px;
 }
-.card_adv {
-    width: 50%;
-    border-radius: 20px;
-    text-decoration: none;
+.search {
+    background-color: $darkazure;
+    border-radius: 0;
+    line-height: 30px;
+    width: 100px;
+    height: 43px;
+    font-size: 17px;
     font-family: "Inter";
-    color: $black;
-    &:hover {
-        color: $black;
-        box-shadow: 5px 10px 18px $border;
-    }
-    a {
-        text-decoration: none;
-        color: $white;
-    }
-    .box {
-        p {
-            display: -webkit-box;
-            -webkit-line-clamp: 7;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-    }
-    .thumb {
-        border-top-left-radius: 20px;
-        border-top-right-radius: 20px;
-        height: 200px;
-        position: relative;
-    }
-    .promo {
-        position: absolute;
-        background-color: $orange;
-        border-radius: 50px;
-        right: 5px;
-        top: 5px;
-        font-size: 12px;
-        padding: 0.5rem 0.8rem;
-        color: $white;
-        font-weight: bold;
-    }
-    .card_title {
-        font-weight: bold;
-        font-size: 15px;
-        display: -webkit-box;
-        -webkit-line-clamp: 1;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-    .service {
-        font-weight: bold;
-        font-size: 13px;
-    }
-    .label_card {
-        background-color: $lightazure;
-        border-radius: 15px;
-        .icon_name {
-            color: $darkazure;
-        }
-    }
-    .button_details {
-        background-color: $button;
-        border-radius: 50px;
-        font-weight: bold;
-    }
+    margin-top: 10px;
 }
 
 //Responsive
@@ -94,8 +39,15 @@
 }
 
 @media (max-width: 576px) {
-    .tt-search-box {
+    .resp {
         width: 400px;
+        .tt-search-box {
+            width: 300px;
+        }
+        .search {
+            font-size: 14px;
+            width: 90px;
+        }
     }
     .fields {
         font-size: 13px;
@@ -103,9 +55,17 @@
 }
 
 @media (max-width: 320px) {
-    .tt-search-box {
-        width: 200px;
+    .resp {
+        width: 300px;
+        .tt-search-box {
+            width: 300px;
+        }
+        .search {
+            font-size: 13px;
+            width: 90px;
+        }
     }
+
     .btn_search {
         font-size: 12px;
     }

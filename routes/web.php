@@ -39,9 +39,11 @@ Route::middleware('auth')->prefix('registered')->namespace('Registered')->name('
     Route::get('/', 'HomeController@index')->name('dashboard');
     Route::resource('apartments', 'ApartmentController');
 
+    Route::get('apartments/{apartment}/statistics', 'ApartmentController@showStatistics')->name('statistics');
     Route::resource('contacts', 'ContactController');
 
     Route::get('apartments/{apartment}/sponsors', 'SponsorController@index')->name('sponsors.index');
     Route::get('apartments/{apartment}/sponsors/{sponsor}', 'SponsorController@show')->name('sponsors.show');
     Route::post('apartments/{apartment}/sponsors/{sponsor}/checkout', 'SponsorController@checkout')->name('checkout');
+
 });
