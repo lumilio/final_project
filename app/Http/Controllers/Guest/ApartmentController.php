@@ -20,7 +20,8 @@ class ApartmentController extends Controller
     {
         $apartments  = Apartment::where('visibility', true)->orderByDesc('id')->paginate(12);
         $today = Carbon::now('Europe/Rome');
-        return view('guest.apartments.index', compact('apartments', 'today'));
+        $check_if_home = true;
+        return view('guest.apartments.index', compact('apartments', 'today', 'check_if_home'));
     }
 
     /**

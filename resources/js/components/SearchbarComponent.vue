@@ -5,8 +5,8 @@
         placeholder="Search"
         class="resp col-md-6 mb-4 mx-4 search_bar d-flex flex-row-reverse justify-content-center align-items-center"
     >
-
         <a
+            v-if="this.check_if_home == true"
             @click="saveCo()"
             class="btn py-1 fw-bold search mx-2 text-white"
             href="/research"
@@ -28,7 +28,9 @@ export default {
             userInput: "",
         };
     },
-
+    props: {
+        check_if_home: Boolean,
+    },
     methods: {
         /* funzione per crare la searchbox */
         createSearchbox() {
