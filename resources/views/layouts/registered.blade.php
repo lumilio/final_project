@@ -11,6 +11,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.39.0/maps/maps-web.min.js"></script>
     <script src="{{ asset('js/registered.js') }}" defer></script>
 
@@ -66,20 +67,20 @@
                     <div class="position-sticky pt-3">
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="link {{ Route::currentRouteName() === 'registered.dashboard' ? 'link-active' : ''}} " aria-current="page"
-                                    href="{{ route('registered.dashboard') }}">
+                                <a class="link {{ Route::currentRouteName() === 'registered.dashboard' ? 'link-active' : '' }} "
+                                    aria-current="page" href="{{ route('registered.dashboard') }}">
                                     Dashboard
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="link {{ Route::currentRouteName() === 'registered.apartments.index' ? 'link-active' : ''}}"
-                                 href="{{ route('registered.apartments.index') }}">
+                                <a class="link {{ Route::currentRouteName() === 'registered.apartments.index' ? 'link-active' : '' }}"
+                                    href="{{ route('registered.apartments.index') }}">
                                     Apartments
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="link {{ Route::currentRouteName() === 'registered.contacts.index' ? 'link-active' : ''}}" 
-                                href="{{ route('registered.contacts.index') }}">
+                                <a class="link {{ Route::currentRouteName() === 'registered.contacts.index' ? 'link-active' : '' }}"
+                                    href="{{ route('registered.contacts.index') }}">
                                     Messages
                                 </a>
                             </li>
