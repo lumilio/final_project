@@ -1,6 +1,6 @@
 .card_promo {
     border-radius: 20px;
-    min-height: 751px;
+    min-height: 550px;
     text-decoration: none;
     font-family: "Inter";
     color: $black;
@@ -15,7 +15,7 @@
     .box {
         p {
             display: -webkit-box;
-            -webkit-line-clamp: 7;
+            -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -64,6 +64,9 @@
         font-weight: bold;
     }
 }
+.ads {
+    min-height: 400px;
+}
 
 //Show Cards
 .place {
@@ -84,5 +87,3 @@
 .bg-icon {
     background-color: $lightazure;
 }
-
-
