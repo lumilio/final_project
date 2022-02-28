@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Apartment;
 use App\Models\Service;
 use App\Models\Contact;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -22,8 +23,9 @@ class ApartmentController extends Controller
     public function index()
     {
         $apartments = Auth::user()->apartments()->orderByDesc('id')->paginate(5);
+        $today = Carbon::now('Europe/Rome');
 
-        return view('registered.apartments.index', compact('apartments'));
+        return view('registered.apartments.index', compact('apartments', 'today'));
     }
 
     /**
@@ -241,12 +243,12 @@ class ApartmentController extends Controller
         $times_array_message = [];
 
         foreach ($all_contacts as $contact) {
-            if($contact->apartment_id == $apartment->id){
+            if ($contact->apartment_id == $apartment->id) {
                 array_push($fill_contacts, $contact);
             }
         }
         foreach ($fill_contacts as $contact_fill) {
-            if (!(in_array(date("y", strtotime($contact_fill->created_at)), $contacts_years))){
+            if (!(in_array(date("y", strtotime($contact_fill->created_at)), $contacts_years))) {
                 $anno = date("y", strtotime($contact_fill->created_at));
                 array_push($contacts_years, $anno);
             }
@@ -259,10 +261,10 @@ class ApartmentController extends Controller
             foreach ($index as $key1 => $i1) {
                 foreach ($i1 as $key2 => $i2) {
                     foreach ($fill_contacts as $item) {
-                        if(
-                        date("y", strtotime($item->created_at)) == $key1 &&
-                        date("m", strtotime($item->created_at)) == $key2)
-                        {
+                        if (
+                            date("y", strtotime($item->created_at)) == $key1 &&
+                            date("m", strtotime($item->created_at)) == $key2
+                        ) {
                             array_push($times_array_message[$key0][$key1][$key2], $item);
                         }
                     }
@@ -300,7 +302,7 @@ class ApartmentController extends Controller
         $times_array = [];
 
         foreach ($apartment->views as $view) {
-            if (!(in_array(date("y", strtotime($view->created_at)), $views_years))){
+            if (!(in_array(date("y", strtotime($view->created_at)), $views_years))) {
                 $anno = date("y", strtotime($view->created_at));
                 array_push($views_years, $anno);
             }
@@ -312,10 +314,10 @@ class ApartmentController extends Controller
             foreach ($index as $key1 => $i1) {
                 foreach ($i1 as $key2 => $i2) {
                     foreach ($apartment->views as $view) {
-                        if(
-                        date("y", strtotime($view->created_at)) == $key1 &&
-                        date("m", strtotime($view->created_at)) == $key2)
-                        {
+                        if (
+                            date("y", strtotime($view->created_at)) == $key1 &&
+                            date("m", strtotime($view->created_at)) == $key2
+                        ) {
                             array_push($times_array[$key0][$key1][$key2], $view);
                         }
                     }
@@ -336,9 +338,7 @@ class ApartmentController extends Controller
 
         $data = [];
         array_push($data, $views_array, $contacts_array);
-        
-        return view('registered.statistics.index', compact('apartment','data'));
+
+        return view('registered.statistics.index', compact('apartment', 'data'));
     }
 }
-
-

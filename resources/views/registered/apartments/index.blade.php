@@ -26,6 +26,7 @@
                         <th scope="col">Visibilità</th>
                         <th scope="col">Creato il</th>
                         <th scope="col">Aggiornato il</th>
+                        <th scope="col">Sponsorized</th>
                         <th scope="col">Azioni</th>
                         <th scope="col"></th>
                         <th scope="col"></th>
@@ -57,6 +58,13 @@
                             </td>
                             <td>{{ $apartment->created_at }}</td>
                             <td>{{ $apartment->updated_at }}</td>
+                            <td>
+                                @foreach ($apartment->sponsors as $sponsor)
+                                @if (strtotime($sponsor->pivot->end_date) > strtotime($today))
+                                    <span class="badge bg-warning text-dark">Sponsorized</span>
+                                 @endif
+                                 @endforeach
+                            </td>
                             <td>
                                 <a href="{{ route('guest.apartments.show', $apartment->slug) }}"
                                     class="btn btn_show"><i class="fas fa-eye text-white"></i></a>
