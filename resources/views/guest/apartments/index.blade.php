@@ -21,7 +21,7 @@
                                     <img class="card-img-top thumb" src="{{ asset('storage/' . $apartment->image) }}"
                                         alt="Card image cap">
                                 </a>
-                                <p class="promo">Promotion</p>
+                                <p class="promo">Sponsorized</p>
 
                                 <h2 class="card-text m-3 card_title">{{ $apartment->title }}</h2>
                                 <div class="box">
