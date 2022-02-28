@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Registered;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -26,6 +27,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('registered.home');
+        $apartments_online = Auth::user()->apartments()->orderByDesc('id')->where('visibility', true)->get();
+        $apartments_offline = Auth::user()->apartments()->orderByDesc('id')->where('visibility', false)->get();
+
+        return view('registered.home', compact('apartments_online', 'apartments_offline'));
     }
 }
