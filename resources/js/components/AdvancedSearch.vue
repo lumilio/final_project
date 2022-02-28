@@ -95,10 +95,8 @@
       </div>
       <!-- Mappa -->
       <div class="col-md-6">
-        <div
-          class="d-flex justify-content-center align-items-center map bg-dark"
-        >
-          <p class="text-white text-center fs-4">Mappa</p>
+        <div class="d-flex justify-content-center align-items-center">
+          <div id="map" ref="mapRef" class="col-4 col-4-md"></div>
         </div>
       </div>
     </div>
@@ -157,6 +155,8 @@ import { Bus } from "../app";
 export default {
   data() {
     return {
+      map: null,
+      apikey: "Oe8qW7UX2GW9LFGSM2ePZNH5D3IpOBqK",
       apartments: [],
       userInput: "",
       n_bed: "",
@@ -172,37 +172,79 @@ export default {
   },
   methods: {
     searchFunction() {
-      console.log(this.userInput);
+      // console.log(this.userInput);
       axios
         .get(
           `/api/apartments?n_rooms=${this.n_rooms}&n_bed=${this.n_bed}&services=${this.v_services}&latitude=${this.coordinates.lat}&longitude=${this.coordinates.lon}&distance=${this.distance}`
         )
         .then((response) => {
           this.apartments = response.data.data;
+          this.createMap(
+            this.apartments[0].longitude,
+            this.apartments[0].latitude
+          );
+
+          this.addMarker(this.map, this.apartments);
+
           console.log(this.apartments);
-          console.log(this.n_rooms);
-          console.log(this.n_rooms);
+          // console.log(this.n_rooms);
+          // console.log(this.n_rooms);
         })
         .catch((error) => {
           console.log(error, "non funziona");
         });
     },
     serviceFunction() {
-      console.log(this.coordinates);
+      // console.log(this.coordinates);
+    },
+
+    createMap(lon, lat) {
+      const tt = window.tt;
+      this.map = tt.map({
+        key: this.apikey,
+        container: "map",
+        center: [lon, lat], // Madrid
+        zoom: 9,
+        theme: {
+          style: "buildings",
+          layer: "basic",
+          source: "vector",
+        },
+      });
+      this.map.addControl(new tt.FullscreenControl());
+      this.map.addControl(new tt.NavigationControl());
+    },
+    addMarker(map, apartments) {
+      const tt = window.tt;
+      console.log(apartments);
+      apartments.forEach((apartment) => {
+        var location = [apartment.longitude, apartment.latitude];
+        var popupOffset = 25;
+
+        var marker = new tt.Marker().setLngLat(location).addTo(map);
+        var popup = new tt.Popup({ offset: popupOffset });
+        marker.setPopup(popup).togglePopup();
+        // console.log(popup);
+        // console.log(marker._element);
+      });
     },
   },
+
   created() {
     Bus.$on("sendCoordinates", (data) => {
       this.coordinates = data;
     });
-    console.log(this.coordinates);
+    // console.log(this.coordinates);
     if (localStorage.coordinates) {
       this.coordinates = JSON.parse(localStorage.getItem("coordinates"));
-      console.log(this.coordinates);
+      // console.log(this.coordinates);
     }
   },
+
   mounted() {
     this.searchFunction();
+    // this.createMap();
+    // this.addMarker(this.map);
   },
 };
 /*appunti prima di iniziare
