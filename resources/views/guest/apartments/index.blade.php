@@ -10,7 +10,7 @@
         <searchbar-component :check_if_home='{{ $check_if_home }}'></searchbar-component>
     </div>
     <div class="container ">
-        <h1 class="text-center mt-5">Sponsorizzati</h1>
+        <h1 class="text-center mt-5 font_style fw-bold color_text">Sponsorizzati</h1>
         <div class="row sponsorized justify-content-center flex-wrap py-5">
             @foreach ($apartments as $apartment)
                 @foreach ($apartment->sponsors as $sponsor)
@@ -58,8 +58,8 @@
             @endforeach
 
         </div>
-        <h2 class="text-center">Appartamenti</h2>
-        <div class="row  justify-content-center flex-wrap py-5">
+        <h1 class="text-center font_style fw-bold">Appartamenti</h1>
+        <div class="row justify-content-center flex-wrap py-5">
 
             @forelse ($apartments as $apartment)
                 <div class="col-12 col-sm-12 col-md-6 col-xl-4">
