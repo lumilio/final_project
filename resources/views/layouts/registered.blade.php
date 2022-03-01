@@ -69,19 +69,19 @@
                             <li class="nav-item">
                                 <a class="link {{ Route::currentRouteName() === 'registered.dashboard' ? 'link-active' : '' }} "
                                     aria-current="page" href="{{ route('registered.dashboard') }}">
-                                    Dashboard
+                                    <i class="fa-solid fa-gauge-high"></i> Dashboard
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="link {{ Route::currentRouteName() === 'registered.apartments.index' ? 'link-active' : '' }}"
                                     href="{{ route('registered.apartments.index') }}">
-                                    Apartments
+                                    <i class="fa-solid fa-house"></i> Apartments
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="link {{ Route::currentRouteName() === 'registered.contacts.index' ? 'link-active' : '' }}"
                                     href="{{ route('registered.contacts.index') }}">
-                                    Messages
+                                    <i class="fa-solid fa-message"></i> Messages
                                 </a>
                             </li>
 

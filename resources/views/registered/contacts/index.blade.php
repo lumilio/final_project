@@ -35,13 +35,14 @@
 
                                 <!---------------- Delete button ---------------->
                                 <button style='background: none;
-                                        color: inherit;
-                                        border: none;
-                                        padding: 0;
-                                        font: inherit;
-                                        cursor: pointer;
-                                        outline: inherit;' type="button" style='border-box:none;' class="bg-none"
-                                    data-bs-toggle="modal" data-bs-target="#delete{{ $contact->id }}">
+                                                        color: inherit;
+                                                        border: none;
+                                                        padding: 0;
+                                                        font: inherit;
+                                                        cursor: pointer;
+                                                        outline: inherit;' type="button" style='border-box:none;'
+                                    class="bg-none" data-bs-toggle="modal"
+                                    data-bs-target="#delete{{ $contact->id }}">
                                     <i class="text-danger ms-3 fa-solid fa-trash"></i>
                                 </button>
 
@@ -51,13 +52,14 @@
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title">Eliminare definitivamente il messaggio numero
+                                                <h5 class="modal-title text-dark">Eliminare definitivamente il messaggio
+                                                    numero
                                                     <strong>{{ $contact->id }}</strong>?
                                                 </h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
-                                            <div class="modal-body">
+                                            <div class="modal-body text-dark">
                                                 Stai per eliminare definitivamente il messaggio! Sei sicuro di voler
                                                 continuare?
 
