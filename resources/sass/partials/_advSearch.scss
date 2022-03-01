@@ -12,7 +12,7 @@
     font-family: "Inter";
 }
 .map {
-    height: 400px;
+    height: 350px;
 }
 .search {
     background-color: $darkazure;
@@ -23,6 +23,9 @@
     font-size: 17px;
     font-family: "Inter";
     margin-top: 10px;
+}
+.bg_search {
+    background-color: $darkazure;
 }
 
 //Responsive
@@ -40,7 +43,6 @@
 
 @media (max-width: 576px) {
     .resp {
-        width: 400px;
         .tt-search-box {
             width: 300px;
         }
@@ -56,7 +58,6 @@
 
 @media (max-width: 320px) {
     .resp {
-        width: 300px;
         .tt-search-box {
             width: 300px;
         }

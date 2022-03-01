@@ -1,7 +1,7 @@
 @extends('layouts.registered')
 
 @section('content')
-    <div class="container mt-5">
+    <div class="container mt-3">
         <div class="row">
             <h1>Dettaglio messaggio</h1>
             <hr>

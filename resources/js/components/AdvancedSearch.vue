@@ -3,11 +3,13 @@
         <div class="row justify-content-left">
             <!-- Filter Rooms and Kilometers -->
             <div class="col-md-6">
-                <div class="row justify-content-left">
+                <div class="row justify-content-center">
                     <div
-                        class="d-flex flex-wrap justify-content-left align-items-center"
+                        class="d-flex flex-wrap justify-content-center align-items-center"
                     >
-                        <div class="col-6 col-sm-3 mx-2 mb-3 fields">
+                        <div
+                            class="col-12 col-sm-8 col-md-8 col-lg-4 col-xl-3 mx-2 mb-3 fields"
+                        >
                             <label for="n_rooms" class="form-label">
                                 N° camere Min</label
                             >
@@ -23,7 +25,9 @@
                                 v-model="n_rooms"
                             />
                         </div>
-                        <div class="col-6 col-sm-3 mx-2 mb-3 fields">
+                        <div
+                            class="col-12 col-sm-8 col-md-8 col-lg-4 col-xl-3 mx-2 mb-3 fields"
+                        >
                             <label for="n_bed" class="form-label"
                                 >N° letti Min</label
                             >
@@ -39,7 +43,9 @@
                                 v-model="n_bed"
                             />
                         </div>
-                        <div class="col-6 col-sm-3 mx-2 mb-3 fields">
+                        <div
+                            class="col-12 col-sm-8 col-md-8 col-lg-4 col-xl-3 mx-2 mb-3 fields"
+                        >
                             <label for="distance" class="form-label"
                                 >Raggio distanza Km</label
                             >
@@ -58,7 +64,7 @@
                     </div>
                     <!--Services filter -->
                     <div
-                        class="d-flex service_checkbox flex-wrap justify-content-left align-items-center"
+                        class="d-flex service_checkbox flex-wrap justify-content-center align-items-center py-4"
                     >
                         <div
                             class="py-2"
@@ -86,7 +92,7 @@
                     <!-- Button Advanced Search -->
                     <div class="col-md-6">
                         <div
-                            class="d-flex mx-1 justify-content-left align-items-center"
+                            class="d-flex mx-1 justify-content-center align-items-center"
                         >
                             <button
                                 class="btn btn_search text-white my-3"
@@ -101,17 +107,17 @@
             <!-- Mappa -->
             <div class="col-md-6">
                 <div class="d-flex justify-content-center align-items-center">
-                    <div id="map" ref="mapRef" class="col-4 col-4-md"></div>
+                    <div id="map" ref="mapRef" class="col-4 col-4-md map"></div>
                 </div>
             </div>
         </div>
 
         <!-- Results Advanced search -->
         <div
-            class="row flex-wrap justify-content-center align-items-center mt-4"
+            class="row flex-wrap justify-content-center align-items-center mt-1"
         >
             <div
-                class="col-12 col-sm-6 col-md-4 col-xl-3"
+                class="col-12 col-sm-8 col-md-6 col-lg-4 col-xl-3"
                 v-for="apartment in apartments"
                 :key="apartment.id"
             >

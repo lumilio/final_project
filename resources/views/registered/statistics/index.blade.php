@@ -2,17 +2,17 @@
 
 @section('content')
 
-    <div class="container">
+    <div class="container mt-3">
         <h2>Statistiche dell'appartamento: {{ $apartment->title }}</h2>
         <hr>
         <div class='mt-5 mx-auto w-50'>
             <div class="table-responsive-lg">
-                <table class="table table-striped table-sm">
+                <table class="table table-dark table-hover table-borderless table-striped table-sm">
                     <thead>
                         <tr>
                             <th  class='text-center'>Periodo</th>
-                            <th  class='text-center'>n. Visualizzazioni</th>
-                            <th  class='text-center'>n. Messaggi ricevuti</th>
+                            <th  class='text-center'>n° Visualizzazioni</th>
+                            <th  class='text-center'>n° Messaggi ricevuti</th>
                         </tr>
                     </thead>
                     <tbody>
