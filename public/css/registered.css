@@ -11253,6 +11253,12 @@ textarea.form-control-lg {
   vertical-align: text-bottom;
 }
 
+.messages {
+  background-color: #f1eff1;
+  border-radius: 10px;
+  padding: 1rem;
+}
+
 /*
    * Sidebar
    */
@@ -11265,11 +11271,33 @@ textarea.form-control-lg {
   padding: 0px 0 0;
   /* Height of navbar */
   box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
+  min-height: calc(100vh - 66px);
+  background-color: #e47f38;
+}
+.sidebar .link {
+  color: white;
+  display: block;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+.sidebar .link-active {
+  color: #666666;
 }
 
 @media (max-width: 767.98px) {
   .sidebar {
     top: 5rem;
+  }
+}
+@media (max-width: 576px) {
+  .sidebar {
+    height: 200px;
+  }
+}
+@media (max-width: 320px) {
+  .sidebar {
+    height: 200px;
   }
 }
 .sidebar-sticky {
@@ -11344,12 +11372,61 @@ textarea.form-control-lg {
 }
 
 .bg-azure {
-  background-color: #31858f;
+  background-color: #413e4a;
 }
 
 .hover_blue:hover {
   background-color: #6cb2eb;
   cursor: pointer;
+}
+
+.bg_primary {
+  background-color: #31858f;
+}
+
+.navbar-nav .dropdown-menu {
+  position: absolute !important;
+}
+
+.card_sponsor {
+  background-color: #e8eff6;
+}
+.card_sponsor:hover {
+  box-shadow: 5px 10px 15px #ced4da;
+}
+.card_sponsor .title_sponsor {
+  font-weight: bold;
+  color: #ea670a;
+}
+.card_sponsor .desc_sponsor {
+  font-weight: bold;
+  color: #666666;
+}
+.card_sponsor .sponsor_name {
+  color: #31858f;
+  font-weight: bold;
+}
+.card_sponsor .btn-orange {
+  background-color: #ea670a;
+}
+
+.form-pay {
+  background-color: #e8eff6;
+  border: 1px solid #ced4da;
+}
+
+.button_pay {
+  border: none;
+  background-color: #ea670a;
+  border-radius: 10px;
+}
+.button_pay:hover {
+  background-color: #4dc0b5;
+  transition: 0.2s;
+}
+
+.sponsor_id {
+  color: #31858f;
 }
 
 .checkcross label:before {
@@ -11448,10 +11525,26 @@ label.toggle-item:before {
   font-size: 25px;
 }
 
+.btn_show {
+  background-color: #ff8508;
+}
+
+.btn_pencil {
+  background-color: #007be4;
+}
+
+.static {
+  background-color: #05aa7c;
+}
+
+.dark_yellow {
+  background-color: #ffbc00;
+}
+
 .visibility {
-  color: #8bc34a;
+  color: white;
 }
 
 .novisibility {
-  color: #c34a4a;
+  color: #e3342f;
 }

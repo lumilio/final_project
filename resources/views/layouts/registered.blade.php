@@ -31,6 +31,7 @@
         <div class="navbar navbar-dark sticky-top bg-azure flex-md-nowrap px-4 shadow">
             <a href="{{ url('/') }}">
                 <img height="50" src="{{ asset('img/logo_white.svg') }}" alt="Logo">
+                <p>test ddddhgmvsqkjfgdlajwghdf,ajkbhfv .akjwbdflgku</p>                                <!-- un piccolo passo ma un grande passo -->
             </a>
             <ul class="navbar-nav justify-content-end">
                 <li class="nav-item dropdown">
